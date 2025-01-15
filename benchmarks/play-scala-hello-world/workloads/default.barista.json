@@ -1,0 +1,27 @@
+{
+    "endpoint": "http://127.0.0.1:8009",
+    "output_dir": "logs/",
+    "vm_options": ["-Dpidfile.path=/dev/null"],
+    "connections": 1,
+    "threads": 1,
+    "load_testing":{
+        "lua_script": "helloworld.lua",
+        "startup":{
+            "iterations": 10
+        },
+        "warmup":{
+            "iterations": 1,
+            "iteration_time_seconds": 90
+        },
+        "throughput":{
+            "iterations": 1,
+            "iteration_time_seconds": 60
+        },
+        "latency_measurement":{
+            "iterations": 1,
+            "iteration_time_seconds": 60,
+            "search_strategy": "FIXED",
+            "rates": 1000
+        }
+    }
+}

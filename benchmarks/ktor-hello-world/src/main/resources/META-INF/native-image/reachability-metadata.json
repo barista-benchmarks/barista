@@ -1,0 +1,1176 @@
+{
+  "reflection": [
+    {
+      "type": "ch.qos.logback.classic.encoder.PatternLayoutEncoder",
+      "methods": [
+        {
+          "name": "<init>",
+          "parameterTypes": []
+        }
+      ]
+    },
+    {
+      "type": "ch.qos.logback.classic.joran.SerializedModelConfigurator",
+      "methods": [
+        {
+          "name": "<init>",
+          "parameterTypes": []
+        }
+      ]
+    },
+    {
+      "type": "ch.qos.logback.classic.pattern.DateConverter",
+      "methods": [
+        {
+          "name": "<init>",
+          "parameterTypes": []
+        }
+      ]
+    },
+    {
+      "type": "ch.qos.logback.classic.pattern.LevelConverter",
+      "methods": [
+        {
+          "name": "<init>",
+          "parameterTypes": []
+        }
+      ]
+    },
+    {
+      "type": "ch.qos.logback.classic.pattern.LineSeparatorConverter",
+      "methods": [
+        {
+          "name": "<init>",
+          "parameterTypes": []
+        }
+      ]
+    },
+    {
+      "type": "ch.qos.logback.classic.pattern.LoggerConverter",
+      "methods": [
+        {
+          "name": "<init>",
+          "parameterTypes": []
+        }
+      ]
+    },
+    {
+      "type": "ch.qos.logback.classic.pattern.MessageConverter",
+      "methods": [
+        {
+          "name": "<init>",
+          "parameterTypes": []
+        }
+      ]
+    },
+    {
+      "type": "ch.qos.logback.classic.pattern.ThreadConverter",
+      "methods": [
+        {
+          "name": "<init>",
+          "parameterTypes": []
+        }
+      ]
+    },
+    {
+      "type": "ch.qos.logback.classic.spi.LogbackServiceProvider"
+    },
+    {
+      "type": "ch.qos.logback.classic.util.DefaultJoranConfigurator",
+      "methods": [
+        {
+          "name": "<init>",
+          "parameterTypes": []
+        }
+      ]
+    },
+    {
+      "type": "ch.qos.logback.core.ConsoleAppender",
+      "methods": [
+        {
+          "name": "<init>",
+          "parameterTypes": []
+        }
+      ]
+    },
+    {
+      "type": "ch.qos.logback.core.OutputStreamAppender",
+      "methods": [
+        {
+          "name": "setEncoder",
+          "parameterTypes": [
+            "ch.qos.logback.core.encoder.Encoder"
+          ]
+        }
+      ]
+    },
+    {
+      "type": "ch.qos.logback.core.encoder.Encoder"
+    },
+    {
+      "type": "ch.qos.logback.core.encoder.LayoutWrappingEncoder",
+      "methods": [
+        {
+          "name": "setParent",
+          "parameterTypes": [
+            "ch.qos.logback.core.spi.ContextAware"
+          ]
+        }
+      ]
+    },
+    {
+      "type": "ch.qos.logback.core.pattern.PatternLayoutEncoderBase",
+      "methods": [
+        {
+          "name": "setPattern",
+          "parameterTypes": [
+            "java.lang.String"
+          ]
+        }
+      ]
+    },
+    {
+      "type": "ch.qos.logback.core.spi.ContextAware"
+    },
+    {
+      "type": "com.example.ApplicationKt",
+      "methods": [
+        {
+          "name": "module",
+          "parameterTypes": [
+            "io.ktor.server.application.Application"
+          ]
+        }
+      ]
+    },
+    {
+      "type": "com.sun.org.apache.xerces.internal.jaxp.SAXParserFactoryImpl",
+      "methods": [
+        {
+          "name": "<init>",
+          "parameterTypes": []
+        }
+      ]
+    },
+    {
+      "type": "io.ktor.http.HttpStatusCode"
+    },
+    {
+      "type": "io.ktor.http.content.TextContent"
+    },
+    {
+      "type": "io.ktor.server.application.Application"
+    },
+    {
+      "type": "io.ktor.server.application.PluginInstance"
+    },
+    {
+      "type": "io.ktor.server.config.yaml.YamlConfigLoader"
+    },
+    {
+      "type": "io.ktor.server.engine.BaseApplicationResponse"
+    },
+    {
+      "type": "io.ktor.server.netty.NettyApplicationCall",
+      "fields": [
+        {
+          "name": "messageReleased"
+        }
+      ]
+    },
+    {
+      "type": "io.ktor.server.netty.NettyApplicationCallHandler"
+    },
+    {
+      "type": "io.ktor.server.netty.NettyChannelInitializer"
+    },
+    {
+      "type": "io.ktor.server.netty.NettyHttpHandlerState",
+      "fields": [
+        {
+          "name": "activeRequests$internal"
+        },
+        {
+          "name": "isChannelReadCompleted$internal"
+        },
+        {
+          "name": "isCurrentRequestFullyRead$internal"
+        },
+        {
+          "name": "skippedRead$internal"
+        }
+      ]
+    },
+    {
+      "type": "io.ktor.server.netty.cio.NettyHttpResponsePipeline",
+      "fields": [
+        {
+          "name": "isDataNotFlushed"
+        }
+      ]
+    },
+    {
+      "type": "io.ktor.server.netty.cio.RequestBodyHandler",
+      "fields": [
+        {
+          "name": "buffersInProcessingCount"
+        }
+      ]
+    },
+    {
+      "type": "io.ktor.server.netty.http1.NettyHttp1Handler"
+    },
+    {
+      "type": "io.ktor.server.plugins.MutableOriginConnectionPoint"
+    },
+    {
+      "type": "io.ktor.server.routing.RoutingRoot"
+    },
+    {
+      "type": "io.ktor.util.Attributes"
+    },
+    {
+      "type": "io.ktor.util.collections.CopyOnWriteHashMap",
+      "fields": [
+        {
+          "name": "current"
+        }
+      ]
+    },
+    {
+      "type": "io.ktor.util.internal.LockFreeLinkedListNode",
+      "fields": [
+        {
+          "name": "_next"
+        },
+        {
+          "name": "_prev"
+        },
+        {
+          "name": "_removedRef"
+        }
+      ]
+    },
+    {
+      "type": "io.ktor.util.reflect.TypeInfo"
+    },
+    {
+      "type": "io.netty.bootstrap.ServerBootstrap$1"
+    },
+    {
+      "type": "io.netty.bootstrap.ServerBootstrap$ServerBootstrapAcceptor"
+    },
+    {
+      "type": "io.netty.buffer.AbstractByteBufAllocator"
+    },
+    {
+      "type": "io.netty.buffer.AbstractReferenceCountedByteBuf",
+      "fields": [
+        {
+          "name": "refCnt"
+        }
+      ]
+    },
+    {
+      "type": "io.netty.channel.AbstractChannelHandlerContext",
+      "fields": [
+        {
+          "name": "handlerState"
+        }
+      ]
+    },
+    {
+      "type": "io.netty.channel.ChannelOutboundBuffer",
+      "fields": [
+        {
+          "name": "totalPendingSize"
+        },
+        {
+          "name": "unwritable"
+        }
+      ]
+    },
+    {
+      "type": "io.netty.channel.DefaultChannelConfig",
+      "fields": [
+        {
+          "name": "autoRead"
+        },
+        {
+          "name": "writeBufferWaterMark"
+        }
+      ]
+    },
+    {
+      "type": "io.netty.channel.DefaultChannelPipeline",
+      "fields": [
+        {
+          "name": "estimatorHandle"
+        }
+      ]
+    },
+    {
+      "type": "io.netty.channel.DefaultChannelPipeline$HeadContext"
+    },
+    {
+      "type": "io.netty.channel.DefaultChannelPipeline$TailContext"
+    },
+    {
+      "type": "io.netty.channel.DefaultFileRegion"
+    },
+    {
+      "type": "io.netty.channel.epoll.NativeDatagramPacketArray$NativeDatagramPacket"
+    },
+    {
+      "type": "io.netty.channel.socket.nio.NioServerSocketChannel",
+      "methods": [
+        {
+          "name": "<init>",
+          "parameterTypes": []
+        }
+      ]
+    },
+    {
+      "type": "io.netty.channel.unix.PeerCredentials"
+    },
+    {
+      "type": "io.netty.handler.codec.http.HttpServerCodec"
+    },
+    {
+      "type": "io.netty.handler.codec.http.HttpServerExpectContinueHandler"
+    },
+    {
+      "type": "io.netty.handler.timeout.WriteTimeoutHandler"
+    },
+    {
+      "type": "io.netty.util.AbstractReferenceCounted",
+      "fields": [
+        {
+          "name": "refCnt"
+        }
+      ]
+    },
+    {
+      "type": "io.netty.util.DefaultAttributeMap",
+      "fields": [
+        {
+          "name": "attributes"
+        }
+      ]
+    },
+    {
+      "type": "io.netty.util.Recycler$DefaultHandle",
+      "fields": [
+        {
+          "name": "state"
+        }
+      ]
+    },
+    {
+      "type": "io.netty.util.ReferenceCountUtil"
+    },
+    {
+      "type": "io.netty.util.concurrent.DefaultPromise",
+      "fields": [
+        {
+          "name": "result"
+        }
+      ]
+    },
+    {
+      "type": "io.netty.util.concurrent.SingleThreadEventExecutor",
+      "fields": [
+        {
+          "name": "state"
+        },
+        {
+          "name": "threadProperties"
+        }
+      ]
+    },
+    {
+      "type": "io.netty.util.internal.NativeLibraryUtil",
+      "methods": [
+        {
+          "name": "loadLibrary",
+          "parameterTypes": [
+            "java.lang.String",
+            "boolean"
+          ]
+        }
+      ]
+    },
+    {
+      "type": "io.netty.util.internal.shaded.org.jctools.queues.BaseMpscLinkedArrayQueueColdProducerFields",
+      "fields": [
+        {
+          "name": "producerLimit"
+        }
+      ]
+    },
+    {
+      "type": "io.netty.util.internal.shaded.org.jctools.queues.BaseMpscLinkedArrayQueueConsumerFields",
+      "fields": [
+        {
+          "name": "consumerIndex"
+        }
+      ]
+    },
+    {
+      "type": "io.netty.util.internal.shaded.org.jctools.queues.BaseMpscLinkedArrayQueueProducerFields",
+      "fields": [
+        {
+          "name": "producerIndex"
+        }
+      ]
+    },
+    {
+      "type": "io.netty.util.internal.shaded.org.jctools.queues.unpadded.MpscUnpaddedArrayQueueConsumerIndexField",
+      "fields": [
+        {
+          "name": "consumerIndex"
+        }
+      ]
+    },
+    {
+      "type": "io.netty.util.internal.shaded.org.jctools.queues.unpadded.MpscUnpaddedArrayQueueProducerIndexField",
+      "fields": [
+        {
+          "name": "producerIndex"
+        }
+      ]
+    },
+    {
+      "type": "io.netty.util.internal.shaded.org.jctools.queues.unpadded.MpscUnpaddedArrayQueueProducerLimitField",
+      "fields": [
+        {
+          "name": "producerLimit"
+        }
+      ]
+    },
+    {
+      "type": "java.io.FileDescriptor"
+    },
+    {
+      "type": "java.io.FilePermission"
+    },
+    {
+      "type": "java.lang.ClassValue"
+    },
+    {
+      "type": "java.lang.ProcessHandle",
+      "methods": [
+        {
+          "name": "current",
+          "parameterTypes": []
+        },
+        {
+          "name": "pid",
+          "parameterTypes": []
+        }
+      ]
+    },
+    {
+      "type": "java.lang.RuntimePermission"
+    },
+    {
+      "type": "java.lang.Thread",
+      "fields": [
+        {
+          "name": "threadLocalRandomProbe"
+        }
+      ]
+    },
+    {
+      "type": "java.net.NetPermission"
+    },
+    {
+      "type": "java.net.SocketPermission"
+    },
+    {
+      "type": "java.net.URLPermission",
+      "methods": [
+        {
+          "name": "<init>",
+          "parameterTypes": [
+            "java.lang.String",
+            "java.lang.String"
+          ]
+        }
+      ]
+    },
+    {
+      "type": "java.nio.Bits",
+      "fields": [
+        {
+          "name": "MAX_MEMORY"
+        },
+        {
+          "name": "UNALIGNED"
+        }
+      ]
+    },
+    {
+      "type": "java.nio.Buffer",
+      "fields": [
+        {
+          "name": "address"
+        }
+      ]
+    },
+    {
+      "type": "java.nio.ByteBuffer"
+    },
+    {
+      "type": "java.nio.DirectByteBuffer"
+    },
+    {
+      "type": "java.nio.channels.FileChannel"
+    },
+    {
+      "type": "java.nio.channels.spi.SelectorProvider"
+    },
+    {
+      "type": "java.security.AllPermission"
+    },
+    {
+      "type": "java.security.SecurityPermission"
+    },
+    {
+      "type": "java.util.PropertyPermission"
+    },
+    {
+      "type": "java.util.concurrent.atomic.AtomicBoolean",
+      "fields": [
+        {
+          "name": "value"
+        }
+      ]
+    },
+    {
+      "type": "java.util.concurrent.atomic.Striped64",
+      "fields": [
+        {
+          "name": "base"
+        },
+        {
+          "name": "cellsBusy"
+        }
+      ]
+    },
+    {
+      "type": "java.util.concurrent.atomic.Striped64$Cell",
+      "fields": [
+        {
+          "name": "value"
+        }
+      ]
+    },
+    {
+      "type": "javax.smartcardio.CardPermission"
+    },
+    {
+      "type": "jdk.internal.misc.Unsafe",
+      "methods": [
+        {
+          "name": "getUnsafe",
+          "parameterTypes": []
+        }
+      ]
+    },
+    {
+      "type": "kotlin.Array"
+    },
+    {
+      "type": "kotlin.Metadata",
+      "methods": [
+        {
+          "name": "bv",
+          "parameterTypes": []
+        },
+        {
+          "name": "d1",
+          "parameterTypes": []
+        },
+        {
+          "name": "d2",
+          "parameterTypes": []
+        },
+        {
+          "name": "k",
+          "parameterTypes": []
+        },
+        {
+          "name": "mv",
+          "parameterTypes": []
+        },
+        {
+          "name": "pn",
+          "parameterTypes": []
+        },
+        {
+          "name": "xi",
+          "parameterTypes": []
+        },
+        {
+          "name": "xs",
+          "parameterTypes": []
+        }
+      ]
+    },
+    {
+      "type": "kotlin.SafePublicationLazyImpl",
+      "fields": [
+        {
+          "name": "_value"
+        }
+      ]
+    },
+    {
+      "type": "kotlin.String"
+    },
+    {
+      "type": "kotlin.Unit"
+    },
+    {
+      "type": "kotlin.jvm.internal.DefaultConstructorMarker"
+    },
+    {
+      "type": "kotlin.reflect.jvm.internal.ReflectionFactoryImpl",
+      "methods": [
+        {
+          "name": "<init>",
+          "parameterTypes": []
+        }
+      ]
+    },
+    {
+      "type": "kotlin.reflect.jvm.internal.impl.load.java.ErasedOverridabilityCondition"
+    },
+    {
+      "type": "kotlin.reflect.jvm.internal.impl.load.java.FieldOverridabilityCondition"
+    },
+    {
+      "type": "kotlin.reflect.jvm.internal.impl.load.java.JavaIncompatibilityRulesOverridabilityCondition"
+    },
+    {
+      "type": "kotlin.reflect.jvm.internal.impl.resolve.scopes.DescriptorKindFilter",
+      "allPublicFields": true
+    },
+    {
+      "type": "kotlinx.coroutines.CancellableContinuationImpl",
+      "fields": [
+        {
+          "name": "_decisionAndIndex$volatile"
+        },
+        {
+          "name": "_parentHandle$volatile"
+        },
+        {
+          "name": "_state$volatile"
+        }
+      ]
+    },
+    {
+      "type": "kotlinx.coroutines.CompletedExceptionally",
+      "fields": [
+        {
+          "name": "_handled$volatile"
+        }
+      ]
+    },
+    {
+      "type": "kotlinx.coroutines.EventLoopImplBase",
+      "fields": [
+        {
+          "name": "_delayed$volatile"
+        },
+        {
+          "name": "_isCompleted$volatile"
+        },
+        {
+          "name": "_queue$volatile"
+        }
+      ]
+    },
+    {
+      "type": "kotlinx.coroutines.JobSupport",
+      "fields": [
+        {
+          "name": "_parentHandle$volatile"
+        },
+        {
+          "name": "_state$volatile"
+        }
+      ]
+    },
+    {
+      "type": "kotlinx.coroutines.JobSupport$Finishing",
+      "fields": [
+        {
+          "name": "_exceptionsHolder$volatile"
+        },
+        {
+          "name": "_isCompleting$volatile"
+        },
+        {
+          "name": "_rootCause$volatile"
+        }
+      ]
+    },
+    {
+      "type": "kotlinx.coroutines.channels.BufferedChannel",
+      "fields": [
+        {
+          "name": "_closeCause$volatile"
+        },
+        {
+          "name": "bufferEnd$volatile"
+        },
+        {
+          "name": "bufferEndSegment$volatile"
+        },
+        {
+          "name": "closeHandler$volatile"
+        },
+        {
+          "name": "completedExpandBuffersAndPauseFlag$volatile"
+        },
+        {
+          "name": "receiveSegment$volatile"
+        },
+        {
+          "name": "receivers$volatile"
+        },
+        {
+          "name": "sendSegment$volatile"
+        },
+        {
+          "name": "sendersAndCloseStatus$volatile"
+        }
+      ]
+    },
+    {
+      "type": "kotlinx.coroutines.internal.ConcurrentLinkedListNode",
+      "fields": [
+        {
+          "name": "_next$volatile"
+        },
+        {
+          "name": "_prev$volatile"
+        }
+      ]
+    },
+    {
+      "type": "kotlinx.coroutines.internal.DispatchedContinuation",
+      "fields": [
+        {
+          "name": "_reusableCancellableContinuation$volatile"
+        }
+      ]
+    },
+    {
+      "type": "kotlinx.coroutines.internal.LockFreeLinkedListNode",
+      "fields": [
+        {
+          "name": "_next$volatile"
+        },
+        {
+          "name": "_prev$volatile"
+        },
+        {
+          "name": "_removedRef$volatile"
+        }
+      ]
+    },
+    {
+      "type": "kotlinx.coroutines.internal.LockFreeTaskQueue",
+      "fields": [
+        {
+          "name": "_cur$volatile"
+        }
+      ]
+    },
+    {
+      "type": "kotlinx.coroutines.internal.LockFreeTaskQueueCore",
+      "fields": [
+        {
+          "name": "_next$volatile"
+        },
+        {
+          "name": "_state$volatile"
+        }
+      ]
+    },
+    {
+      "type": "kotlinx.coroutines.internal.Segment",
+      "fields": [
+        {
+          "name": "cleanedAndPointers$volatile"
+        }
+      ]
+    },
+    {
+      "type": "kotlinx.coroutines.scheduling.CoroutineScheduler",
+      "fields": [
+        {
+          "name": "_isTerminated$volatile"
+        },
+        {
+          "name": "controlState$volatile"
+        },
+        {
+          "name": "parkedWorkersStack$volatile"
+        }
+      ]
+    },
+    {
+      "type": "kotlinx.coroutines.scheduling.CoroutineScheduler$Worker",
+      "fields": [
+        {
+          "name": "workerCtl$volatile"
+        }
+      ]
+    },
+    {
+      "type": "kotlinx.coroutines.scheduling.WorkQueue",
+      "fields": [
+        {
+          "name": "blockingTasksInBuffer$volatile"
+        },
+        {
+          "name": "consumerIndex$volatile"
+        },
+        {
+          "name": "lastScheduledTask$volatile"
+        },
+        {
+          "name": "producerIndex$volatile"
+        }
+      ]
+    },
+    {
+      "type": "sun.misc.Unsafe",
+      "fields": [
+        {
+          "name": "theUnsafe"
+        }
+      ],
+      "methods": [
+        {
+          "name": "invokeCleaner",
+          "parameterTypes": [
+            "java.nio.ByteBuffer"
+          ]
+        }
+      ]
+    },
+    {
+      "type": "sun.nio.ch.SelectorImpl",
+      "fields": [
+        {
+          "name": "publicSelectedKeys"
+        },
+        {
+          "name": "selectedKeys"
+        }
+      ]
+    },
+    {
+      "type": "sun.security.provider.SHA",
+      "methods": [
+        {
+          "name": "<init>",
+          "parameterTypes": []
+        }
+      ]
+    }
+  ],
+  "resources": [
+    {
+      "glob": "META-INF/native/libnetty_transport_native_epoll.so"
+    },
+    {
+      "glob": "META-INF/native/libnetty_transport_native_epoll_x86_64.so"
+    },
+    {
+      "glob": "META-INF/services/ch.qos.logback.classic.spi.Configurator"
+    },
+    {
+      "glob": "META-INF/services/com.oracle.graal.phases.preciseinline.priorityinline.PolicyFactory"
+    },
+    {
+      "glob": "META-INF/services/io.ktor.server.config.ConfigLoader"
+    },
+    {
+      "glob": "META-INF/services/java.lang.System$LoggerFinder"
+    },
+    {
+      "glob": "META-INF/services/java.nio.channels.spi.SelectorProvider"
+    },
+    {
+      "glob": "META-INF/services/java.time.zone.ZoneRulesProvider"
+    },
+    {
+      "glob": "META-INF/services/javax.xml.parsers.SAXParserFactory"
+    },
+    {
+      "glob": "META-INF/services/kotlin.reflect.jvm.internal.impl.resolve.ExternalOverridabilityCondition"
+    },
+    {
+      "glob": "META-INF/services/kotlin.reflect.jvm.internal.impl.util.ModuleVisibilityHelper"
+    },
+    {
+      "glob": "META-INF/services/org.slf4j.spi.SLF4JServiceProvider"
+    },
+    {
+      "glob": "application.yaml"
+    },
+    {
+      "glob": "kotlin/kotlin.kotlin_builtins"
+    },
+    {
+      "glob": "logback-test.scmo"
+    },
+    {
+      "glob": "logback-test.xml"
+    },
+    {
+      "glob": "logback.scmo"
+    },
+    {
+      "glob": "logback.xml"
+    },
+    {
+      "module": "com.oracle.graal.graal_enterprise",
+      "glob": "com/oracle/graal/compiler/enterprise/BulkAllocationSnippetTemplates.class"
+    },
+    {
+      "module": "com.oracle.graal.graal_enterprise",
+      "glob": "com/oracle/graal/enterprise/hotspot/replacements/HotSpotBulkAllocationSnippets.class"
+    },
+    {
+      "module": "com.oracle.graal.graal_enterprise",
+      "glob": "com/oracle/graal/vector/nodes/consumer/MaterializeVectorNode.class"
+    },
+    {
+      "module": "com.oracle.graal.graal_enterprise",
+      "glob": "com/oracle/graal/vector/replacements/CopyOfSnippets.class"
+    },
+    {
+      "module": "com.oracle.graal.graal_enterprise",
+      "glob": "com/oracle/graal/vector/replacements/UncheckedCopyOfNode.class"
+    },
+    {
+      "module": "com.oracle.graal.graal_enterprise",
+      "glob": "com/oracle/graal/vector/replacements/VectorSnippets.class"
+    },
+    {
+      "module": "java.base",
+      "glob": "java/lang/Class.class"
+    },
+    {
+      "module": "java.base",
+      "glob": "java/lang/Integer.class"
+    },
+    {
+      "module": "java.base",
+      "glob": "java/lang/Long.class"
+    },
+    {
+      "module": "java.base",
+      "glob": "java/lang/Math.class"
+    },
+    {
+      "module": "java.base",
+      "glob": "java/lang/reflect/Modifier.class"
+    },
+    {
+      "module": "jdk.graal.compiler",
+      "glob": "jdk/graal/compiler/hotspot/replacements/ClassGetHubNode.class"
+    },
+    {
+      "module": "jdk.graal.compiler",
+      "glob": "jdk/graal/compiler/hotspot/replacements/HotSpotAllocationSnippets.class"
+    },
+    {
+      "module": "jdk.graal.compiler",
+      "glob": "jdk/graal/compiler/hotspot/replacements/HotSpotG1WriteBarrierSnippets.class"
+    },
+    {
+      "module": "jdk.graal.compiler",
+      "glob": "jdk/graal/compiler/hotspot/replacements/HotSpotHashCodeSnippets.class"
+    },
+    {
+      "module": "jdk.graal.compiler",
+      "glob": "jdk/graal/compiler/hotspot/replacements/HotSpotIsArraySnippets.class"
+    },
+    {
+      "module": "jdk.graal.compiler",
+      "glob": "jdk/graal/compiler/hotspot/replacements/HotSpotReplacementsUtil.class"
+    },
+    {
+      "module": "jdk.graal.compiler",
+      "glob": "jdk/graal/compiler/hotspot/replacements/InstanceOfSnippets.class"
+    },
+    {
+      "module": "jdk.graal.compiler",
+      "glob": "jdk/graal/compiler/hotspot/replacements/LoadExceptionObjectSnippets.class"
+    },
+    {
+      "module": "jdk.graal.compiler",
+      "glob": "jdk/graal/compiler/hotspot/replacements/MonitorSnippets.class"
+    },
+    {
+      "module": "jdk.graal.compiler",
+      "glob": "jdk/graal/compiler/hotspot/replacements/ObjectCloneSnippets.class"
+    },
+    {
+      "module": "jdk.graal.compiler",
+      "glob": "jdk/graal/compiler/hotspot/replacements/RegisterFinalizerSnippets.class"
+    },
+    {
+      "module": "jdk.graal.compiler",
+      "glob": "jdk/graal/compiler/hotspot/replacements/TypeCheckSnippetUtils.class"
+    },
+    {
+      "module": "jdk.graal.compiler",
+      "glob": "jdk/graal/compiler/hotspot/replacements/arraycopy/HotSpotArraycopySnippets.class"
+    },
+    {
+      "module": "jdk.graal.compiler",
+      "glob": "jdk/graal/compiler/hotspot/stubs/ExceptionHandlerStub.class"
+    },
+    {
+      "module": "jdk.graal.compiler",
+      "glob": "jdk/graal/compiler/hotspot/stubs/ForeignCallSnippets.class"
+    },
+    {
+      "module": "jdk.graal.compiler",
+      "glob": "jdk/graal/compiler/hotspot/stubs/IntrinsicStubsGen.class"
+    },
+    {
+      "module": "jdk.graal.compiler",
+      "glob": "jdk/graal/compiler/hotspot/stubs/LookUpSecondarySupersTableStub.class"
+    },
+    {
+      "module": "jdk.graal.compiler",
+      "glob": "jdk/graal/compiler/nodes/PiNode.class"
+    },
+    {
+      "module": "jdk.graal.compiler",
+      "glob": "jdk/graal/compiler/nodes/java/DynamicNewArrayNode.class"
+    },
+    {
+      "module": "jdk.graal.compiler",
+      "glob": "jdk/graal/compiler/nodes/java/DynamicNewInstanceNode.class"
+    },
+    {
+      "module": "jdk.graal.compiler",
+      "glob": "jdk/graal/compiler/nodes/java/NewArrayNode.class"
+    },
+    {
+      "module": "jdk.graal.compiler",
+      "glob": "jdk/graal/compiler/replacements/AllocationSnippets.class"
+    },
+    {
+      "module": "jdk.graal.compiler",
+      "glob": "jdk/graal/compiler/replacements/BoxingSnippets.class"
+    },
+    {
+      "module": "jdk.graal.compiler",
+      "glob": "jdk/graal/compiler/replacements/IdentityHashCodeSnippets.class"
+    },
+    {
+      "module": "jdk.graal.compiler",
+      "glob": "jdk/graal/compiler/replacements/IsArraySnippets.class"
+    },
+    {
+      "module": "jdk.graal.compiler",
+      "glob": "jdk/graal/compiler/replacements/ReplacementsUtil.class"
+    },
+    {
+      "module": "jdk.graal.compiler",
+      "glob": "jdk/graal/compiler/replacements/SnippetCounter.class"
+    },
+    {
+      "module": "jdk.graal.compiler",
+      "glob": "jdk/graal/compiler/replacements/SnippetIntegerHistogram.class"
+    },
+    {
+      "module": "jdk.graal.compiler",
+      "glob": "jdk/graal/compiler/replacements/arraycopy/ArrayCopyCallNode.class"
+    },
+    {
+      "module": "jdk.graal.compiler",
+      "glob": "jdk/graal/compiler/replacements/arraycopy/ArrayCopySnippets.class"
+    },
+    {
+      "module": "jdk.graal.compiler",
+      "glob": "jdk/graal/compiler/replacements/arraycopy/ArrayCopyWithDelayedLoweringNode.class"
+    },
+    {
+      "module": "jdk.graal.compiler",
+      "glob": "jdk/graal/compiler/replacements/gc/G1WriteBarrierSnippets.class"
+    },
+    {
+      "module": "jdk.graal.compiler",
+      "glob": "jdk/graal/compiler/replacements/gc/WriteBarrierSnippets.class"
+    },
+    {
+      "module": "jdk.graal.compiler",
+      "glob": "jdk/graal/compiler/replacements/nodes/AssertionNode.class"
+    },
+    {
+      "module": "jdk.internal.vm.ci",
+      "glob": "jdk/vm/ci/code/CodeUtil.class"
+    },
+    {
+      "module": "org.graalvm.word",
+      "glob": "org/graalvm/word/LocationIdentity.class"
+    }
+  ],
+  "bundles": [],
+  "jni": [
+    {
+      "type": "java.lang.Boolean",
+      "methods": [
+        {
+          "name": "getBoolean",
+          "parameterTypes": [
+            "java.lang.String"
+          ]
+        }
+      ]
+    },
+    {
+      "type": "sun.management.VMManagementImpl",
+      "fields": [
+        {
+          "name": "compTimeMonitoringSupport"
+        },
+        {
+          "name": "currentThreadCpuTimeSupport"
+        },
+        {
+          "name": "objectMonitorUsageSupport"
+        },
+        {
+          "name": "otherThreadCpuTimeSupport"
+        },
+        {
+          "name": "remoteDiagnosticCommandsSupport"
+        },
+        {
+          "name": "synchronizerUsageSupport"
+        },
+        {
+          "name": "threadAllocatedMemorySupport"
+        },
+        {
+          "name": "threadContentionMonitoringSupport"
+        }
+      ]
+    }
+  ]
+}

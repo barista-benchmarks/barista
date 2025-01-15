@@ -1,0 +1,28 @@
+[project]
+name = "barista"
+version = "0.3.1"
+description = "A benchmark suite for JVM microservices"
+readme = "README.md"
+classifiers = [
+    "Programming Language :: Python :: 3",
+    "Operating System :: OS Independent",
+]
+requires-python = ">=3.8"
+
+[project.optional-dependencies]
+dev = [
+    "pytest==8.3.2"
+]
+
+[build-system]
+requires = ["setuptools>=61.0"]
+build-backend = "setuptools.build_meta"
+
+[tool.setuptools]
+py-modules = ["benchmark_registry"]
+
+[tool.setuptools.packages.find]
+exclude = ["logs*", "images*"]
+
+[tool.pytest.ini_options]
+testpaths = ["tests"]

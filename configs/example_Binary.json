@@ -1,0 +1,32 @@
+{
+    "mode": "JVM",
+    "app_executable": "benchmarks/spring-hello-world/target/spring-hello-world-3.0.5.jar",
+    "cmd_app_prefix" : ["taskset", "-c", "0-7"],
+    "vm_options": ["-Xmx512M", "-Dserver.port=8090"],
+    "endpoint": "http://127.0.0.1:8090/hello",
+    "output_dir": "logs-lat/",
+    "load_testing":{
+        "startup":{
+            "iterations": 5
+        },
+        "warmup":{
+            "iterations": 2,
+            "iteration_time_seconds": 30
+        },
+        "throughput":{
+            "iterations": 6,
+            "iteration_time_seconds": 30
+        },
+        "latency_measurement":{
+            "iterations": 1,
+            "iteration_time_seconds": 150,
+            "min_step_percent": 0.001,
+            "search_strategy": "BINARY_SEARCH",
+            "SLA":[
+                ["p99",5],
+                ["p50",2],
+                ["p100",10]
+            ]
+        }
+    }
+}

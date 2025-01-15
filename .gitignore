@@ -1,0 +1,10 @@
+**.log
+**-bench-**
+.pyc
+__pycache__/
+.pytest_ca
+logs/
+venv/
+shopcart-userids.txt
+*.egg-info
+target/

@@ -1,0 +1,27 @@
+{
+    "endpoint": "http://127.0.0.1:8006",
+    "output_dir": "logs/",
+    "load_testing":{
+        "lua_script": "mixed-requests.lua",
+        "connections": 16,
+        "threads": 16,
+        "startup":{
+            "iterations": 10,
+            "timeout": 300
+        },
+        "warmup":{
+            "iterations": 1,
+            "iteration_time_seconds": 100
+        },
+        "throughput":{
+            "iterations": 1,
+            "iteration_time_seconds": 180
+        },
+        "latency_measurement":{
+            "iterations": 1,
+            "iteration_time_seconds": 36,
+            "search_strategy": "FIXED",
+            "rates": 3000
+        }
+    }
+}

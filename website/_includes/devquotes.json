@@ -1,0 +1,28 @@
+[
+  {
+    "text": "To build the applications comprising the Barista suite, just run the `build` executable.",
+    "author": "",
+    "description": ""
+  },
+  {
+    "text": "Barista benchmarks run in a single JVM process, which makes them convenient to use with profilers, instrumenters and other analysis tools. You can attach these tools using the `--cmd-app-prefix` option.",
+    "author": "",
+    "description": ""
+  },
+  {
+    "text": "Barista has a comprehensive set of command-line options -- type `-h` to see them.",
+    "author": "",
+    "description": ""
+  },
+  {
+    "text": "You can select different execution modes using the `--mode` option.",
+    "author": "",
+    "description": ""
+  },
+  {
+    "text": "You can easily add your own applications to the Barista benchmark suite. Simply create a new subdirectory in the `benchmarks` directory containing the source code, provide a workload config file, and a `build.sh` script.",
+    "author": "",
+    "description": ""
+  }
+]
+

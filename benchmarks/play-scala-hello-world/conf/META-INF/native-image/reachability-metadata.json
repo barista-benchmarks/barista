@@ -1,0 +1,3524 @@
+{
+  "reflection": [
+    {
+      "type": "ActionCreator"
+    },
+    {
+      "type": "CSRFErrorHandler"
+    },
+    {
+      "type": "ErrorHandler"
+    },
+    {
+      "type": "Filters"
+    },
+    {
+      "type": "Module"
+    },
+    {
+      "type": "RequestHandler"
+    },
+    {
+      "type": "[B"
+    },
+    {
+      "type": "[I"
+    },
+    {
+      "type": "[Lcom.fasterxml.jackson.databind.deser.Deserializers;"
+    },
+    {
+      "type": "[Lcom.fasterxml.jackson.databind.deser.KeyDeserializers;"
+    },
+    {
+      "type": "[Lcom.fasterxml.jackson.databind.deser.ValueInstantiators;"
+    },
+    {
+      "type": "[Lcom.fasterxml.jackson.databind.ser.Serializers;"
+    },
+    {
+      "type": "[Lcom.fasterxml.jackson.databind.type.TypeModifier;"
+    },
+    {
+      "type": "[Ljava.lang.Class;"
+    },
+    {
+      "type": "[Ljava.lang.invoke.MethodHandles$Lookup$ClassOption;"
+    },
+    {
+      "type": "[Lorg.apache.pekko.actor.LightArrayRevolverScheduler$TaskQueue;"
+    },
+    {
+      "type": "[Lorg.apache.pekko.stream.stage.GraphStageLogic;"
+    },
+    {
+      "type": "[Lscala.Tuple2;"
+    },
+    {
+      "type": "[[I"
+    },
+    {
+      "type": "ch.qos.logback.classic.AsyncAppender",
+      "methods": [
+        {
+          "name": "<init>",
+          "parameterTypes": []
+        }
+      ]
+    },
+    {
+      "type": "ch.qos.logback.classic.encoder.PatternLayoutEncoder",
+      "methods": [
+        {
+          "name": "<init>",
+          "parameterTypes": []
+        }
+      ]
+    },
+    {
+      "type": "ch.qos.logback.classic.joran.SerializedModelConfigurator",
+      "methods": [
+        {
+          "name": "<init>",
+          "parameterTypes": []
+        }
+      ]
+    },
+    {
+      "type": "ch.qos.logback.classic.pattern.DateConverter",
+      "methods": [
+        {
+          "name": "<init>",
+          "parameterTypes": []
+        }
+      ]
+    },
+    {
+      "type": "ch.qos.logback.classic.pattern.LevelConverter",
+      "methods": [
+        {
+          "name": "<init>",
+          "parameterTypes": []
+        }
+      ]
+    },
+    {
+      "type": "ch.qos.logback.classic.pattern.LineSeparatorConverter",
+      "methods": [
+        {
+          "name": "<init>",
+          "parameterTypes": []
+        }
+      ]
+    },
+    {
+      "type": "ch.qos.logback.classic.pattern.LoggerConverter",
+      "methods": [
+        {
+          "name": "<init>",
+          "parameterTypes": []
+        }
+      ]
+    },
+    {
+      "type": "ch.qos.logback.classic.pattern.MDCConverter",
+      "methods": [
+        {
+          "name": "<init>",
+          "parameterTypes": []
+        }
+      ]
+    },
+    {
+      "type": "ch.qos.logback.classic.pattern.MessageConverter",
+      "methods": [
+        {
+          "name": "<init>",
+          "parameterTypes": []
+        }
+      ]
+    },
+    {
+      "type": "ch.qos.logback.classic.pattern.color.HighlightingCompositeConverter",
+      "methods": [
+        {
+          "name": "<init>",
+          "parameterTypes": []
+        }
+      ]
+    },
+    {
+      "type": "ch.qos.logback.classic.spi.LogbackServiceProvider"
+    },
+    {
+      "type": "ch.qos.logback.classic.util.DefaultJoranConfigurator",
+      "methods": [
+        {
+          "name": "<init>",
+          "parameterTypes": []
+        }
+      ]
+    },
+    {
+      "type": "ch.qos.logback.core.ConsoleAppender",
+      "methods": [
+        {
+          "name": "<init>",
+          "parameterTypes": []
+        }
+      ]
+    },
+    {
+      "type": "ch.qos.logback.core.FileAppender",
+      "methods": [
+        {
+          "name": "<init>",
+          "parameterTypes": []
+        },
+        {
+          "name": "setFile",
+          "parameterTypes": [
+            "java.lang.String"
+          ]
+        }
+      ]
+    },
+    {
+      "type": "ch.qos.logback.core.OutputStreamAppender",
+      "methods": [
+        {
+          "name": "setEncoder",
+          "parameterTypes": [
+            "ch.qos.logback.core.encoder.Encoder"
+          ]
+        }
+      ]
+    },
+    {
+      "type": "ch.qos.logback.core.encoder.Encoder"
+    },
+    {
+      "type": "ch.qos.logback.core.encoder.LayoutWrappingEncoder",
+      "methods": [
+        {
+          "name": "setCharset",
+          "parameterTypes": [
+            "java.nio.charset.Charset"
+          ]
+        },
+        {
+          "name": "setParent",
+          "parameterTypes": [
+            "ch.qos.logback.core.spi.ContextAware"
+          ]
+        }
+      ]
+    },
+    {
+      "type": "ch.qos.logback.core.pattern.PatternLayoutEncoderBase",
+      "methods": [
+        {
+          "name": "setPattern",
+          "parameterTypes": [
+            "java.lang.String"
+          ]
+        }
+      ]
+    },
+    {
+      "type": "ch.qos.logback.core.pattern.color.CyanCompositeConverter",
+      "methods": [
+        {
+          "name": "<init>",
+          "parameterTypes": []
+        }
+      ]
+    },
+    {
+      "type": "ch.qos.logback.core.pattern.color.MagentaCompositeConverter",
+      "methods": [
+        {
+          "name": "<init>",
+          "parameterTypes": []
+        }
+      ]
+    },
+    {
+      "type": "ch.qos.logback.core.spi.ContextAware"
+    },
+    {
+      "type": "com.fasterxml.jackson.databind.ext.Java7SupportImpl",
+      "methods": [
+        {
+          "name": "<init>",
+          "parameterTypes": []
+        }
+      ]
+    },
+    {
+      "type": "com.fasterxml.jackson.datatype.jdk8.Jdk8Module",
+      "methods": [
+        {
+          "name": "<init>",
+          "parameterTypes": []
+        }
+      ]
+    },
+    {
+      "type": "com.fasterxml.jackson.datatype.jsr310.JavaTimeModule",
+      "methods": [
+        {
+          "name": "<init>",
+          "parameterTypes": []
+        }
+      ]
+    },
+    {
+      "type": "com.fasterxml.jackson.module.paramnames.ParameterNamesModule",
+      "methods": [
+        {
+          "name": "<init>",
+          "parameterTypes": []
+        }
+      ]
+    },
+    {
+      "type": "com.fasterxml.jackson.module.scala.DefaultScalaModule",
+      "methods": [
+        {
+          "name": "<init>",
+          "parameterTypes": []
+        }
+      ]
+    },
+    {
+      "type": "com.google.common.base.FinalizableReference"
+    },
+    {
+      "type": "com.google.common.base.internal.Finalizer",
+      "methods": [
+        {
+          "name": "startFinalizer",
+          "parameterTypes": [
+            "java.lang.Class",
+            "java.lang.ref.ReferenceQueue",
+            "java.lang.ref.PhantomReference"
+          ]
+        }
+      ]
+    },
+    {
+      "type": "com.google.common.util.concurrent.AbstractFuture",
+      "fields": [
+        {
+          "name": "listeners"
+        },
+        {
+          "name": "value"
+        },
+        {
+          "name": "waiters"
+        }
+      ]
+    },
+    {
+      "type": "com.google.common.util.concurrent.AbstractFuture$Waiter",
+      "fields": [
+        {
+          "name": "next"
+        },
+        {
+          "name": "thread"
+        }
+      ]
+    },
+    {
+      "type": "com.google.inject.AbstractModule"
+    },
+    {
+      "type": "com.google.inject.KotlinSupportImpl"
+    },
+    {
+      "type": "com.google.inject.internal.Annotations"
+    },
+    {
+      "type": "com.google.inject.internal.InjectorShell$RootModule"
+    },
+    {
+      "type": "com.google.inject.util.Modules$2"
+    },
+    {
+      "type": "com.google.inject.util.Modules$EmptyModule"
+    },
+    {
+      "type": "com.google.inject.util.Modules$OverrideModule"
+    },
+    {
+      "type": "com.google.inject.util.Providers$GuicifiedJSR330Provider",
+      "allDeclaredFields": true
+    },
+    {
+      "type": "com.sun.crypto.provider.AESCipher$General",
+      "methods": [
+        {
+          "name": "<init>",
+          "parameterTypes": []
+        }
+      ]
+    },
+    {
+      "type": "com.sun.crypto.provider.ARCFOURCipher",
+      "methods": [
+        {
+          "name": "<init>",
+          "parameterTypes": []
+        }
+      ]
+    },
+    {
+      "type": "com.sun.crypto.provider.ChaCha20Cipher$ChaCha20Poly1305",
+      "methods": [
+        {
+          "name": "<init>",
+          "parameterTypes": []
+        }
+      ]
+    },
+    {
+      "type": "com.sun.crypto.provider.DESCipher",
+      "methods": [
+        {
+          "name": "<init>",
+          "parameterTypes": []
+        }
+      ]
+    },
+    {
+      "type": "com.sun.crypto.provider.DESedeCipher",
+      "methods": [
+        {
+          "name": "<init>",
+          "parameterTypes": []
+        }
+      ]
+    },
+    {
+      "type": "com.sun.crypto.provider.DHParameters",
+      "methods": [
+        {
+          "name": "<init>",
+          "parameterTypes": []
+        }
+      ]
+    },
+    {
+      "type": "com.sun.crypto.provider.GaloisCounterMode$AESGCM",
+      "methods": [
+        {
+          "name": "<init>",
+          "parameterTypes": []
+        }
+      ]
+    },
+    {
+      "type": "com.sun.crypto.provider.TlsMasterSecretGenerator",
+      "methods": [
+        {
+          "name": "<init>",
+          "parameterTypes": []
+        }
+      ]
+    },
+    {
+      "type": "com.sun.org.apache.xerces.internal.jaxp.SAXParserFactoryImpl",
+      "methods": [
+        {
+          "name": "<init>",
+          "parameterTypes": []
+        }
+      ]
+    },
+    {
+      "type": "controllers.Assets",
+      "allDeclaredFields": true,
+      "methods": [
+        {
+          "name": "<init>",
+          "parameterTypes": ["play.api.http.HttpErrorHandler", "controllers.AssetsMetadata", "play.api.Environment"]
+        }
+      ]
+    },
+    {
+      "type": "controllers.Assets$$FastClassByGuice$$921b97",
+      "fields": [
+        {
+          "name": "GUICE$INVOKERS"
+        }
+      ]
+    },
+    {
+      "type": "controllers.AssetsBuilder",
+      "allDeclaredFields": true
+    },
+    {
+      "type": "controllers.AssetsConfigurationProvider",
+      "allDeclaredFields": true,
+      "methods": [
+        {
+          "name": "<init>",
+          "parameterTypes": ["play.api.Environment", "play.api.Configuration"]
+        }
+      ]
+    },
+    {
+      "type": "controllers.AssetsConfigurationProvider$$FastClassByGuice$$2f0d8de",
+      "fields": [
+        {
+          "name": "GUICE$INVOKERS"
+        }
+      ]
+    },
+    {
+      "type": "controllers.AssetsFinderProvider",
+      "allDeclaredFields": true
+    },
+    {
+      "type": "controllers.AssetsFinderProvider$$FastClassByGuice$$2e6b08d",
+      "fields": [
+        {
+          "name": "GUICE$INVOKERS"
+        }
+      ]
+    },
+    {
+      "type": "controllers.AssetsMetadataProvider",
+      "allDeclaredFields": true,
+      "methods": [
+        {
+          "name": "<init>",
+          "parameterTypes": ["play.api.Environment", "controllers.AssetsConfiguration", "play.api.http.FileMimeTypes", "play.api.inject.ApplicationLifecycle"]
+        }
+      ]
+    },
+    {
+      "type": "controllers.AssetsMetadataProvider$$FastClassByGuice$$2df4597",
+      "fields": [
+        {
+          "name": "GUICE$INVOKERS"
+        }
+      ]
+    },
+    {
+      "type": "controllers.AssetsModule",
+      "methods": [
+        {
+          "name": "<init>",
+          "parameterTypes": []
+        }
+      ]
+    },
+    {
+      "type": "controllers.HomeController",
+      "allDeclaredFields": true,
+      "methods": [
+        {
+          "name": "<init>",
+          "parameterTypes": ["play.api.mvc.ControllerComponents"]
+        }
+      ]
+    },
+    {
+      "type": "controllers.HomeController$$FastClassByGuice$$167318f",
+      "fields": [
+        {
+          "name": "GUICE$INVOKERS"
+        }
+      ]
+    },
+    {
+      "type": "java.io.Serializable"
+    },
+    {
+      "type": "java.lang.Boolean"
+    },
+    {
+      "type": "java.lang.Byte"
+    },
+    {
+      "type": "java.lang.ClassLoader$$DefineAccessByGuice$$/0x00007f32034f4000",
+      "methods": [
+        {
+          "name": "<init>",
+          "parameterTypes": []
+        }
+      ]
+    },
+    {
+      "type": "java.lang.ClassValue"
+    },
+    {
+      "type": "java.lang.Double"
+    },
+    {
+      "type": "java.lang.Float"
+    },
+    {
+      "type": "java.lang.Integer"
+    },
+    {
+      "type": "java.lang.Long"
+    },
+    {
+      "type": "java.lang.Object"
+    },
+    {
+      "type": "java.lang.Short"
+    },
+    {
+      "type": "java.lang.String",
+      "fields": [
+        {
+          "name": "value"
+        }
+      ]
+    },
+    {
+      "type": "java.lang.Thread",
+      "methods": [
+        {
+          "name": "<init>",
+          "parameterTypes": [
+            "java.lang.ThreadGroup",
+            "java.lang.Runnable",
+            "java.lang.String",
+            "long",
+            "boolean"
+          ]
+        }
+      ]
+    },
+    {
+      "type": "java.lang.invoke.MethodHandles$Lookup",
+      "fields": [
+        {
+          "name": "IMPL_LOOKUP"
+        }
+      ],
+      "methods": [
+        {
+          "name": "defineHiddenClass",
+          "parameterTypes": [
+            "byte[]",
+            "boolean",
+            "java.lang.invoke.MethodHandles$Lookup$ClassOption[]"
+          ]
+        }
+      ]
+    },
+    {
+      "type": "java.lang.invoke.MethodHandles$Lookup$ClassOption"
+    },
+    {
+      "type": "java.lang.invoke.VarHandle",
+      "methods": [
+        {
+          "name": "releaseFence",
+          "parameterTypes": []
+        }
+      ]
+    },
+    {
+      "type": "java.nio.charset.Charset"
+    },
+    {
+      "type": "java.security.AlgorithmParametersSpi"
+    },
+    {
+      "type": "java.security.KeyStoreSpi"
+    },
+    {
+      "type": "org.apache.pekko.actor.ActorCell",
+      "fields": [
+        {
+          "name": "org$apache$pekko$actor$dungeon$Children$$_childrenRefsDoNotCallMeDirectly"
+        },
+        {
+          "name": "org$apache$pekko$actor$dungeon$Children$$_functionRefsDoNotCallMeDirectly"
+        },
+        {
+          "name": "org$apache$pekko$actor$dungeon$Children$$_nextNameDoNotCallMeDirectly"
+        },
+        {
+          "name": "org$apache$pekko$actor$dungeon$Dispatch$$_mailboxDoNotCallMeDirectly"
+        }
+      ]
+    },
+    {
+      "type": "org.apache.pekko.actor.DefaultSupervisorStrategy",
+      "methods": [
+        {
+          "name": "<init>",
+          "parameterTypes": []
+        }
+      ]
+    },
+    {
+      "type": "org.apache.pekko.actor.LightArrayRevolverScheduler",
+      "methods": [
+        {
+          "name": "<init>",
+          "parameterTypes": [
+            "com.typesafe.config.Config",
+            "org.apache.pekko.event.LoggingAdapter",
+            "java.util.concurrent.ThreadFactory"
+          ]
+        }
+      ]
+    },
+    {
+      "type": "org.apache.pekko.actor.LightArrayRevolverScheduler$TaskHolder",
+      "fields": [
+        {
+          "name": "task"
+        }
+      ]
+    },
+    {
+      "type": "org.apache.pekko.actor.LocalActorRefProvider",
+      "methods": [
+        {
+          "name": "<init>",
+          "parameterTypes": [
+            "java.lang.String",
+            "org.apache.pekko.actor.ActorSystem$Settings",
+            "org.apache.pekko.event.EventStream",
+            "org.apache.pekko.actor.DynamicAccess"
+          ]
+        }
+      ]
+    },
+    {
+      "type": "org.apache.pekko.actor.LocalActorRefProvider$Guardian",
+      "methods": [
+        {
+          "name": "<init>",
+          "parameterTypes": [
+            "org.apache.pekko.actor.SupervisorStrategy"
+          ]
+        }
+      ]
+    },
+    {
+      "type": "org.apache.pekko.actor.LocalActorRefProvider$SystemGuardian",
+      "methods": [
+        {
+          "name": "<init>",
+          "parameterTypes": [
+            "org.apache.pekko.actor.SupervisorStrategy",
+            "org.apache.pekko.actor.ActorRef"
+          ]
+        }
+      ]
+    },
+    {
+      "type": "org.apache.pekko.actor.Props$EmptyActor"
+    },
+    {
+      "type": "org.apache.pekko.actor.RepointableActorRef",
+      "fields": [
+        {
+          "name": "_cellDoNotCallMeDirectly"
+        },
+        {
+          "name": "_lookupDoNotCallMeDirectly"
+        }
+      ]
+    },
+    {
+      "type": "org.apache.pekko.actor.typed.ActorRef"
+    },
+    {
+      "type": "org.apache.pekko.actor.typed.internal.MiscMessageSerializer",
+      "methods": [
+        {
+          "name": "<init>",
+          "parameterTypes": [
+            "org.apache.pekko.actor.ExtendedActorSystem"
+          ]
+        }
+      ]
+    },
+    {
+      "type": "org.apache.pekko.actor.typed.internal.adapter.ActorRefAdapter"
+    },
+    {
+      "type": "org.apache.pekko.actor.typed.internal.adapter.ActorSystemAdapter$LoadTypedExtensions$",
+      "fields": [
+        {
+          "name": "MODULE$"
+        }
+      ]
+    },
+    {
+      "type": "org.apache.pekko.actor.typed.internal.receptionist.DefaultServiceKey"
+    },
+    {
+      "type": "org.apache.pekko.actor.typed.internal.receptionist.ServiceKeySerializer",
+      "methods": [
+        {
+          "name": "<init>",
+          "parameterTypes": [
+            "org.apache.pekko.actor.ExtendedActorSystem"
+          ]
+        }
+      ]
+    },
+    {
+      "type": "org.apache.pekko.actor.typed.receptionist.Receptionist$",
+      "fields": [
+        {
+          "name": "MODULE$"
+        }
+      ]
+    },
+    {
+      "type": "org.apache.pekko.dispatch.AbstractNodeQueue",
+      "fields": [
+        {
+          "name": "_tailDoNotCallMeDirectly"
+        }
+      ]
+    },
+    {
+      "type": "org.apache.pekko.dispatch.AbstractNodeQueue$Node",
+      "fields": [
+        {
+          "name": "_nextDoNotCallMeDirectly"
+        }
+      ]
+    },
+    {
+      "type": "org.apache.pekko.dispatch.BoundedControlAwareMessageQueueSemantics"
+    },
+    {
+      "type": "org.apache.pekko.dispatch.BoundedDequeBasedMessageQueueSemantics"
+    },
+    {
+      "type": "org.apache.pekko.dispatch.BoundedMessageQueueSemantics"
+    },
+    {
+      "type": "org.apache.pekko.dispatch.ControlAwareMessageQueueSemantics"
+    },
+    {
+      "type": "org.apache.pekko.dispatch.DequeBasedMessageQueueSemantics"
+    },
+    {
+      "type": "org.apache.pekko.dispatch.Dispatcher",
+      "fields": [
+        {
+          "name": "executorServiceDelegate"
+        }
+      ]
+    },
+    {
+      "type": "org.apache.pekko.dispatch.Mailbox",
+      "fields": [
+        {
+          "name": "_statusDoNotCallMeDirectly"
+        },
+        {
+          "name": "_systemQueueDoNotCallMeDirectly"
+        }
+      ]
+    },
+    {
+      "type": "org.apache.pekko.dispatch.MessageDispatcher",
+      "fields": [
+        {
+          "name": "_inhabitantsDoNotCallMeDirectly"
+        },
+        {
+          "name": "_shutdownScheduleDoNotCallMeDirectly"
+        }
+      ]
+    },
+    {
+      "type": "org.apache.pekko.dispatch.MultipleConsumerSemantics"
+    },
+    {
+      "type": "org.apache.pekko.dispatch.SingleConsumerOnlyUnboundedMailbox",
+      "methods": [
+        {
+          "name": "<init>",
+          "parameterTypes": [
+            "org.apache.pekko.actor.ActorSystem$Settings",
+            "com.typesafe.config.Config"
+          ]
+        }
+      ]
+    },
+    {
+      "type": "org.apache.pekko.dispatch.UnboundedControlAwareMessageQueueSemantics"
+    },
+    {
+      "type": "org.apache.pekko.dispatch.UnboundedDequeBasedMessageQueueSemantics"
+    },
+    {
+      "type": "org.apache.pekko.dispatch.UnboundedMailbox",
+      "methods": [
+        {
+          "name": "<init>",
+          "parameterTypes": [
+            "org.apache.pekko.actor.ActorSystem$Settings",
+            "com.typesafe.config.Config"
+          ]
+        }
+      ]
+    },
+    {
+      "type": "org.apache.pekko.dispatch.UnboundedMessageQueueSemantics"
+    },
+    {
+      "type": "org.apache.pekko.event.EventStreamUnsubscriber",
+      "methods": [
+        {
+          "name": "<init>",
+          "parameterTypes": [
+            "org.apache.pekko.event.EventStream",
+            "boolean"
+          ]
+        }
+      ]
+    },
+    {
+      "type": "org.apache.pekko.event.LoggerMailboxType",
+      "methods": [
+        {
+          "name": "<init>",
+          "parameterTypes": [
+            "org.apache.pekko.actor.ActorSystem$Settings",
+            "com.typesafe.config.Config"
+          ]
+        }
+      ]
+    },
+    {
+      "type": "org.apache.pekko.event.LoggerMessageQueueSemantics"
+    },
+    {
+      "type": "org.apache.pekko.event.slf4j.Slf4jLogger",
+      "methods": [
+        {
+          "name": "<init>",
+          "parameterTypes": []
+        }
+      ]
+    },
+    {
+      "type": "org.apache.pekko.event.slf4j.Slf4jLoggingFilter",
+      "methods": [
+        {
+          "name": "<init>",
+          "parameterTypes": [
+            "org.apache.pekko.actor.ActorSystem$Settings",
+            "org.apache.pekko.event.EventStream"
+          ]
+        }
+      ]
+    },
+    {
+      "type": "org.apache.pekko.http.DefaultParsingErrorHandler$",
+      "methods": [
+        {
+          "name": "<init>",
+          "parameterTypes": []
+        }
+      ]
+    },
+    {
+      "type": "org.apache.pekko.http.impl.engine.client.PoolMasterActor",
+      "methods": [
+        {
+          "name": "<init>",
+          "parameterTypes": []
+        }
+      ]
+    },
+    {
+      "type": "org.apache.pekko.io.SelectionHandler",
+      "methods": [
+        {
+          "name": "<init>",
+          "parameterTypes": [
+            "org.apache.pekko.io.SelectionHandlerSettings"
+          ]
+        }
+      ]
+    },
+    {
+      "type": "org.apache.pekko.io.TcpIncomingConnection",
+      "methods": [
+        {
+          "name": "<init>",
+          "parameterTypes": [
+            "org.apache.pekko.io.TcpExt",
+            "java.nio.channels.SocketChannel",
+            "org.apache.pekko.io.ChannelRegistry",
+            "org.apache.pekko.actor.ActorRef",
+            "scala.collection.immutable.Iterable",
+            "boolean"
+          ]
+        }
+      ]
+    },
+    {
+      "type": "org.apache.pekko.io.TcpListener",
+      "methods": [
+        {
+          "name": "<init>",
+          "parameterTypes": [
+            "org.apache.pekko.actor.ActorRef",
+            "org.apache.pekko.io.TcpExt",
+            "org.apache.pekko.io.ChannelRegistry",
+            "org.apache.pekko.actor.ActorRef",
+            "org.apache.pekko.io.Tcp$Bind"
+          ]
+        }
+      ]
+    },
+    {
+      "type": "org.apache.pekko.io.TcpManager",
+      "methods": [
+        {
+          "name": "<init>",
+          "parameterTypes": [
+            "org.apache.pekko.io.TcpExt"
+          ]
+        }
+      ]
+    },
+    {
+      "type": "org.apache.pekko.pattern.PromiseActorRef",
+      "fields": [
+        {
+          "name": "_stateDoNotCallMeDirectly"
+        },
+        {
+          "name": "_watchedByDoNotCallMeDirectly"
+        }
+      ]
+    },
+    {
+      "type": "org.apache.pekko.routing.ConsistentHashingPool",
+      "methods": [
+        {
+          "name": "<init>",
+          "parameterTypes": [
+            "com.typesafe.config.Config"
+          ]
+        }
+      ]
+    },
+    {
+      "type": "org.apache.pekko.routing.RoundRobinPool",
+      "methods": [
+        {
+          "name": "<init>",
+          "parameterTypes": [
+            "com.typesafe.config.Config"
+          ]
+        }
+      ]
+    },
+    {
+      "type": "org.apache.pekko.routing.RoutedActorCell$RouterActorCreator",
+      "methods": [
+        {
+          "name": "<init>",
+          "parameterTypes": [
+            "org.apache.pekko.routing.RouterConfig"
+          ]
+        }
+      ]
+    },
+    {
+      "type": "org.apache.pekko.serialization.BooleanSerializer",
+      "methods": [
+        {
+          "name": "<init>",
+          "parameterTypes": [
+            "org.apache.pekko.actor.ExtendedActorSystem"
+          ]
+        }
+      ]
+    },
+    {
+      "type": "org.apache.pekko.serialization.ByteArraySerializer",
+      "methods": [
+        {
+          "name": "<init>",
+          "parameterTypes": [
+            "org.apache.pekko.actor.ExtendedActorSystem"
+          ]
+        }
+      ]
+    },
+    {
+      "type": "org.apache.pekko.serialization.ByteStringSerializer",
+      "methods": [
+        {
+          "name": "<init>",
+          "parameterTypes": [
+            "org.apache.pekko.actor.ExtendedActorSystem"
+          ]
+        }
+      ]
+    },
+    {
+      "type": "org.apache.pekko.serialization.DisabledJavaSerializer",
+      "methods": [
+        {
+          "name": "<init>",
+          "parameterTypes": [
+            "org.apache.pekko.actor.ExtendedActorSystem"
+          ]
+        }
+      ]
+    },
+    {
+      "type": "org.apache.pekko.serialization.IntSerializer",
+      "methods": [
+        {
+          "name": "<init>",
+          "parameterTypes": [
+            "org.apache.pekko.actor.ExtendedActorSystem"
+          ]
+        }
+      ]
+    },
+    {
+      "type": "org.apache.pekko.serialization.LongSerializer",
+      "methods": [
+        {
+          "name": "<init>",
+          "parameterTypes": [
+            "org.apache.pekko.actor.ExtendedActorSystem"
+          ]
+        }
+      ]
+    },
+    {
+      "type": "org.apache.pekko.serialization.SerializationExtension$",
+      "fields": [
+        {
+          "name": "MODULE$"
+        }
+      ]
+    },
+    {
+      "type": "org.apache.pekko.serialization.StringSerializer",
+      "methods": [
+        {
+          "name": "<init>",
+          "parameterTypes": [
+            "org.apache.pekko.actor.ExtendedActorSystem"
+          ]
+        }
+      ]
+    },
+    {
+      "type": "org.apache.pekko.serialization.jackson.JacksonCborSerializer",
+      "methods": [
+        {
+          "name": "<init>",
+          "parameterTypes": [
+            "org.apache.pekko.actor.ExtendedActorSystem",
+            "java.lang.String"
+          ]
+        }
+      ]
+    },
+    {
+      "type": "org.apache.pekko.serialization.jackson.JacksonJsonSerializer",
+      "methods": [
+        {
+          "name": "<init>",
+          "parameterTypes": [
+            "org.apache.pekko.actor.ExtendedActorSystem",
+            "java.lang.String"
+          ]
+        }
+      ]
+    },
+    {
+      "type": "org.apache.pekko.serialization.jackson.PekkoJacksonModule",
+      "methods": [
+        {
+          "name": "<init>",
+          "parameterTypes": []
+        }
+      ]
+    },
+    {
+      "type": "org.apache.pekko.serialization.jackson.PekkoStreamJacksonModule",
+      "methods": [
+        {
+          "name": "<init>",
+          "parameterTypes": []
+        }
+      ]
+    },
+    {
+      "type": "org.apache.pekko.serialization.jackson.PekkoTypedJacksonModule",
+      "methods": [
+        {
+          "name": "<init>",
+          "parameterTypes": []
+        }
+      ]
+    },
+    {
+      "type": "org.apache.pekko.stream.Graph"
+    },
+    {
+      "type": "org.apache.pekko.stream.SinkRef"
+    },
+    {
+      "type": "org.apache.pekko.stream.SourceRef"
+    },
+    {
+      "type": "org.apache.pekko.stream.SystemMaterializer$",
+      "fields": [
+        {
+          "name": "MODULE$"
+        }
+      ]
+    },
+    {
+      "type": "org.apache.pekko.stream.impl.streamref.StreamRefsProtocol"
+    },
+    {
+      "type": "org.apache.pekko.stream.serialization.StreamRefSerializer",
+      "methods": [
+        {
+          "name": "<init>",
+          "parameterTypes": [
+            "org.apache.pekko.actor.ExtendedActorSystem"
+          ]
+        }
+      ]
+    },
+    {
+      "type": "org.apache.pekko.util.ByteString$ByteString1"
+    },
+    {
+      "type": "org.apache.pekko.util.ByteString$ByteString1C"
+    },
+    {
+      "type": "org.apache.pekko.util.ByteString$ByteStrings"
+    },
+    {
+      "type": "play.DefaultApplication",
+      "allDeclaredFields": true,
+      "methods": [
+        {
+          "name": "<init>",
+          "parameterTypes": ["play.api.Application", "com.typesafe.config.Config", "play.inject.Injector", "play.Environment"]
+        }
+      ]
+    },
+    {
+      "type": "play.DefaultApplication$$FastClassByGuice$$48b7478",
+      "fields": [
+        {
+          "name": "GUICE$INVOKERS"
+        }
+      ]
+    },
+    {
+      "type": "play.api.DefaultApplication",
+      "allDeclaredFields": true,
+      "methods": [
+        {
+          "name": "<init>",
+          "parameterTypes": ["play.api.Environment", "play.api.inject.ApplicationLifecycle", "play.api.inject.Injector", "play.api.Configuration", "play.api.mvc.request.RequestFactory", "play.api.http.HttpRequestHandler", "play.api.http.HttpErrorHandler", "org.apache.pekko.actor.ActorSystem", "org.apache.pekko.stream.Materializer", "org.apache.pekko.actor.CoordinatedShutdown"]
+        }
+      ]
+    },
+    {
+      "type": "play.api.DefaultApplication$$FastClassByGuice$$4744b4a",
+      "fields": [
+        {
+          "name": "GUICE$INVOKERS"
+        }
+      ]
+    },
+    {
+      "type": "play.api.OptionalSourceMapperProvider",
+      "allDeclaredFields": true,
+      "methods": [
+        {
+          "name": "<init>",
+          "parameterTypes": ["play.api.OptionalDevContext"]
+        }
+      ]
+      
+    },
+    {
+      "type": "play.api.OptionalSourceMapperProvider$$FastClassByGuice$$56236a0",
+      "fields": [
+        {
+          "name": "GUICE$INVOKERS"
+        }
+      ]
+    },
+    {
+      "type": "play.api.http.DefaultFileMimeTypesProvider",
+      "allDeclaredFields": true,
+      "methods": [
+        {
+          "name": "<init>",
+          "parameterTypes": ["play.api.http.FileMimeTypesConfiguration"]
+        }
+      ]
+    },
+    {
+      "type": "play.api.http.DefaultFileMimeTypesProvider$$FastClassByGuice$$53c1a54",
+      "fields": [
+        {
+          "name": "GUICE$INVOKERS"
+        }
+      ]
+    },
+    {
+      "type": "play.api.http.DefaultHttpErrorHandler",
+      "allDeclaredFields": true,
+      "methods": [
+        {
+          "name": "<init>",
+          "parameterTypes": ["play.api.Environment", "play.api.Configuration", "play.api.OptionalSourceMapper", "javax.inject.Provider"]
+        }
+      ]
+    },
+    {
+      "type": "play.api.http.DefaultHttpErrorHandler$$FastClassByGuice$$11a8454",
+      "fields": [
+        {
+          "name": "GUICE$INVOKERS"
+        }
+      ]
+    },
+    {
+      "type": "play.api.http.DefaultHttpRequestHandler",
+      "allDeclaredFields": true
+    },
+    {
+      "type": "play.api.http.EnabledFilters",
+      "allDeclaredFields": true,
+      "methods": [
+        {
+          "name": "<init>",
+          "parameterTypes": ["play.api.Environment", "play.api.Configuration", "play.api.inject.Injector"]
+        }
+      ]
+    },
+    {
+      "type": "play.api.http.EnabledFilters$$FastClassByGuice$$1357031",
+      "fields": [
+        {
+          "name": "GUICE$INVOKERS"
+        }
+      ]
+    },
+    {
+      "type": "play.api.http.HttpConfiguration$ActionCompositionConfigurationProvider",
+      "allDeclaredFields": true,
+      "methods": [
+        {
+          "name": "<init>",
+          "parameterTypes": ["play.api.http.HttpConfiguration"]
+        }
+      ]
+    },
+    {
+      "type": "play.api.http.HttpConfiguration$ActionCompositionConfigurationProvider$$FastClassByGuice$$3989d2f",
+      "fields": [
+        {
+          "name": "GUICE$INVOKERS"
+        }
+      ]
+    },
+    {
+      "type": "play.api.http.HttpConfiguration$CookiesConfigurationProvider",
+      "allDeclaredFields": true,
+      "methods": [
+        {
+          "name": "<init>",
+          "parameterTypes": ["play.api.http.HttpConfiguration"]
+        }
+      ]
+    },
+    {
+      "type": "play.api.http.HttpConfiguration$CookiesConfigurationProvider$$FastClassByGuice$$36d80c4",
+      "fields": [
+        {
+          "name": "GUICE$INVOKERS"
+        }
+      ]
+    },
+    {
+      "type": "play.api.http.HttpConfiguration$FileMimeTypesConfigurationProvider",
+      "allDeclaredFields": true,
+      "methods": [
+        {
+          "name": "<init>",
+          "parameterTypes": ["play.api.http.HttpConfiguration"]
+        }
+      ]
+    },
+    {
+      "type": "play.api.http.HttpConfiguration$FileMimeTypesConfigurationProvider$$FastClassByGuice$$3a91f3d",
+      "fields": [
+        {
+          "name": "GUICE$INVOKERS"
+        }
+      ]
+    },
+    {
+      "type": "play.api.http.HttpConfiguration$FlashConfigurationProvider",
+      "allDeclaredFields": true,
+      "methods": [
+        {
+          "name": "<init>",
+          "parameterTypes": ["play.api.http.HttpConfiguration"]
+        }
+      ]
+    },
+    {
+      "type": "play.api.http.HttpConfiguration$FlashConfigurationProvider$$FastClassByGuice$$3703697",
+      "fields": [
+        {
+          "name": "GUICE$INVOKERS"
+        }
+      ]
+    },
+    {
+      "type": "play.api.http.HttpConfiguration$HttpConfigurationProvider",
+      "allDeclaredFields": true,
+      "methods": [
+        {
+          "name": "<init>",
+          "parameterTypes": ["play.api.Configuration", "play.api.Environment"]
+        }
+      ]
+    },
+    {
+      "type": "play.api.http.HttpConfiguration$HttpConfigurationProvider$$FastClassByGuice$$349aa66",
+      "fields": [
+        {
+          "name": "GUICE$INVOKERS"
+        }
+      ]
+    },
+    {
+      "type": "play.api.http.HttpConfiguration$ParserConfigurationProvider",
+      "allDeclaredFields": true,
+      "methods": [
+        {
+          "name": "<init>",
+          "parameterTypes": ["play.api.http.HttpConfiguration"]
+        }
+      ]
+    },
+    {
+      "type": "play.api.http.HttpConfiguration$ParserConfigurationProvider$$FastClassByGuice$$35c4a3f",
+      "fields": [
+        {
+          "name": "GUICE$INVOKERS"
+        }
+      ]
+    },
+    {
+      "type": "play.api.http.HttpConfiguration$SecretConfigurationProvider",
+      "allDeclaredFields": true,
+      "methods": [
+        {
+          "name": "<init>",
+          "parameterTypes": ["play.api.http.HttpConfiguration"]
+        }
+      ]
+    },
+    {
+      "type": "play.api.http.HttpConfiguration$SecretConfigurationProvider$$FastClassByGuice$$3bf2e0f",
+      "fields": [
+        {
+          "name": "GUICE$INVOKERS"
+        }
+      ]
+    },
+    {
+      "type": "play.api.http.HttpConfiguration$SessionConfigurationProvider",
+      "allDeclaredFields": true,
+      "methods": [
+        {
+          "name": "<init>",
+          "parameterTypes": ["play.api.http.HttpConfiguration"]
+        }
+      ]
+    },
+    {
+      "type": "play.api.http.HttpConfiguration$SessionConfigurationProvider$$FastClassByGuice$$3869ed7",
+      "fields": [
+        {
+          "name": "GUICE$INVOKERS"
+        }
+      ]
+    },
+    {
+      "type": "play.api.http.JavaCompatibleHttpRequestHandler",
+      "allDeclaredFields": true,
+      "methods": [
+        {
+          "name": "<init>",
+          "parameterTypes": ["play.core.WebCommands", "play.api.OptionalDevContext", "javax.inject.Provider", "play.api.http.HttpErrorHandler", "play.api.http.HttpConfiguration", "play.api.http.HttpFilters", "play.core.j.JavaHandlerComponents"]
+        }
+      ]
+    },
+    {
+      "type": "play.api.http.JavaCompatibleHttpRequestHandler$$FastClassByGuice$$15bad7c",
+      "fields": [
+        {
+          "name": "GUICE$INVOKERS"
+        }
+      ]
+    },
+    {
+      "type": "play.api.http.JavaHttpErrorHandlerDelegate",
+      "allDeclaredFields": true
+    },
+    {
+      "type": "play.api.http.JavaHttpErrorHandlerDelegate$$FastClassByGuice$$104052e",
+      "fields": [
+        {
+          "name": "GUICE$INVOKERS"
+        }
+      ]
+    },
+    {
+      "type": "play.api.http.JavaHttpFiltersDelegate",
+      "allDeclaredFields": true
+    },
+    {
+      "type": "play.api.http.JavaHttpFiltersDelegate$$FastClassByGuice$$125cd9a",
+      "fields": [
+        {
+          "name": "GUICE$INVOKERS"
+        }
+      ]
+    },
+    {
+      "type": "play.api.i18n.DefaultLangsProvider",
+      "allDeclaredFields": true,
+      "methods": [
+        {
+          "name": "<init>",
+          "parameterTypes": ["play.api.Configuration"]
+        }
+      ]
+    },
+    {
+      "type": "play.api.i18n.DefaultLangsProvider$$FastClassByGuice$$210d494",
+      "fields": [
+        {
+          "name": "GUICE$INVOKERS"
+        }
+      ]
+    },
+    {
+      "type": "play.api.i18n.DefaultMessagesApiProvider",
+      "allDeclaredFields": true,
+      "methods": [
+        {
+          "name": "<init>",
+          "parameterTypes": ["play.api.Environment", "play.api.Configuration", "play.api.i18n.Langs", "play.api.http.HttpConfiguration"]
+        }
+      ]
+    },
+    {
+      "type": "play.api.i18n.DefaultMessagesApiProvider$$FastClassByGuice$$22d7f28",
+      "fields": [
+        {
+          "name": "GUICE$INVOKERS"
+        }
+      ]
+    },
+    {
+      "type": "play.api.i18n.I18nModule",
+      "methods": [
+        {
+          "name": "<init>",
+          "parameterTypes": []
+        }
+      ]
+    },
+    {
+      "type": "play.api.inject.BindingKey$$anon$1",
+      "allDeclaredFields": true
+    },
+    {
+      "type": "play.api.inject.BuiltinModule",
+      "methods": [
+        {
+          "name": "<init>",
+          "parameterTypes": []
+        }
+      ]
+    },
+    {
+      "type": "play.api.inject.ConfigProvider",
+      "allDeclaredFields": true,
+      "methods": [
+        {
+          "name": "<init>",
+          "parameterTypes": ["play.api.Configuration"]
+        }
+      ]
+    },
+    {
+      "type": "play.api.inject.ConfigProvider$$FastClassByGuice$$33da7c9",
+      "fields": [
+        {
+          "name": "GUICE$INVOKERS"
+        }
+      ]
+    },
+    {
+      "type": "play.api.inject.DefaultApplicationLifecycle",
+      "allDeclaredFields": true,
+      "methods": [
+        {
+          "name": "<init>",
+          "parameterTypes": []
+        }
+      ]
+    },
+    {
+      "type": "play.api.inject.DefaultApplicationLifecycle$$FastClassByGuice$$dd2181",
+      "fields": [
+        {
+          "name": "GUICE$INVOKERS"
+        }
+      ]
+    },
+    {
+      "type": "play.api.inject.EnvironmentProvider",
+      "allDeclaredFields": true,
+      "methods": [
+        {
+          "name": "<init>",
+          "parameterTypes": ["play.api.Environment"]
+        }
+      ]
+    },
+    {
+      "type": "play.api.inject.EnvironmentProvider$$FastClassByGuice$$32e2e22",
+      "fields": [
+        {
+          "name": "GUICE$INVOKERS"
+        }
+      ]
+    },
+    {
+      "type": "play.api.inject.RoutesProvider",
+      "allDeclaredFields": true,
+      "methods": [
+        {
+          "name": "<init>",
+          "parameterTypes": ["play.api.inject.Injector", "play.api.Environment", "play.api.Configuration", "play.api.http.HttpConfiguration"]
+        }
+      ]
+    },
+    {
+      "type": "play.api.inject.RoutesProvider$$FastClassByGuice$$554a01f",
+      "fields": [
+        {
+          "name": "GUICE$INVOKERS"
+        }
+      ]
+    },
+    {
+      "type": "play.api.inject.guice.GuiceApplicationLoader",
+      "methods": [
+        {
+          "name": "<init>",
+          "parameterTypes": []
+        }
+      ]
+    },
+    {
+      "type": "play.api.inject.guice.GuiceInjector",
+      "allDeclaredFields": true,
+      "methods": [
+        {
+          "name": "<init>",
+          "parameterTypes": ["com.google.inject.Injector"]
+        }
+      ]
+    },
+    {
+      "type": "play.api.inject.guice.GuiceInjector$$FastClassByGuice$$18aae55",
+      "fields": [
+        {
+          "name": "GUICE$INVOKERS"
+        }
+      ]
+    },
+    {
+      "type": "play.api.inject.guice.GuiceInjectorWithClassLoaderProvider",
+      "allDeclaredFields": true,
+      "methods": [
+        {
+          "name": "<init>",
+          "parameterTypes": ["play.api.inject.guice.GuiceInjector", "play.api.inject.guice.GuiceClassLoader"]
+        }
+      ]
+    },
+    {
+      "type": "play.api.inject.guice.GuiceInjectorWithClassLoaderProvider$$FastClassByGuice$$5748e6c",
+      "fields": [
+        {
+          "name": "GUICE$INVOKERS"
+        }
+      ]
+    },
+    {
+      "type": "play.api.inject.guice.GuiceableModuleConversions$$anon$4"
+    },
+    {
+      "type": "play.api.libs.Files$DefaultTemporaryFileCreator",
+      "allDeclaredFields": true,
+      "methods": [
+        {
+          "name": "<init>",
+          "parameterTypes": ["play.api.inject.ApplicationLifecycle", "play.api.libs.Files$TemporaryFileReaper", "play.api.Configuration"]
+        }
+      ]
+    },
+    {
+      "type": "play.api.libs.Files$DefaultTemporaryFileCreator$$FastClassByGuice$$408a459",
+      "fields": [
+        {
+          "name": "GUICE$INVOKERS"
+        }
+      ]
+    },
+    {
+      "type": "play.api.libs.Files$DefaultTemporaryFileReaper",
+      "allDeclaredFields": true,
+      "methods": [
+        {
+          "name": "<init>",
+          "parameterTypes": ["org.apache.pekko.actor.ActorSystem", "play.api.libs.Files$TemporaryFileReaperConfiguration"]
+        }
+      ]
+    },
+    {
+      "type": "play.api.libs.Files$DefaultTemporaryFileReaper$$FastClassByGuice$$3fdae70",
+      "fields": [
+        {
+          "name": "GUICE$INVOKERS"
+        }
+      ]
+    },
+    {
+      "type": "play.api.libs.Files$TemporaryFileReaperConfigurationProvider",
+      "allDeclaredFields": true,
+      "methods": [
+        {
+          "name": "<init>",
+          "parameterTypes": ["play.api.Configuration"]
+        }
+      ]
+    },
+    {
+      "type": "play.api.libs.Files$TemporaryFileReaperConfigurationProvider$$FastClassByGuice$$3c9d40d",
+      "fields": [
+        {
+          "name": "GUICE$INVOKERS"
+        }
+      ]
+    },
+    {
+      "type": "play.api.libs.concurrent.ActorSystemProvider",
+      "allDeclaredFields": true,
+      "methods": [
+        {
+          "name": "<init>",
+          "parameterTypes": ["play.api.Environment", "play.api.Configuration"]
+        }
+      ]
+    },
+    {
+      "type": "play.api.libs.concurrent.ActorSystemProvider$$FastClassByGuice$$4a1a41a",
+      "fields": [
+        {
+          "name": "GUICE$INVOKERS"
+        }
+      ]
+    },
+    {
+      "type": "play.api.libs.concurrent.ClassicActorSystemProviderProvider",
+      "allDeclaredFields": true,
+      "methods": [
+        {
+          "name": "<init>",
+          "parameterTypes": ["org.apache.pekko.actor.ActorSystem"]
+        }
+      ]
+    },
+    {
+      "type": "play.api.libs.concurrent.ClassicActorSystemProviderProvider$$FastClassByGuice$$4b795c7",
+      "fields": [
+        {
+          "name": "GUICE$INVOKERS"
+        }
+      ]
+    },
+    {
+      "type": "play.api.libs.concurrent.CoordinatedShutdownProvider",
+      "allDeclaredFields": true,
+      "methods": [
+        {
+          "name": "<init>",
+          "parameterTypes": ["org.apache.pekko.actor.ActorSystem", "play.api.inject.ApplicationLifecycle"]
+        }
+      ]
+    },
+    {
+      "type": "play.api.libs.concurrent.CoordinatedShutdownProvider$$FastClassByGuice$$4d386c3",
+      "fields": [
+        {
+          "name": "GUICE$INVOKERS"
+        }
+      ]
+    },
+    {
+      "type": "play.api.libs.concurrent.DefaultFutures",
+      "allDeclaredFields": true
+    },
+    {
+      "type": "play.api.libs.concurrent.DefaultFutures$$FastClassByGuice$$46dd778",
+      "fields": [
+        {
+          "name": "GUICE$INVOKERS"
+        }
+      ]
+    },
+    {
+      "type": "play.api.libs.concurrent.ExecutionContextProvider",
+      "allDeclaredFields": true,
+      "methods": [
+        {
+          "name": "<init>",
+          "parameterTypes": ["org.apache.pekko.actor.ActorSystem"]
+        }
+      ]
+    },
+    {
+      "type": "play.api.libs.concurrent.ExecutionContextProvider$$FastClassByGuice$$4f9f2e2",
+      "fields": [
+        {
+          "name": "GUICE$INVOKERS"
+        }
+      ]
+    },
+    {
+      "type": "play.api.libs.concurrent.MaterializerProvider",
+      "allDeclaredFields": true,
+      "methods": [
+        {
+          "name": "<init>",
+          "parameterTypes": ["org.apache.pekko.actor.ActorSystem"]
+        }
+      ]
+    },
+    {
+      "type": "play.api.libs.concurrent.MaterializerProvider$$FastClassByGuice$$4c6b302",
+      "fields": [
+        {
+          "name": "GUICE$INVOKERS"
+        }
+      ]
+    },
+    {
+      "type": "play.api.libs.concurrent.PekkoSchedulerProvider",
+      "allDeclaredFields": true,
+      "methods": [
+        {
+          "name": "<init>",
+          "parameterTypes": ["org.apache.pekko.actor.ActorSystem"]
+        }
+      ]
+    },
+    {
+      "type": "play.api.libs.concurrent.PekkoSchedulerProvider$$FastClassByGuice$$4ed334c",
+      "fields": [
+        {
+          "name": "GUICE$INVOKERS"
+        }
+      ]
+    },
+    {
+      "type": "play.api.libs.crypto.CSRFTokenSignerProvider",
+      "allDeclaredFields": true,
+      "methods": [
+        {
+          "name": "<init>",
+          "parameterTypes": ["play.api.libs.crypto.CookieSigner"]
+        }
+      ]
+    },
+    {
+      "type": "play.api.libs.crypto.CSRFTokenSignerProvider$$FastClassByGuice$$24d9395",
+      "fields": [
+        {
+          "name": "GUICE$INVOKERS"
+        }
+      ]
+    },
+    {
+      "type": "play.api.libs.crypto.CookieSignerProvider",
+      "allDeclaredFields": true,
+      "methods": [
+        {
+          "name": "<init>",
+          "parameterTypes": ["play.api.http.SecretConfiguration"]
+        }
+      ]
+    },
+    {
+      "type": "play.api.libs.crypto.CookieSignerProvider$$FastClassByGuice$$2ab8c24",
+      "fields": [
+        {
+          "name": "GUICE$INVOKERS"
+        }
+      ]
+    },
+    {
+      "type": "play.api.libs.logback.LogbackLoggerConfigurator",
+      "methods": [
+        {
+          "name": "<init>",
+          "parameterTypes": []
+        }
+      ]
+    },
+    {
+      "type": "play.api.mvc.ActionBuilderImpl",
+      "allDeclaredFields": true
+    },
+    {
+      "type": "play.api.mvc.BodyParsers$Default",
+      "allDeclaredFields": true,
+      "methods": [
+        {
+          "name": "<init>",
+          "parameterTypes": ["play.api.mvc.PlayBodyParsers"]
+        }
+      ]
+    },
+    {
+      "type": "play.api.mvc.BodyParsers$Default$$FastClassByGuice$$c7d72f",
+      "fields": [
+        {
+          "name": "GUICE$INVOKERS"
+        }
+      ]
+    },
+    {
+      "type": "play.api.mvc.CookiesModule",
+      "methods": [
+        {
+          "name": "<init>",
+          "parameterTypes": []
+        }
+      ]
+    },
+    {
+      "type": "play.api.mvc.DefaultActionBuilderImpl",
+      "allDeclaredFields": true,
+      "methods": [
+        {
+          "name": "<init>",
+          "parameterTypes": ["play.api.mvc.BodyParsers$Default", "scala.concurrent.ExecutionContext"]
+        }
+      ]
+    },
+    {
+      "type": "play.api.mvc.DefaultActionBuilderImpl$$FastClassByGuice$$42195a4",
+      "fields": [
+        {
+          "name": "GUICE$INVOKERS"
+        }
+      ]
+    },
+    {
+      "type": "play.api.mvc.DefaultControllerComponents",
+      "allDeclaredFields": true,
+      "methods": [
+        {
+          "name": "<init>",
+          "parameterTypes": ["play.api.mvc.DefaultActionBuilder", "play.api.mvc.PlayBodyParsers", "play.api.i18n.MessagesApi", "play.api.i18n.Langs", "play.api.http.FileMimeTypes", "scala.concurrent.ExecutionContext"]
+        }
+      ]
+    },
+    {
+      "type": "play.api.mvc.DefaultControllerComponents$$FastClassByGuice$$433be26",
+      "fields": [
+        {
+          "name": "GUICE$INVOKERS"
+        }
+      ]
+    },
+    {
+      "type": "play.api.mvc.DefaultCookieHeaderEncoding",
+      "allDeclaredFields": true,
+      "methods": [
+        {
+          "name": "<init>",
+          "parameterTypes": ["play.api.http.CookiesConfiguration"]
+        }
+      ]
+    },
+    {
+      "type": "play.api.mvc.DefaultCookieHeaderEncoding$$FastClassByGuice$$3da3d36",
+      "fields": [
+        {
+          "name": "GUICE$INVOKERS"
+        }
+      ]
+    },
+    {
+      "type": "play.api.mvc.DefaultFlashCookieBaker",
+      "allDeclaredFields": true,
+      "methods": [
+        {
+          "name": "<init>",
+          "parameterTypes": ["play.api.http.FlashConfiguration", "play.api.http.SecretConfiguration", "play.api.libs.crypto.CookieSigner"]
+        }
+      ]
+    },
+    {
+      "type": "play.api.mvc.DefaultFlashCookieBaker$$FastClassByGuice$$2cc7bdb",
+      "fields": [
+        {
+          "name": "GUICE$INVOKERS"
+        }
+      ]
+    },
+    {
+      "type": "play.api.mvc.DefaultMessagesActionBuilderImpl",
+      "allDeclaredFields": true
+    },
+    {
+      "type": "play.api.mvc.DefaultMessagesActionBuilderImpl$$FastClassByGuice$$44d7365",
+      "fields": [
+        {
+          "name": "GUICE$INVOKERS"
+        }
+      ]
+    },
+    {
+      "type": "play.api.mvc.DefaultMessagesControllerComponents",
+      "allDeclaredFields": true
+    },
+    {
+      "type": "play.api.mvc.DefaultMessagesControllerComponents$$FastClassByGuice$$454602a",
+      "fields": [
+        {
+          "name": "GUICE$INVOKERS"
+        }
+      ]
+    },
+    {
+      "type": "play.api.mvc.DefaultPlayBodyParsers",
+      "allDeclaredFields": true,
+      "methods": [
+        {
+          "name": "<init>",
+          "parameterTypes": ["play.api.http.ParserConfiguration", "play.api.http.HttpErrorHandler", "org.apache.pekko.stream.Materializer", "play.api.libs.Files$TemporaryFileCreator"]
+        }
+      ]
+    },
+    {
+      "type": "play.api.mvc.DefaultPlayBodyParsers$$FastClassByGuice$$41aeb35",
+      "fields": [
+        {
+          "name": "GUICE$INVOKERS"
+        }
+      ]
+    },
+    {
+      "type": "play.api.mvc.DefaultSessionCookieBaker",
+      "allDeclaredFields": true,
+      "methods": [
+        {
+          "name": "<init>",
+          "parameterTypes": ["play.api.http.SessionConfiguration", "play.api.http.SecretConfiguration", "play.api.libs.crypto.CookieSigner"]
+        }
+      ]
+    },
+    {
+      "type": "play.api.mvc.DefaultSessionCookieBaker$$FastClassByGuice$$2b4e75d",
+      "fields": [
+        {
+          "name": "GUICE$INVOKERS"
+        }
+      ]
+    },
+    {
+      "type": "play.api.mvc.MessagesActionBuilderImpl",
+      "allDeclaredFields": true
+    },
+    {
+      "type": "play.api.mvc.request.DefaultRequestFactory",
+      "allDeclaredFields": true,
+      "methods": [
+        {
+          "name": "<init>",
+          "parameterTypes": ["play.api.mvc.CookieHeaderEncoding", "play.api.mvc.SessionCookieBaker", "play.api.mvc.FlashCookieBaker"]
+        }
+      ]
+    },
+    {
+      "type": "play.api.mvc.request.DefaultRequestFactory$$FastClassByGuice$$3e25eb9",
+      "fields": [
+        {
+          "name": "GUICE$INVOKERS"
+        }
+      ]
+    },
+    {
+      "type": "play.core.j.DefaultJavaContextComponents",
+      "allDeclaredFields": true,
+      "methods": [
+        {
+          "name": "<init>",
+          "parameterTypes": ["play.i18n.MessagesApi", "play.i18n.Langs", "play.mvc.FileMimeTypes", "play.api.http.HttpConfiguration"]
+        }
+      ]
+    },
+    {
+      "type": "play.core.j.DefaultJavaContextComponents$$FastClassByGuice$$5151cd8",
+      "fields": [
+        {
+          "name": "GUICE$INVOKERS"
+        }
+      ]
+    },
+    {
+      "type": "play.core.j.DefaultJavaHandlerComponents",
+      "allDeclaredFields": true,
+      "methods": [
+        {
+          "name": "<init>",
+          "parameterTypes": ["play.api.inject.Injector", "play.http.ActionCreator", "play.api.http.HttpConfiguration", "scala.concurrent.ExecutionContext", "play.core.j.JavaContextComponents"]
+        }
+      ]
+    },
+    {
+      "type": "play.core.j.DefaultJavaHandlerComponents$$FastClassByGuice$$528ad8c",
+      "fields": [
+        {
+          "name": "GUICE$INVOKERS"
+        }
+      ]
+    },
+    {
+      "type": "play.core.j.JavaRouterAdapter",
+      "allDeclaredFields": true
+    },
+    {
+      "type": "play.core.j.JavaRouterAdapter$$FastClassByGuice$$49d6d0c",
+      "fields": [
+        {
+          "name": "GUICE$INVOKERS"
+        }
+      ]
+    },
+    {
+      "type": "play.core.routing.GeneratedRouter",
+      "allDeclaredFields": true
+    },
+    {
+      "type": "play.core.server.PekkoHttpServerProvider",
+      "methods": [
+        {
+          "name": "<init>",
+          "parameterTypes": []
+        }
+      ]
+    },
+    {
+      "type": "play.filters.cors.CORSConfigProvider",
+      "allDeclaredFields": true
+    },
+    {
+      "type": "play.filters.cors.CORSConfigProvider$$FastClassByGuice$$19bddf5",
+      "fields": [
+        {
+          "name": "GUICE$INVOKERS"
+        }
+      ]
+    },
+    {
+      "type": "play.filters.cors.CORSFilterProvider",
+      "allDeclaredFields": true
+    },
+    {
+      "type": "play.filters.cors.CORSFilterProvider$$FastClassByGuice$$1a3c5a5",
+      "fields": [
+        {
+          "name": "GUICE$INVOKERS"
+        }
+      ]
+    },
+    {
+      "type": "play.filters.cors.CORSModule",
+      "methods": [
+        {
+          "name": "<init>",
+          "parameterTypes": []
+        }
+      ]
+    },
+    {
+      "type": "play.filters.csp.CSPConfigProvider",
+      "allDeclaredFields": true,
+      "methods": [
+        {
+          "name": "<init>",
+          "parameterTypes": ["play.api.Configuration"]
+        }
+      ]
+    },
+    {
+      "type": "play.filters.csp.CSPConfigProvider$$FastClassByGuice$$1b53511",
+      "fields": [
+        {
+          "name": "GUICE$INVOKERS"
+        }
+      ]
+    },
+    {
+      "type": "play.filters.csp.CSPFilter",
+      "allDeclaredFields": true,
+      "methods": [
+        {
+          "name": "<init>",
+          "parameterTypes": ["play.filters.csp.CSPResultProcessor"]
+        }
+      ]
+    },
+    {
+      "type": "play.filters.csp.CSPFilter$$FastClassByGuice$$b435b",
+      "fields": [
+        {
+          "name": "GUICE$INVOKERS"
+        }
+      ]
+    },
+    {
+      "type": "play.filters.csp.CSPModule",
+      "methods": [
+        {
+          "name": "<init>",
+          "parameterTypes": []
+        }
+      ]
+    },
+    {
+      "type": "play.filters.csp.DefaultCSPActionBuilder",
+      "allDeclaredFields": true,
+      "methods": [
+        {
+          "name": "<init>",
+          "parameterTypes": ["play.filters.csp.CSPResultProcessor", "play.api.mvc.PlayBodyParsers", "scala.concurrent.ExecutionContext", "org.apache.pekko.stream.Materializer"]
+        }
+      ]
+    },
+    {
+      "type": "play.filters.csp.DefaultCSPActionBuilder$$FastClassByGuice$$1eb4bd2",
+      "fields": [
+        {
+          "name": "GUICE$INVOKERS"
+        }
+      ]
+    },
+    {
+      "type": "play.filters.csp.DefaultCSPProcessor",
+      "allDeclaredFields": true,
+      "methods": [
+        {
+          "name": "<init>",
+          "parameterTypes": ["play.filters.csp.CSPConfig"]
+        }
+      ]
+    },
+    {
+      "type": "play.filters.csp.DefaultCSPProcessor$$FastClassByGuice$$1c576a9",
+      "fields": [
+        {
+          "name": "GUICE$INVOKERS"
+        }
+      ]
+    },
+    {
+      "type": "play.filters.csp.DefaultCSPReportActionBuilder",
+      "allDeclaredFields": true
+    },
+    {
+      "type": "play.filters.csp.DefaultCSPReportActionBuilder$$FastClassByGuice$$2020ade",
+      "fields": [
+        {
+          "name": "GUICE$INVOKERS"
+        }
+      ]
+    },
+    {
+      "type": "play.filters.csp.DefaultCSPReportBodyParser",
+      "allDeclaredFields": true
+    },
+    {
+      "type": "play.filters.csp.DefaultCSPReportBodyParser$$FastClassByGuice$$1fc082e",
+      "fields": [
+        {
+          "name": "GUICE$INVOKERS"
+        }
+      ]
+    },
+    {
+      "type": "play.filters.csp.DefaultCSPResultProcessor",
+      "allDeclaredFields": true,
+      "methods": [
+        {
+          "name": "<init>",
+          "parameterTypes": ["play.filters.csp.CSPProcessor"]
+        }
+      ]
+    },
+    {
+      "type": "play.filters.csp.DefaultCSPResultProcessor$$FastClassByGuice$$1d51a14",
+      "fields": [
+        {
+          "name": "GUICE$INVOKERS"
+        }
+      ]
+    },
+    {
+      "type": "play.filters.csrf.CSRF$CSRFHttpErrorHandler",
+      "allDeclaredFields": true,
+      "methods": [
+        {
+          "name": "<init>",
+          "parameterTypes": ["play.api.http.HttpErrorHandler"]
+        }
+      ]
+    },
+    {
+      "type": "play.filters.csrf.CSRF$CSRFHttpErrorHandler$$FastClassByGuice$$5f18d3",
+      "fields": [
+        {
+          "name": "GUICE$INVOKERS"
+        }
+      ]
+    },
+    {
+      "type": "play.filters.csrf.CSRF$JavaCSRFErrorHandlerDelegate",
+      "allDeclaredFields": true
+    },
+    {
+      "type": "play.filters.csrf.CSRF$JavaCSRFErrorHandlerDelegate$$FastClassByGuice$$4e8651",
+      "fields": [
+        {
+          "name": "GUICE$INVOKERS"
+        }
+      ]
+    },
+    {
+      "type": "play.filters.csrf.CSRF$TokenProviderProvider",
+      "allDeclaredFields": true,
+      "methods": [
+        {
+          "name": "<init>",
+          "parameterTypes": ["play.filters.csrf.CSRFConfig", "play.api.libs.crypto.CSRFTokenSigner"]
+        }
+      ]
+    },
+    {
+      "type": "play.filters.csrf.CSRF$TokenProviderProvider$$FastClassByGuice$$265636f",
+      "fields": [
+        {
+          "name": "GUICE$INVOKERS"
+        }
+      ]
+    },
+    {
+      "type": "play.filters.csrf.CSRFConfigProvider",
+      "allDeclaredFields": true,
+      "methods": [
+        {
+          "name": "<init>",
+          "parameterTypes": ["play.api.Configuration"]
+        }
+      ]
+    },
+    {
+      "type": "play.filters.csrf.CSRFConfigProvider$$FastClassByGuice$$25b8190",
+      "fields": [
+        {
+          "name": "GUICE$INVOKERS"
+        }
+      ]
+    },
+    {
+      "type": "play.filters.csrf.CSRFFilter",
+      "allDeclaredFields": true,
+      "methods": [
+        {
+          "name": "<init>",
+          "parameterTypes": ["javax.inject.Provider", "javax.inject.Provider", "play.api.http.SessionConfiguration", "play.filters.csrf.CSRF$TokenProvider", "play.filters.csrf.CSRF$ErrorHandler", "org.apache.pekko.stream.Materializer"]
+        }
+      ]
+    },
+    {
+      "type": "play.filters.csrf.CSRFFilter$$FastClassByGuice$$325091",
+      "fields": [
+        {
+          "name": "GUICE$INVOKERS"
+        }
+      ]
+    },
+    {
+      "type": "play.filters.csrf.CSRFModule",
+      "methods": [
+        {
+          "name": "<init>",
+          "parameterTypes": []
+        }
+      ]
+    },
+    {
+      "type": "play.filters.gzip.GzipFilter",
+      "allDeclaredFields": true,
+      "methods": [
+        {
+          "name": "<init>",
+          "parameterTypes": ["play.filters.gzip.GzipFilterConfig", "org.apache.pekko.stream.Materializer"]
+        }
+      ]
+    },
+    {
+      "type": "play.filters.gzip.GzipFilter$$FastClassByGuice$$69c4b0",
+      "fields": [
+        {
+          "name": "GUICE$INVOKERS"
+        }
+      ]
+    },
+    {
+      "type": "play.filters.gzip.GzipFilterConfigProvider",
+      "allDeclaredFields": true,
+      "methods": [
+        {
+          "name": "<init>",
+          "parameterTypes": ["play.api.Configuration"]
+        }
+      ]
+    },
+    {
+      "type": "play.filters.gzip.GzipFilterConfigProvider$$FastClassByGuice$$27607eb",
+      "fields": [
+        {
+          "name": "GUICE$INVOKERS"
+        }
+      ]
+    },
+    {
+      "type": "play.filters.gzip.GzipFilterModule",
+      "methods": [
+        {
+          "name": "<init>",
+          "parameterTypes": []
+        }
+      ]
+    },
+    {
+      "type": "play.filters.headers.SecurityHeadersConfigProvider",
+      "allDeclaredFields": true,
+      "methods": [
+        {
+          "name": "<init>",
+          "parameterTypes": ["play.api.Configuration"]
+        }
+      ]
+    },
+    {
+      "type": "play.filters.headers.SecurityHeadersConfigProvider$$FastClassByGuice$$31613cc",
+      "fields": [
+        {
+          "name": "GUICE$INVOKERS"
+        }
+      ]
+    },
+    {
+      "type": "play.filters.headers.SecurityHeadersFilter",
+      "allDeclaredFields": true,
+      "methods": [
+        {
+          "name": "<init>",
+          "parameterTypes": ["play.filters.headers.SecurityHeadersConfig"]
+        }
+      ]
+    },
+    {
+      "type": "play.filters.headers.SecurityHeadersFilter$$FastClassByGuice$$b32969",
+      "fields": [
+        {
+          "name": "GUICE$INVOKERS"
+        }
+      ]
+    },
+    {
+      "type": "play.filters.headers.SecurityHeadersModule",
+      "methods": [
+        {
+          "name": "<init>",
+          "parameterTypes": []
+        }
+      ]
+    },
+    {
+      "type": "play.filters.hosts.AllowedHostsConfigProvider",
+      "allDeclaredFields": true,
+      "methods": [
+        {
+          "name": "<init>",
+          "parameterTypes": ["play.api.Configuration"]
+        }
+      ]
+    },
+    {
+      "type": "play.filters.hosts.AllowedHostsConfigProvider$$FastClassByGuice$$30f4da5",
+      "fields": [
+        {
+          "name": "GUICE$INVOKERS"
+        }
+      ]
+    },
+    {
+      "type": "play.filters.hosts.AllowedHostsFilter",
+      "allDeclaredFields": true,
+      "methods": [
+        {
+          "name": "<init>",
+          "parameterTypes": ["play.filters.hosts.AllowedHostsConfig", "play.api.http.HttpErrorHandler"]
+        }
+      ]
+    },
+    {
+      "type": "play.filters.hosts.AllowedHostsFilter$$FastClassByGuice$$ab2127",
+      "fields": [
+        {
+          "name": "GUICE$INVOKERS"
+        }
+      ]
+    },
+    {
+      "type": "play.filters.hosts.AllowedHostsModule",
+      "methods": [
+        {
+          "name": "<init>",
+          "parameterTypes": []
+        }
+      ]
+    },
+    {
+      "type": "play.filters.https.RedirectHttpsConfigurationProvider",
+      "allDeclaredFields": true,
+      "methods": [
+        {
+          "name": "<init>",
+          "parameterTypes": ["play.api.Configuration", "play.api.Environment"]
+        }
+      ]
+    },
+    {
+      "type": "play.filters.https.RedirectHttpsConfigurationProvider$$FastClassByGuice$$29f0a60",
+      "fields": [
+        {
+          "name": "GUICE$INVOKERS"
+        }
+      ]
+    },
+    {
+      "type": "play.filters.https.RedirectHttpsFilter",
+      "allDeclaredFields": true,
+      "methods": [
+        {
+          "name": "<init>",
+          "parameterTypes": ["play.filters.https.RedirectHttpsConfiguration"]
+        }
+      ]
+    },
+    {
+      "type": "play.filters.https.RedirectHttpsFilter$$FastClassByGuice$$867255",
+      "fields": [
+        {
+          "name": "GUICE$INVOKERS"
+        }
+      ]
+    },
+    {
+      "type": "play.filters.https.RedirectHttpsModule",
+      "methods": [
+        {
+          "name": "<init>",
+          "parameterTypes": []
+        }
+      ]
+    },
+    {
+      "type": "play.filters.ip.IPFilter",
+      "allDeclaredFields": true,
+      "methods": [
+        {
+          "name": "<init>",
+          "parameterTypes": ["play.filters.ip.IPFilterConfig", "play.api.http.HttpErrorHandler"]
+        }
+      ]
+    },
+    {
+      "type": "play.filters.ip.IPFilter$$FastClassByGuice$$79b663",
+      "fields": [
+        {
+          "name": "GUICE$INVOKERS"
+        }
+      ]
+    },
+    {
+      "type": "play.filters.ip.IPFilterConfigProvider",
+      "allDeclaredFields": true,
+      "methods": [
+        {
+          "name": "<init>",
+          "parameterTypes": ["play.api.Configuration"]
+        }
+      ]
+    },
+    {
+      "type": "play.filters.ip.IPFilterConfigProvider$$FastClassByGuice$$28f675c",
+      "fields": [
+        {
+          "name": "GUICE$INVOKERS"
+        }
+      ]
+    },
+    {
+      "type": "play.filters.ip.IPFilterModule",
+      "methods": [
+        {
+          "name": "<init>",
+          "parameterTypes": []
+        }
+      ]
+    },
+    {
+      "type": "play.http.DefaultActionCreator",
+      "allDeclaredFields": true,
+      "methods": [
+        {
+          "name": "<init>",
+          "parameterTypes": []
+        }
+      ]
+    },
+    {
+      "type": "play.http.DefaultActionCreator$$FastClassByGuice$$548dacd",
+      "fields": [
+        {
+          "name": "GUICE$INVOKERS"
+        }
+      ]
+    },
+    {
+      "type": "play.http.DefaultHttpFilters",
+      "allDeclaredFields": true
+    },
+    {
+      "type": "play.http.DefaultHttpRequestHandler",
+      "allDeclaredFields": true
+    },
+    {
+      "type": "play.http.DefaultHttpRequestHandler$$FastClassByGuice$$14308c3",
+      "fields": [
+        {
+          "name": "GUICE$INVOKERS"
+        }
+      ]
+    },
+    {
+      "type": "play.i18n.Langs",
+      "allDeclaredFields": true,
+      "methods": [
+        {
+          "name": "<init>",
+          "parameterTypes": ["play.api.i18n.Langs"]
+        }
+      ]
+    },
+    {
+      "type": "play.i18n.Langs$$FastClassByGuice$$226ad9",
+      "fields": [
+        {
+          "name": "GUICE$INVOKERS"
+        }
+      ]
+    },
+    {
+      "type": "play.i18n.MessagesApi",
+      "allDeclaredFields": true,
+      "methods": [
+        {
+          "name": "<init>",
+          "parameterTypes": ["play.api.i18n.MessagesApi"]
+        }
+      ]
+    },
+    {
+      "type": "play.i18n.MessagesApi$$FastClassByGuice$$177419",
+      "fields": [
+        {
+          "name": "GUICE$INVOKERS"
+        }
+      ]
+    },
+    {
+      "type": "play.inject.DelegateInjector",
+      "allDeclaredFields": true,
+      "methods": [
+        {
+          "name": "<init>",
+          "parameterTypes": ["play.api.inject.Injector"]
+        }
+      ]
+    },
+    {
+      "type": "play.inject.DelegateInjector$$FastClassByGuice$$587f2b7",
+      "fields": [
+        {
+          "name": "GUICE$INVOKERS"
+        }
+      ]
+    },
+    {
+      "type": "play.libs.concurrent.ClassLoaderExecutionContext",
+      "allDeclaredFields": true,
+      "methods": [
+        {
+          "name": "<init>",
+          "parameterTypes": ["java.util.concurrent.Executor"]
+        }
+      ]
+    },
+    {
+      "type": "play.libs.concurrent.ClassLoaderExecutionContext$$FastClassByGuice$$f92372",
+      "fields": [
+        {
+          "name": "GUICE$INVOKERS"
+        }
+      ]
+    },
+    {
+      "type": "play.libs.concurrent.HttpExecutionContext",
+      "allDeclaredFields": true,
+      "methods": [
+        {
+          "name": "<init>",
+          "parameterTypes": ["java.util.concurrent.Executor"]
+        }
+      ]
+    },
+    {
+      "type": "play.libs.concurrent.HttpExecutionContext$$FastClassByGuice$$efcdcf",
+      "fields": [
+        {
+          "name": "GUICE$INVOKERS"
+        }
+      ]
+    },
+    {
+      "type": "play.libs.crypto.DefaultCSRFTokenSigner",
+      "allDeclaredFields": true,
+      "methods": [
+        {
+          "name": "<init>",
+          "parameterTypes": ["play.api.libs.crypto.CSRFTokenSigner"]
+        }
+      ]
+    },
+    {
+      "type": "play.libs.crypto.DefaultCSRFTokenSigner$$FastClassByGuice$$2369ff6",
+      "fields": [
+        {
+          "name": "GUICE$INVOKERS"
+        }
+      ]
+    },
+    {
+      "type": "play.mvc.FileMimeTypes",
+      "allDeclaredFields": true,
+      "methods": [
+        {
+          "name": "<init>",
+          "parameterTypes": ["play.api.http.FileMimeTypes"]
+        }
+      ]
+    },
+    {
+      "type": "play.mvc.FileMimeTypes$$FastClassByGuice$$500362a",
+      "fields": [
+        {
+          "name": "GUICE$INVOKERS"
+        }
+      ]
+    },
+    {
+      "type": "router.Routes",
+      "allDeclaredFields": true,
+      "methods": [
+        {
+          "name": "<init>",
+          "parameterTypes": ["play.api.http.HttpErrorHandler", "controllers.HomeController"]
+        }
+      ]
+    },
+    {
+      "type": "router.Routes$$FastClassByGuice$$17681bc",
+      "fields": [
+        {
+          "name": "GUICE$INVOKERS"
+        }
+      ]
+    },
+    {
+      "type": "scala.Boolean"
+    },
+    {
+      "type": "scala.Int"
+    },
+    {
+      "type": "scala.Long"
+    },
+    {
+      "type": "scala.collection.concurrent.INodeBase",
+      "fields": [
+        {
+          "name": "mainnode"
+        }
+      ]
+    },
+    {
+      "type": "sun.misc.Unsafe",
+      "allDeclaredFields": true
+    },
+    {
+      "type": "sun.reflect.Reflection"
+    },
+    {
+      "type": "sun.security.pkcs12.PKCS12KeyStore",
+      "methods": [
+        {
+          "name": "<init>",
+          "parameterTypes": []
+        }
+      ]
+    },
+    {
+      "type": "sun.security.pkcs12.PKCS12KeyStore$DualFormatPKCS12",
+      "methods": [
+        {
+          "name": "<init>",
+          "parameterTypes": []
+        }
+      ]
+    },
+    {
+      "type": "sun.security.provider.DSA$SHA224withDSA",
+      "methods": [
+        {
+          "name": "<init>",
+          "parameterTypes": []
+        }
+      ]
+    },
+    {
+      "type": "sun.security.provider.DSA$SHA256withDSA",
+      "methods": [
+        {
+          "name": "<init>",
+          "parameterTypes": []
+        }
+      ]
+    },
+    {
+      "type": "sun.security.provider.JavaKeyStore$DualFormatJKS",
+      "methods": [
+        {
+          "name": "<init>",
+          "parameterTypes": []
+        }
+      ]
+    },
+    {
+      "type": "sun.security.provider.JavaKeyStore$JKS",
+      "methods": [
+        {
+          "name": "<init>",
+          "parameterTypes": []
+        }
+      ]
+    },
+    {
+      "type": "sun.security.provider.NativePRNG",
+      "methods": [
+        {
+          "name": "<init>",
+          "parameterTypes": [
+            "java.security.SecureRandomParameters"
+          ]
+        }
+      ]
+    },
+    {
+      "type": "sun.security.provider.SHA",
+      "methods": [
+        {
+          "name": "<init>",
+          "parameterTypes": []
+        }
+      ]
+    },
+    {
+      "type": "sun.security.provider.SHA2$SHA224",
+      "methods": [
+        {
+          "name": "<init>",
+          "parameterTypes": []
+        }
+      ]
+    },
+    {
+      "type": "sun.security.provider.SHA2$SHA256",
+      "methods": [
+        {
+          "name": "<init>",
+          "parameterTypes": []
+        }
+      ]
+    },
+    {
+      "type": "sun.security.provider.SHA5$SHA384",
+      "methods": [
+        {
+          "name": "<init>",
+          "parameterTypes": []
+        }
+      ]
+    },
+    {
+      "type": "sun.security.provider.SHA5$SHA512",
+      "methods": [
+        {
+          "name": "<init>",
+          "parameterTypes": []
+        }
+      ]
+    },
+    {
+      "type": "sun.security.provider.X509Factory",
+      "methods": [
+        {
+          "name": "<init>",
+          "parameterTypes": []
+        }
+      ]
+    },
+    {
+      "type": "sun.security.rsa.PSSParameters",
+      "methods": [
+        {
+          "name": "<init>",
+          "parameterTypes": []
+        }
+      ]
+    },
+    {
+      "type": "sun.security.rsa.RSAKeyFactory$Legacy",
+      "methods": [
+        {
+          "name": "<init>",
+          "parameterTypes": []
+        }
+      ]
+    },
+    {
+      "type": "sun.security.rsa.RSAPSSSignature",
+      "methods": [
+        {
+          "name": "<init>",
+          "parameterTypes": []
+        }
+      ]
+    },
+    {
+      "type": "sun.security.rsa.RSASignature$SHA224withRSA",
+      "methods": [
+        {
+          "name": "<init>",
+          "parameterTypes": []
+        }
+      ]
+    },
+    {
+      "type": "sun.security.ssl.KeyManagerFactoryImpl$SunX509",
+      "methods": [
+        {
+          "name": "<init>",
+          "parameterTypes": []
+        }
+      ]
+    },
+    {
+      "type": "sun.security.ssl.SSLContextImpl$DefaultSSLContext",
+      "methods": [
+        {
+          "name": "<init>",
+          "parameterTypes": []
+        }
+      ]
+    },
+    {
+      "type": "sun.security.ssl.TrustManagerFactoryImpl$PKIXFactory",
+      "methods": [
+        {
+          "name": "<init>",
+          "parameterTypes": []
+        }
+      ]
+    },
+    {
+      "type": "sun.security.x509.AuthorityInfoAccessExtension",
+      "methods": [
+        {
+          "name": "<init>",
+          "parameterTypes": [
+            "java.lang.Boolean",
+            "java.lang.Object"
+          ]
+        }
+      ]
+    },
+    {
+      "type": "sun.security.x509.AuthorityKeyIdentifierExtension",
+      "methods": [
+        {
+          "name": "<init>",
+          "parameterTypes": [
+            "java.lang.Boolean",
+            "java.lang.Object"
+          ]
+        }
+      ]
+    },
+    {
+      "type": "sun.security.x509.BasicConstraintsExtension",
+      "methods": [
+        {
+          "name": "<init>",
+          "parameterTypes": [
+            "java.lang.Boolean",
+            "java.lang.Object"
+          ]
+        }
+      ]
+    },
+    {
+      "type": "sun.security.x509.CRLDistributionPointsExtension",
+      "methods": [
+        {
+          "name": "<init>",
+          "parameterTypes": [
+            "java.lang.Boolean",
+            "java.lang.Object"
+          ]
+        }
+      ]
+    },
+    {
+      "type": "sun.security.x509.CertificatePoliciesExtension",
+      "methods": [
+        {
+          "name": "<init>",
+          "parameterTypes": [
+            "java.lang.Boolean",
+            "java.lang.Object"
+          ]
+        }
+      ]
+    },
+    {
+      "type": "sun.security.x509.ExtendedKeyUsageExtension",
+      "methods": [
+        {
+          "name": "<init>",
+          "parameterTypes": [
+            "java.lang.Boolean",
+            "java.lang.Object"
+          ]
+        }
+      ]
+    },
+    {
+      "type": "sun.security.x509.IssuerAlternativeNameExtension",
+      "methods": [
+        {
+          "name": "<init>",
+          "parameterTypes": [
+            "java.lang.Boolean",
+            "java.lang.Object"
+          ]
+        }
+      ]
+    },
+    {
+      "type": "sun.security.x509.KeyUsageExtension",
+      "methods": [
+        {
+          "name": "<init>",
+          "parameterTypes": [
+            "java.lang.Boolean",
+            "java.lang.Object"
+          ]
+        }
+      ]
+    },
+    {
+      "type": "sun.security.x509.NetscapeCertTypeExtension",
+      "methods": [
+        {
+          "name": "<init>",
+          "parameterTypes": [
+            "java.lang.Boolean",
+            "java.lang.Object"
+          ]
+        }
+      ]
+    },
+    {
+      "type": "sun.security.x509.PrivateKeyUsageExtension",
+      "methods": [
+        {
+          "name": "<init>",
+          "parameterTypes": [
+            "java.lang.Boolean",
+            "java.lang.Object"
+          ]
+        }
+      ]
+    },
+    {
+      "type": "sun.security.x509.SubjectAlternativeNameExtension",
+      "methods": [
+        {
+          "name": "<init>",
+          "parameterTypes": [
+            "java.lang.Boolean",
+            "java.lang.Object"
+          ]
+        }
+      ]
+    },
+    {
+      "type": "sun.security.x509.SubjectKeyIdentifierExtension",
+      "methods": [
+        {
+          "name": "<init>",
+          "parameterTypes": [
+            "java.lang.Boolean",
+            "java.lang.Object"
+          ]
+        }
+      ]
+    }
+  ],
+  "resources": [
+    {
+      "glob": "META-INF/MANIFEST.MF"
+    },
+    {
+      "glob": "META-INF/services/ch.qos.logback.classic.spi.Configurator"
+    },
+    {
+      "glob": "META-INF/services/com.oracle.graal.phases.preciseinline.priorityinline.PolicyFactory"
+    },
+    {
+      "glob": "META-INF/services/java.lang.System$LoggerFinder"
+    },
+    {
+      "glob": "META-INF/services/java.net.spi.InetAddressResolverProvider"
+    },
+    {
+      "glob": "META-INF/services/java.net.spi.URLStreamHandlerProvider"
+    },
+    {
+      "glob": "META-INF/services/java.nio.channels.spi.SelectorProvider"
+    },
+    {
+      "glob": "META-INF/services/java.nio.charset.spi.CharsetProvider"
+    },
+    {
+      "glob": "META-INF/services/java.time.zone.ZoneRulesProvider"
+    },
+    {
+      "glob": "META-INF/services/javax.xml.parsers.SAXParserFactory"
+    },
+    {
+      "glob": "META-INF/services/org.slf4j.spi.SLF4JServiceProvider"
+    },
+    {
+      "glob": "application.conf"
+    },
+    {
+      "glob": "application.json"
+    },
+    {
+      "glob": "application.properties"
+    },
+    {
+      "glob": "com/fasterxml/jackson/module/scala/build.properties"
+    },
+    {
+      "glob": "logback-test.scmo"
+    },
+    {
+      "glob": "logback-test.xml"
+    },
+    {
+      "glob": "logback.scmo"
+    },
+    {
+      "glob": "logback.xml"
+    },
+    {
+      "glob": "logger-configurator.properties"
+    },
+    {
+      "glob": "messages"
+    },
+    {
+      "glob": "messages.default"
+    },
+    {
+      "glob": "pekko-http-version.conf"
+    },
+    {
+      "glob": "pekko-http-version.json"
+    },
+    {
+      "glob": "pekko-http-version.properties"
+    },
+    {
+      "glob": "play/reference-overrides.conf"
+    },
+    {
+      "glob": "reference.conf"
+    },
+    {
+      "glob": "version.conf"
+    },
+    {
+      "glob": "version.json"
+    },
+    {
+      "glob": "version.properties"
+    },
+    {
+      "module": "com.oracle.graal.graal_enterprise",
+      "glob": "com/oracle/graal/compiler/enterprise/BulkAllocationSnippetTemplates.class"
+    },
+    {
+      "module": "com.oracle.graal.graal_enterprise",
+      "glob": "com/oracle/graal/enterprise/hotspot/phases/strings/StringBuilderSnippets.class"
+    },
+    {
+      "module": "com.oracle.graal.graal_enterprise",
+      "glob": "com/oracle/graal/enterprise/hotspot/replacements/HotSpotBulkAllocationSnippets.class"
+    },
+    {
+      "module": "com.oracle.graal.graal_enterprise",
+      "glob": "com/oracle/graal/vector/nodes/consumer/MaterializeVectorNode.class"
+    },
+    {
+      "module": "com.oracle.graal.graal_enterprise",
+      "glob": "com/oracle/graal/vector/replacements/CopyOfSnippets.class"
+    },
+    {
+      "module": "com.oracle.graal.graal_enterprise",
+      "glob": "com/oracle/graal/vector/replacements/UncheckedCopyOfNode.class"
+    },
+    {
+      "module": "com.oracle.graal.graal_enterprise",
+      "glob": "com/oracle/graal/vector/replacements/VectorSnippets.class"
+    },
+    {
+      "module": "java.base",
+      "glob": "java/lang/Character.class"
+    },
+    {
+      "module": "java.base",
+      "glob": "java/lang/Class.class"
+    },
+    {
+      "module": "java.base",
+      "glob": "java/lang/Integer.class"
+    },
+    {
+      "module": "java.base",
+      "glob": "java/lang/Long.class"
+    },
+    {
+      "module": "java.base",
+      "glob": "java/lang/Math.class"
+    },
+    {
+      "module": "java.base",
+      "glob": "java/lang/Number.class"
+    },
+    {
+      "module": "java.base",
+      "glob": "java/lang/String.class"
+    },
+    {
+      "module": "java.base",
+      "glob": "java/lang/reflect/Modifier.class"
+    },
+    {
+      "module": "java.base",
+      "glob": "jdk/internal/icu/impl/data/icudt76b/nfkc.nrm"
+    },
+    {
+      "module": "java.base",
+      "glob": "sun/net/www/content-types.properties"
+    },
+    {
+      "module": "java.xml",
+      "glob": "jdk/xml/internal/jdkcatalog/JDKCatalog.xml"
+    },
+    {
+      "module": "jdk.graal.compiler",
+      "glob": "jdk/graal/compiler/hotspot/replacements/AssertionSnippets.class"
+    },
+    {
+      "module": "jdk.graal.compiler",
+      "glob": "jdk/graal/compiler/hotspot/replacements/ClassGetHubNode.class"
+    },
+    {
+      "module": "jdk.graal.compiler",
+      "glob": "jdk/graal/compiler/hotspot/replacements/HotSpotAllocationSnippets.class"
+    },
+    {
+      "module": "jdk.graal.compiler",
+      "glob": "jdk/graal/compiler/hotspot/replacements/HotSpotG1WriteBarrierSnippets.class"
+    },
+    {
+      "module": "jdk.graal.compiler",
+      "glob": "jdk/graal/compiler/hotspot/replacements/HotSpotHashCodeSnippets.class"
+    },
+    {
+      "module": "jdk.graal.compiler",
+      "glob": "jdk/graal/compiler/hotspot/replacements/HotSpotIsArraySnippets.class"
+    },
+    {
+      "module": "jdk.graal.compiler",
+      "glob": "jdk/graal/compiler/hotspot/replacements/HotSpotReplacementsUtil.class"
+    },
+    {
+      "module": "jdk.graal.compiler",
+      "glob": "jdk/graal/compiler/hotspot/replacements/InstanceOfSnippets.class"
+    },
+    {
+      "module": "jdk.graal.compiler",
+      "glob": "jdk/graal/compiler/hotspot/replacements/LoadExceptionObjectSnippets.class"
+    },
+    {
+      "module": "jdk.graal.compiler",
+      "glob": "jdk/graal/compiler/hotspot/replacements/MonitorSnippets.class"
+    },
+    {
+      "module": "jdk.graal.compiler",
+      "glob": "jdk/graal/compiler/hotspot/replacements/ObjectCloneSnippets.class"
+    },
+    {
+      "module": "jdk.graal.compiler",
+      "glob": "jdk/graal/compiler/hotspot/replacements/ObjectSnippets.class"
+    },
+    {
+      "module": "jdk.graal.compiler",
+      "glob": "jdk/graal/compiler/hotspot/replacements/TypeCheckSnippetUtils.class"
+    },
+    {
+      "module": "jdk.graal.compiler",
+      "glob": "jdk/graal/compiler/hotspot/replacements/arraycopy/HotSpotArraycopySnippets.class"
+    },
+    {
+      "module": "jdk.graal.compiler",
+      "glob": "jdk/graal/compiler/hotspot/stubs/ExceptionHandlerStub.class"
+    },
+    {
+      "module": "jdk.graal.compiler",
+      "glob": "jdk/graal/compiler/hotspot/stubs/ForeignCallSnippets.class"
+    },
+    {
+      "module": "jdk.graal.compiler",
+      "glob": "jdk/graal/compiler/hotspot/stubs/IntrinsicStubsGen.class"
+    },
+    {
+      "module": "jdk.graal.compiler",
+      "glob": "jdk/graal/compiler/hotspot/stubs/LookUpSecondarySupersTableStub.class"
+    },
+    {
+      "module": "jdk.graal.compiler",
+      "glob": "jdk/graal/compiler/hotspot/stubs/UnwindExceptionToCallerStub.class"
+    },
+    {
+      "module": "jdk.graal.compiler",
+      "glob": "jdk/graal/compiler/nodes/PiNode.class"
+    },
+    {
+      "module": "jdk.graal.compiler",
+      "glob": "jdk/graal/compiler/nodes/java/DynamicNewArrayNode.class"
+    },
+    {
+      "module": "jdk.graal.compiler",
+      "glob": "jdk/graal/compiler/nodes/java/DynamicNewInstanceNode.class"
+    },
+    {
+      "module": "jdk.graal.compiler",
+      "glob": "jdk/graal/compiler/nodes/java/NewArrayNode.class"
+    },
+    {
+      "module": "jdk.graal.compiler",
+      "glob": "jdk/graal/compiler/replacements/AllocationSnippets.class"
+    },
+    {
+      "module": "jdk.graal.compiler",
+      "glob": "jdk/graal/compiler/replacements/BoxingSnippets.class"
+    },
+    {
+      "module": "jdk.graal.compiler",
+      "glob": "jdk/graal/compiler/replacements/IdentityHashCodeSnippets.class"
+    },
+    {
+      "module": "jdk.graal.compiler",
+      "glob": "jdk/graal/compiler/replacements/IsArraySnippets.class"
+    },
+    {
+      "module": "jdk.graal.compiler",
+      "glob": "jdk/graal/compiler/replacements/ReplacementsUtil.class"
+    },
+    {
+      "module": "jdk.graal.compiler",
+      "glob": "jdk/graal/compiler/replacements/SnippetCounter.class"
+    },
+    {
+      "module": "jdk.graal.compiler",
+      "glob": "jdk/graal/compiler/replacements/SnippetIntegerHistogram.class"
+    },
+    {
+      "module": "jdk.graal.compiler",
+      "glob": "jdk/graal/compiler/replacements/arraycopy/ArrayCopyCallNode.class"
+    },
+    {
+      "module": "jdk.graal.compiler",
+      "glob": "jdk/graal/compiler/replacements/arraycopy/ArrayCopySnippets.class"
+    },
+    {
+      "module": "jdk.graal.compiler",
+      "glob": "jdk/graal/compiler/replacements/arraycopy/ArrayCopyWithDelayedLoweringNode.class"
+    },
+    {
+      "module": "jdk.graal.compiler",
+      "glob": "jdk/graal/compiler/replacements/gc/G1WriteBarrierSnippets.class"
+    },
+    {
+      "module": "jdk.graal.compiler",
+      "glob": "jdk/graal/compiler/replacements/gc/WriteBarrierSnippets.class"
+    },
+    {
+      "module": "jdk.graal.compiler",
+      "glob": "jdk/graal/compiler/replacements/nodes/AssertionNode.class"
+    },
+    {
+      "module": "jdk.internal.vm.ci",
+      "glob": "jdk/vm/ci/code/CodeUtil.class"
+    },
+    {
+      "module": "org.graalvm.word",
+      "glob": "org/graalvm/word/LocationIdentity.class"
+    }
+  ],
+  "bundles": [],
+  "jni": [
+    {
+      "type": "java.lang.Boolean",
+      "methods": [
+        {
+          "name": "getBoolean",
+          "parameterTypes": [
+            "java.lang.String"
+          ]
+        }
+      ]
+    },
+    {
+      "type": "sun.management.VMManagementImpl",
+      "fields": [
+        {
+          "name": "compTimeMonitoringSupport"
+        },
+        {
+          "name": "currentThreadCpuTimeSupport"
+        },
+        {
+          "name": "objectMonitorUsageSupport"
+        },
+        {
+          "name": "otherThreadCpuTimeSupport"
+        },
+        {
+          "name": "remoteDiagnosticCommandsSupport"
+        },
+        {
+          "name": "synchronizerUsageSupport"
+        },
+        {
+          "name": "threadAllocatedMemorySupport"
+        },
+        {
+          "name": "threadContentionMonitoringSupport"
+        }
+      ]
+    }
+  ]
+}

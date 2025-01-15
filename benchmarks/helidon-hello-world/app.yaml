@@ -1,0 +1,37 @@
+kind: Service
+apiVersion: v1
+metadata:
+  name: myproject
+  labels:
+    app: myproject
+spec:
+  type: ClusterIP
+  selector:
+    app: myproject
+  ports:
+    - name: tcp
+      port: 8007
+      protocol: TCP
+      targetPort: 8007
+---
+kind: Deployment
+apiVersion: apps/v1
+metadata:
+  name: myproject
+spec:
+  replicas: 1
+  selector:
+    matchLabels:
+      app: myproject
+  template:
+    metadata:
+      labels:
+        app: myproject
+        version: v1
+    spec:
+      containers:
+      - name: myproject
+        image: myproject
+        imagePullPolicy: IfNotPresent
+        ports:
+        - containerPort: 8007
