@@ -81,13 +81,15 @@ class Configuration:
         parser.add_argument("--skip-cleanup", action="store_true", help="Explicitly skip the cleanup step of the benchmark, even if a cleanup script is present in the benchmark directory")
         parser.add_argument("-d", "--debug", action="store_true", help="Show debug logs")
         # Prefix/propagate options
-        parser.add_argument("-p", "--cmd-app-prefix", help="Command to be prefixed to the application startup command")
+        parser.add_argument("-p", "--cmd-app-prefix", help="Command to be prefixed to the application command")
         parser.add_argument("-v", "--vm-options", help="Options to be propagated to the virtual machine (JVM in jvm execution mode, native-image in native execution mode)")
         parser.add_argument("-a", "--app-args", help="Arguments to be propagated to the application")
         parser.add_argument("-b", "--native-image-build-options", help="Options to be propagated to the native-image build command (used only in native execution mode when no '--app-executable' option is provided)")
         # Startup options
-        parser.add_argument("--startup-iteration-count", help="Number of requests to make and record the response time of, immediately after starting the application")
+        parser.add_argument("--startup-iteration-count", help="Number of startup iterations to execute. The data collected in the startup iterations is then aggregated. Defaults to 10")
+        parser.add_argument("--startup-request-count", help="Number of requests to make and record the response time of, immediately after starting the application, in each startup iteration. Defaults to 10")
         parser.add_argument("--startup-timeout", help="Period of time without receiving a response from the app after which it is deemed unresponsive and the benchmark is stopped. If set to 0 the app will never be deemed unresponsive. Defaults to 60")
+        parser.add_argument("--startup-cmd-app-prefix", help="Command to be prefixed to the application command, specifically just for the startup phase")
         # Warmup options
         parser.add_argument("--warmup-iteration-count", help="Number of iterations that should be performed before testing the application")
         parser.add_argument("--warmup-duration", help="Single iteration warmup time duration in seconds. How long should the application be stressed before testing")
@@ -287,12 +289,22 @@ class Configuration:
         startup_config = self._config["load_testing"]["startup"] if "startup" in self._config["load_testing"] else {}
 
         if self._args.startup_iteration_count is not None:
-            request_count = int(self._args.startup_iteration_count)
+            iteration_count = int(self._args.startup_iteration_count)
         elif "iterations" in startup_config:
-            request_count = int(startup_config["iterations"])
+            iteration_count = int(startup_config["iterations"])
         else:
-            request_count = 1
-            log.debug(f"No startup iteration count set. Defaulting to {request_count} iterations")
+            iteration_count = 10
+            log.debug(f"No startup iteration count set. Defaulting to {iteration_count} iterations")
+
+        if self._args.startup_request_count is not None:
+            request_count = int(self._args.startup_request_count)
+        elif "requests" in startup_config:
+            request_count = int(startup_config["requests"])
+        else:
+            request_count = 10
+            log.debug(f"No startup request count set. Defaulting to {request_count} requests")
+        if iteration_count > 0 and request_count <= 0:
+            raise ValueError("'startup' must have either a positive value for 'requests' or be disabled by setting 'iterations' to 0")
 
         if self._args.startup_timeout is not None:
             timeout = int(self._args.startup_timeout)
@@ -302,7 +314,14 @@ class Configuration:
             timeout = 60
             log.debug(f"No startup timeout set. Defaulting to {timeout} seconds")
 
-        self._startup = self.StartupConfig(request_count, timeout)
+        if self._args.startup_cmd_app_prefix is not None:
+            cmd_app_prefix = self._args.startup_cmd_app_prefix
+        elif "cmd_app_prefix" in startup_config:
+            cmd_app_prefix = startup_config["cmd_app_prefix"]
+        else:
+            cmd_app_prefix = self._cmd_app_prefix
+
+        self._startup = self.StartupConfig(iteration_count, request_count, timeout, cmd_app_prefix)
 
     def check_and_set_warmup_arguments(self):
         script = None
@@ -664,12 +683,18 @@ class Configuration:
         return self._execution_context_file_path
 
     class StartupConfig:
-        def __init__(self, request_count, timeout):
+        def __init__(self, iteration_count, request_count, timeout, cmd_app_prefix):
+            self._iteration_count = iteration_count
             self._request_count = request_count
             self._timeout = timeout
+            self._cmd_app_prefix = cmd_app_prefix
 
         def describe(self):
-            return f"\t - Startup: Record first {self.request_count} requests, timeout after {self.timeout} seconds of no response\n"
+            return f"\t - Startup: Repeat {self.iteration_count} iterations: recording first {self.request_count} requests, timeout after {self.timeout} seconds of no response\n"
+
+        @property
+        def iteration_count(self):
+            return self._iteration_count
 
         @property
         def request_count(self):
@@ -678,6 +703,10 @@ class Configuration:
         @property
         def timeout(self):
             return self._timeout
+
+        @property
+        def cmd_app_prefix(self):
+            return self._cmd_app_prefix
 
     class WarmupConfig:
         def __init__(self, it_duration, it_count, script, threads, connections):

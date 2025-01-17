@@ -6,7 +6,8 @@
         "connections": 1,
         "threads": 1,
         "startup":{
-            "iterations": 10
+            "iterations": 10,
+            "cmd_app_prefix": ["taskset", "-c", "0-3"]
         },
         "warmup":{
             "iterations": 1,
