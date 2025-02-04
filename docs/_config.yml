@@ -1,8 +1,8 @@
 title: "Barista"
 name: Barista Benchmark Suite
 description: Docs and resources for the Barista Benchmark Suite
-url: http://barista-benchmarks.github.io
-baseUrl: http://barista-benchmarks.github.io
+url: http://barista-benchmarks.github.io/barista
+baseUrl: http://barista-benchmarks.github.io/barista
 githubOrg: barista-benchmarks
 githubRepo: barista
 relative_permalinks: false
