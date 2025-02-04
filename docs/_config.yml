@@ -1,9 +1,8 @@
-title: "Renaissance"
-name: Renaissance Benchmark Suite
-description: Docs and resources for the Renaissance Benchmark Suite
-url: http://renaissance-benchmarks.github.io
-baseUrl: http://renaissance-benchmarks.github.io
-githubOrg: renaissance-benchmarks
+title: "Barista"
+name: Barista Benchmark Suite
+description: Docs and resources for the Barista Benchmark Suite
+url: http://barista-benchmarks.github.io
+baseUrl: http://barista-benchmarks.github.io
+githubOrg: barista-benchmarks
 githubRepo: barista
-twitterHandle: renaissancejvm
 relative_permalinks: false
