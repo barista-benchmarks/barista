@@ -10,8 +10,8 @@
             "cmd_app_prefix": ["taskset", "-c", "0-3"]
         },
         "warmup":{
-            "iterations": 1,
-            "iteration_time_seconds": 120
+            "iterations": 12,
+            "iteration_time_seconds": 10
         },
         "throughput":{
             "iterations": 1,
