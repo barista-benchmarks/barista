@@ -45,10 +45,11 @@ class AppManager:
         self._app_process = None
         self._start_ts = None
 
-    def start_app(self, cmd_app_prefix=None, lazy_app_process_detection=False):
+    def start_app(self, cmd_app_prefix=None, cmd_app_prefix_init_timelimit=None, lazy_app_process_detection=False):
         """Starts the application process by instantiating a subprocess invoking the app JAR/executable.
 
         :param list cmd_app_prefix: Prefix to be prepended to the command starting the application process.
+        :param number cmd_app_prefix_init_timelimit: Time limit, in seconds, for the prefix command to start the application process.
         :param boolean lazy_app_process_detection: Whether the `app_process` property should be initialized
             during this method invocation. Should be set to `True` if the property will not be accessed.
         """
@@ -95,7 +96,7 @@ class AppManager:
         if lazy_app_process_detection:
             self._app_process = None
             return
-        self._find_app_process()
+        self._find_app_process(cmd_app_prefix_init_timelimit)
 
     def kill_app(self):
         """Stops the app process by sending a SIGTERM signal."""
@@ -109,12 +110,15 @@ class AppManager:
             # Ensure the processes have terminated
             self.root_process.wait(60)
 
-    def _find_app_process(self):
-        """Finds the app process by checking the process subtree of the root process and sets the `app_process` property to the process found."""
-        app_pid = self._find_cmdline_proc_in_tree(self.root_process.pid, self._app_command)
+    def _find_app_process(self, time_limit=5):
+        """Finds the app process by checking the process subtree of the root process and sets the `app_process` property to the process found.
+
+        :param number time_limit: The time limit for finding the app process.
+        """
+        app_pid = self._find_cmdline_proc_in_tree(self.root_process.pid, self._app_command, time_limit)
         self._app_process = process_info.get_process(app_pid)
 
-    def _find_cmdline_proc_in_tree(self, root_pid, cmdline):
+    def _find_cmdline_proc_in_tree(self, root_pid, cmdline, time_limit):
         """Finds the process ID of the process matching the command-line in the process tree of the root process.
 
         Repeatedly scans through the process tree of the root process trying to match the command-line.
@@ -124,17 +128,16 @@ class AppManager:
 
         :param number root_pid: Process ID of the root of the process tree which should be searched.
         :param list cmdline: Command-line of the process to be found.
+        :param number time_limit: The time limit for finding the process.
         :return: Process ID of the searched for process.
         :rtype: number
         """
         start_time = time.time()
-        # very generous maximum time for the root process to start the app process, in seconds
-        root_process_startup_time_limit = 5.0
         # time between lookup attempts, in seconds
         retry_grace = 0.001
 
         tree_root = process_info.get_process(root_pid)
-        while time.time() < start_time + root_process_startup_time_limit:
+        while time.time() < start_time + time_limit:
             try:
                 proc_tree = [tree_root] + tree_root.children(recursive=True)
                 # Look for exact match
@@ -154,7 +157,7 @@ class AppManager:
         log.error("Terminating all spawned processes!")
         for p in proc_tree:
             p.terminate()
-        raise AppProcessFinishedUnexpectedly(f"Could not find app process using expected cmdline: \"{' '.join(cmdline)}\"! Terminated all spawned processes!")
+        raise AppProcessFinishedUnexpectedly(f"Could not find app process using expected cmdline: \"{' '.join(cmdline)}\" after trying for {time_limit} seconds! Terminated all spawned processes!")
 
     @property
     def config(self):

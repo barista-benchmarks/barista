@@ -38,13 +38,13 @@ class StartupManager:
         """Runs the startup phase of the benchmark process."""
         for iteration_idx in range(self.config.startup.iteration_count):
             log.info(f"Running startup phase iteration #{iteration_idx + 1}")
-            self.app_manager.start_app(self.config.startup.cmd_app_prefix, True)
+            self.app_manager.start_app(self.config.startup.cmd_app_prefix, self.config.startup.cmd_app_prefix_init_timelimit, True)
             iteration_data = self._run_single_startup_iteration()
             self.kill_app()
             self._iterations.append(iteration_data)
         self._aggregate_iteration_data()
 
-        self.app_manager.start_app(self.config.cmd_app_prefix)
+        self.app_manager.start_app(self.config.cmd_app_prefix, self.config.cmd_app_prefix_init_timelimit)
         app_process = self.app_manager.app_process
         log.info(f"Detected app process (pid={app_process.pid}) with command-line:\n{' '.join(app_process.cmdline())}")
         self._run_single_startup_iteration()

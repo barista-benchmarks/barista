@@ -82,6 +82,7 @@ class Configuration:
         parser.add_argument("-d", "--debug", action="store_true", help="Show debug logs")
         # Prefix/propagate options
         parser.add_argument("-p", "--cmd-app-prefix", help="Command to be prefixed to the application command")
+        parser.add_argument("--cmd-app-prefix-init-timelimit", help="Time limit, in seconds, for the initialization purposes of the command that is prefixed to the application command. The benchmark will fail if the harness cannot detect the application process after this time limit expires")
         parser.add_argument("-v", "--vm-options", help="Options to be propagated to the virtual machine (JVM in jvm execution mode, native-image in native execution mode)")
         parser.add_argument("-a", "--app-args", help="Arguments to be propagated to the application")
         parser.add_argument("-b", "--native-image-build-options", help="Options to be propagated to the native-image build command (used only in native execution mode when no '--app-executable' option is provided)")
@@ -90,6 +91,7 @@ class Configuration:
         parser.add_argument("--startup-request-count", help="Number of requests to make and record the response time of, immediately after starting the application, in each startup iteration. Defaults to 10")
         parser.add_argument("--startup-timeout", help="Period of time without receiving a response from the app after which it is deemed unresponsive and the benchmark is stopped. If set to 0 the app will never be deemed unresponsive. Defaults to 60")
         parser.add_argument("--startup-cmd-app-prefix", help="Command to be prefixed to the application command, specifically just for the startup phase")
+        parser.add_argument("--startup-cmd-app-prefix-init-timelimit", help="Time limit, in seconds, for the initialization purposes of the command that is prefixed to the application command specifically just for the startup phase. The benchmark will fail if the harness cannot detect the application process after this time limit expires")
         # Warmup options
         parser.add_argument("--warmup-iteration-count", help="Number of iterations that should be performed before testing the application")
         parser.add_argument("--warmup-duration", help="Single iteration warmup time duration in seconds. How long should the application be stressed before testing")
@@ -195,6 +197,15 @@ class Configuration:
             self._cmd_app_prefix  = self._config['cmd_app_prefix']
         else:
             self._cmd_app_prefix = None
+
+        if self._args.cmd_app_prefix_init_timelimit is not None:
+            prefix_init_timelimit = int(self._args.cmd_app_prefix_init_timelimit)
+        elif 'cmd_app_prefix_init_timelimit' in self._config:
+            prefix_init_timelimit = int(self._config['cmd_app_prefix_init_timelimit'])
+        else:
+            # Defaults to 5s
+            prefix_init_timelimit = 5
+        self._cmd_app_prefix_init_timelimit = prefix_init_timelimit
 
         if self._args.native_image_build_options is not None:
             # CLI overwrites config file
@@ -321,7 +332,15 @@ class Configuration:
         else:
             cmd_app_prefix = self._cmd_app_prefix
 
-        self._startup = self.StartupConfig(iteration_count, request_count, timeout, cmd_app_prefix)
+        if self._args.startup_cmd_app_prefix_init_timelimit is not None:
+            prefix_init_timelimit = int(self._args.startup_cmd_app_prefix_init_timelimit)
+        elif 'cmd_app_prefix_init_timelimit' in startup_config:
+            prefix_init_timelimit = int(startup_config['cmd_app_prefix_init_timelimit'])
+        else:
+            # Defaults to 5s
+            prefix_init_timelimit = 5
+
+        self._startup = self.StartupConfig(iteration_count, request_count, timeout, cmd_app_prefix, prefix_init_timelimit)
 
     def check_and_set_warmup_arguments(self):
         script = None
@@ -615,6 +634,10 @@ class Configuration:
         return self._cmd_app_prefix
 
     @property
+    def cmd_app_prefix_init_timelimit(self):
+        return self._cmd_app_prefix_init_timelimit
+
+    @property
     def mode(self):
         return self._mode
 
@@ -683,11 +706,12 @@ class Configuration:
         return self._execution_context_file_path
 
     class StartupConfig:
-        def __init__(self, iteration_count, request_count, timeout, cmd_app_prefix):
+        def __init__(self, iteration_count, request_count, timeout, cmd_app_prefix, cmd_app_prefix_init_timelimit):
             self._iteration_count = iteration_count
             self._request_count = request_count
             self._timeout = timeout
             self._cmd_app_prefix = cmd_app_prefix
+            self._cmd_app_prefix_init_timelimit = cmd_app_prefix_init_timelimit
 
         def describe(self):
             return f"\t - Startup: Repeat {self.iteration_count} iterations: recording first {self.request_count} requests, timeout after {self.timeout} seconds of no response\n"
@@ -707,6 +731,10 @@ class Configuration:
         @property
         def cmd_app_prefix(self):
             return self._cmd_app_prefix
+
+        @property
+        def cmd_app_prefix_init_timelimit(self):
+            return self._cmd_app_prefix_init_timelimit
 
     class WarmupConfig:
         def __init__(self, it_duration, it_count, script, threads, connections):
