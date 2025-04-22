@@ -75,12 +75,23 @@ class Benchmark:
                 self._cleanup()
 
     def _run_startup(self):
-        startup_data = self._startup_manager.run()
-        root_process = self._startup_manager.app_manager.root_process
-        app_process = self._startup_manager.app_manager.app_process
-        self._concurrent_reader = ConcurrentReader(root_process, app_process, self.config.resource_usage_polling_interval)
-        self._concurrent_reader.start()
-        return startup_data
+        try:
+            startup_data = self._startup_manager.run()
+            root_process = self._startup_manager.app_manager.root_process
+            app_process = self._startup_manager.app_manager.app_process
+            self._concurrent_reader = ConcurrentReader(root_process, app_process, self.config.resource_usage_polling_interval)
+            self._concurrent_reader.start()
+            return startup_data
+        except AppProcessFinishedUnexpectedly:
+            if self._startup_manager.app_manager.root_process.stdout is not None:
+                log.info("Logging stdout of the unexpectedly finished process:")
+                for line in str(self._startup_manager.app_manager.root_process.stdout.read()).split("\\n"):
+                    log.error(line)
+            if self._startup_manager.app_manager.root_process.stderr is not None:
+                log.info("Logging stderr of the unexpectedly finished process:")
+                for line in str(self._startup_manager.app_manager.root_process.stderr.read()).split("\\n"):
+                    log.error(line)
+            raise
 
     def _run_warmup(self):
         """Runs the warmup phase of the benchmark process."""
