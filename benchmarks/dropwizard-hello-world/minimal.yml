@@ -1,0 +1,29 @@
+template: Hello, %s!
+defaultName: Stranger
+
+database:
+  driverClass: org.h2.Driver
+  user: sa
+  password: sa
+  url: jdbc:h2:./target/example
+
+server:
+  applicationConnectors:
+    - type: http
+      port: 8012
+  adminConnectors:
+    - type: http
+      port: 8082
+  requestLog:
+    appenders: []
+
+logging:
+  level: WARN
+  loggers:
+    com.example.helloworld: INFO
+  appenders:
+    - type: console
+
+viewRendererConfiguration:
+  freemarker:
+    strict_syntax: true

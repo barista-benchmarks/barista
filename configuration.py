@@ -150,11 +150,14 @@ class Configuration:
     def set_bench_name(self):
         self._bench_name = self._args.benchmark
 
+    def benchmark_directory(self):
+        return self.benchmark_registry.get_benchmark_dir(self._bench_name)
+
     def load_and_set_config(self):
         if os.path.isabs(self._args.config):
             self._config_path = self._args.config
         else:
-            self._config_path = os.path.join(self.benchmark_registry.get_benchmark_dir(self._bench_name), "workloads", self._args.config)
+            self._config_path = os.path.join(self.benchmark_directory(), "workloads", self._args.config)
         if not os.path.isfile(self._config_path):
             raise FileNotFoundError(f"Workload configuration file not found at \"{self._config_path}\"")
         with open(self._config_path, "r") as jsonfile:
@@ -170,7 +173,7 @@ class Configuration:
         self.check_and_set_warmup_arguments()
         self.check_and_set_throughput_arguments()
         self.check_and_set_latency_arguments()
-        self._execution_context_file_path = os.path.join(self.benchmark_registry.get_benchmark_dir(self._bench_name), "barista-execution-context")
+        self._execution_context_file_path = os.path.join(self.benchmark_directory(), "barista-execution-context")
 
     def check_and_set_app_arg(self):
         if self._args.java_home is not None:

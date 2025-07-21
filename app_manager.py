@@ -3,6 +3,18 @@ import logging as log
 import subprocess
 import process_info
 import time
+import re
+
+
+def replace_env_vars(command, env_dict):
+    command_with_env_replaced = list(command)
+    for var_name, var_value in env_dict.items():
+        for i, item in enumerate(command_with_env_replaced):
+            # Replace both ${VAR} and $VAR patterns
+            command_with_env_replaced[i] = item.replace(f'${{{var_name}}}', var_value)
+            command_with_env_replaced[i] = command_with_env_replaced[i].replace(f'${var_name}', var_value)
+    return command_with_env_replaced
+
 
 class AppManager:
     """Manages the starting and stopping of the app process.
@@ -87,11 +99,15 @@ class AppManager:
             # Check for bad cases
             raise ValueError(f"{self.config.mode} flag not supported")
 
-        log.info(f"Starting microservice with:\n{' '.join(command)}")
-        self._app_command = command[cmd_app_prefix_length:]
+        expanded_command = replace_env_vars(command, {
+            "BENCHMARK_HOME": self._config.benchmark_directory()
+        })
+
+        log.info(f"Starting microservice with:\n{' '.join(expanded_command)}")
+        self._app_command = expanded_command[cmd_app_prefix_length:]
 
         self._start_ts = time.perf_counter()
-        self._root_process = subprocess.Popen(command, start_new_session=True, stdout=subprocess.PIPE, stderr=subprocess.STDOUT,shell = False)
+        self._root_process = subprocess.Popen(expanded_command, start_new_session=True, stdout=subprocess.PIPE, stderr=subprocess.STDOUT,shell = False)
 
         if lazy_app_process_detection:
             self._app_process = None
