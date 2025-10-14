@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<project xmlns="https://maven.apache.org/POM/4.0.0" xmlns:xsi="https://www.w3.org/2001/XMLSchema-instance"
-         xsi:schemaLocation="https://maven.apache.org/POM/4.0.0 https://maven.apache.org/xsd/maven-4.0.0.xsd">
+<project xmlns="https://maven.apache.org/POM/4.0.0"
+  xmlns:xsi="https://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="https://maven.apache.org/POM/4.0.0 https://maven.apache.org/xsd/maven-4.0.0.xsd">
   <modelVersion>4.0.0</modelVersion>
   <groupId>micronaut.benchmark.shopcart</groupId>
   <artifactId>shopcart</artifactId>
@@ -10,7 +10,7 @@
   <parent>
     <groupId>io.micronaut.platform</groupId>
     <artifactId>micronaut-parent</artifactId>
-    <version>4.3.1</version>
+    <version>4.8.3</version>
   </parent>
 
   <properties>
@@ -22,6 +22,10 @@
     <micronaut.aot.enabled>false</micronaut.aot.enabled>
     <micronaut.aot.packageName>micronaut.benchmark.aot.generated</micronaut.aot.packageName>
     <exec.mainClass>micronaut.benchmark.shopcart.Application</exec.mainClass>
+    <!-- Extra config for each Native Image profile. By default it creates a bundle. -->
+    <standalone.config>--bundle-create=${project.build.directory}/shopcart-${project.version}.nib,dry-run</standalone.config>
+    <app.layer.config>--bundle-create=${project.build.directory}/layer1-shopcart-${project.version}.nib,dry-run</app.layer.config>
+    <base.layer.config>--bundle-create=${project.build.directory}/layer0-shopcart-${project.version}.nib,dry-run</base.layer.config>
   </properties>
 
   <repositories>
@@ -57,9 +61,9 @@
       <scope>compile</scope>
     </dependency>
     <dependency>
-        <groupId>jakarta.validation</groupId>
-        <artifactId>jakarta.validation-api</artifactId>
-        <scope>provided</scope>
+      <groupId>jakarta.validation</groupId>
+      <artifactId>jakarta.validation-api</artifactId>
+      <scope>provided</scope>
     </dependency>
     <dependency>
       <groupId>org.junit.jupiter</groupId>
@@ -114,9 +118,9 @@
       <plugin>
         <groupId>io.micronaut.maven</groupId>
         <artifactId>micronaut-maven-plugin</artifactId>
-          <configuration>
-            <configFile>aot-${packaging}.properties</configFile>
-          </configuration>
+        <configuration>
+          <configFile>aot-${packaging}.properties</configFile>
+        </configuration>
       </plugin>
       <plugin>
         <groupId>org.apache.maven.plugins</groupId>
@@ -154,18 +158,180 @@
         <version>0.10.0</version>
         <configuration>
           <metadataRepository>
-              <enabled>true</enabled>
-              <version>0.3.6</version>
+            <enabled>true</enabled>
+            <version>0.3.6</version>
           </metadataRepository>
           <buildArgs combine.children="append">
-            <buildArg>--bundle-create=${project.build.directory}/shopcart-${project.version}.nib,dry-run</buildArg>
-            <buildArg>--initialize-at-run-time=io.netty</buildArg>
+            <buildArg>--initialize-at-build-time=io.micronaut.security.authentication.AuthenticationMode</buildArg>
+            <buildArg>--initialize-at-build-time=io.micronaut.configuration.metrics.binder.web.WebMetricsClientCondition</buildArg>
+            <buildArg>--initialize-at-build-time=io.micronaut.configuration.metrics.binder.web.WebMetricsServerCondition</buildArg>
+            <buildArg>--initialize-at-build-time=io.micronaut.serde.config.annotation.SerdeConfig$SerSubtyped$DiscriminatorValueKind</buildArg>
             <!-- Micronaut class initialization deadlock bug -->
             <buildArg>--initialize-at-build-time=io.micronaut.core.convert.ConversionContext,io.micronaut.core.convert.ImmutableArgumentConversionContext</buildArg>
+            <!--Missing build time initialization-->
+            <buildArg>--initialize-at-build-time=io.micronaut.context.ApplicationContextConfigurer$1</buildArg>
+            <!--Class initialization fails due to UnsatisfiedLinkError from JNI calls-->
+            <buildArg>--initialize-at-run-time=io.netty.channel.unix.Errors</buildArg>
+            <buildArg>--initialize-at-run-time=io.netty.channel.unix.IovArray</buildArg>
+            <buildArg>--initialize-at-run-time=io.netty.channel.unix.Limits</buildArg>
+            <!--Cause a SimpleLogger, which is initialized at run time, to be in the image heap-->
+            <buildArg>--initialize-at-run-time=io.netty.buffer</buildArg>
+            <buildArg>--initialize-at-run-time=io.netty.channel</buildArg>
+            <buildArg>--initialize-at-run-time=io.netty.handler</buildArg>
+            <buildArg>--initialize-at-run-time=io.netty.resolver</buildArg>
+            <buildArg>--initialize-at-run-time=io.netty.util</buildArg>
+            <buildArg>--initialize-at-run-time=io.netty.bootstrap</buildArg>
+            <!-- Show exception stack traces for exceptions during image building -->
+            <buildArg>-H:+ReportExceptionStackTraces</buildArg>
           </buildArgs>
         </configuration>
       </plugin>
     </plugins>
   </build>
 
+  <profiles>
+    <profile>
+      <id>dev</id>
+      <activation>
+        <property>
+          <name>env</name>
+          <value>dev</value>
+        </property>
+      </activation>
+      <properties>
+        <!-- Disable bundle creation in dev environment. -->
+        <!-- Since buildArg doesn't accept empty values add a harmless but useful flag. -->
+        <standalone.config>-H:+ReportExceptionStackTraces</standalone.config>
+        <app.layer.config>-H:+ReportExceptionStackTraces</app.layer.config>
+        <base.layer.config>-H:+ReportExceptionStackTraces</base.layer.config>
+      </properties>
+    </profile>
+    <profile>
+      <id>standalone</id>
+      <activation>
+        <activeByDefault>true</activeByDefault>
+      </activation>
+      <build>
+        <plugins>
+          <plugin>
+            <groupId>org.graalvm.buildtools</groupId>
+            <artifactId>native-maven-plugin</artifactId>
+            <version>0.10.0</version>
+            <configuration>
+              <metadataRepository>
+                <enabled>true</enabled>
+                <version>0.3.6</version>
+              </metadataRepository>
+              <buildArgs combine.children="append">
+                <buildArg>${standalone.config}</buildArg>
+              </buildArgs>
+            </configuration>
+          </plugin>
+        </plugins>
+      </build>
+    </profile>
+    <profile>
+      <id>app-layer</id>
+      <dependencies>
+        <!-- Requested by the base layer config -->
+        <dependency>
+          <groupId>${project.groupId}</groupId>
+          <artifactId>micronaut-shopcart-base-layer</artifactId>
+          <version>${project.version}</version>
+        </dependency>
+      </dependencies>
+      <build>
+        <directory>${project.basedir}/app-layer-target</directory>
+        <plugins>
+          <plugin>
+            <groupId>org.graalvm.buildtools</groupId>
+            <artifactId>native-maven-plugin</artifactId>
+            <version>0.10.0</version>
+            <configuration>
+              <imageName>shopcart-layered</imageName>
+              <metadataRepository>
+                <enabled>true</enabled>
+                <version>0.3.6</version>
+              </metadataRepository>
+              <buildArgs combine.children="append">
+                <buildArg>-J-Xmx18g</buildArg>
+                <buildArg>-H:LinkerRPath=$ORIGIN</buildArg>
+                <buildArg>-H:+UnlockExperimentalVMOptions</buildArg>
+                <buildArg>-H:LayerUse=base-layer-target/shopcart-base-layer.nil</buildArg>
+                <buildArg>-H:-UnlockExperimentalVMOptions</buildArg>
+                <buildArg>-H:NativeLinkerOption=-pie</buildArg>
+                <buildArg>${app.layer.config}</buildArg>
+              </buildArgs>
+            </configuration>
+          </plugin>
+        </plugins>
+      </build>
+    </profile>
+    <profile>
+      <id>base-layer</id>
+      <build>
+        <directory>${project.basedir}/base-layer-target</directory>
+        <plugins>
+          <plugin>
+            <groupId>org.graalvm.buildtools</groupId>
+            <artifactId>native-maven-plugin</artifactId>
+            <version>0.10.0</version>
+            <configuration>
+              <metadataRepository>
+                <enabled>true</enabled>
+                <version>0.3.6</version>
+              </metadataRepository>
+              <imageName>libshopcartbaselayer</imageName>
+              <mainClass>.</mainClass>
+              <buildArgs combine.children="append">
+                <buildArg>-H:ApplicationLayerOnlySingletons=io.micronaut.core.io.service.ServiceScanner$StaticServiceDefinitions</buildArg>
+                <buildArg>-H:ApplicationLayerInitializedClasses=io.micronaut.inject.annotation.AnnotationMetadataSupport</buildArg>
+                <buildArg>-H:ApplicationLayerInitializedClasses=io.micronaut.core.io.service.MicronautMetaServiceLoaderUtils</buildArg>
+                <buildArg>-J-Xmx18g</buildArg>
+                <buildArg>-cp ${project.basedir}/base_layer_config</buildArg>
+                <buildArg>${base.layer.config}</buildArg>
+              </buildArgs>
+            </configuration>
+          </plugin>
+          <plugin>
+            <groupId>org.apache.maven.plugins</groupId>
+            <artifactId>maven-compiler-plugin</artifactId>
+            <configuration combine.self="append">
+              <testExcludes>
+                <exclude>**/benchmark/**</exclude>
+              </testExcludes>
+            </configuration>
+          </plugin>
+          <plugin>
+            <groupId>org.apache.maven.plugins</groupId>
+            <artifactId>maven-jar-plugin</artifactId>
+            <configuration>
+              <excludes>
+                <exclude>**/resources/*.properties</exclude>
+                <exclude>logback.xml</exclude>
+              </excludes>
+            </configuration>
+          </plugin>
+          <plugin>
+            <groupId>org.apache.maven.plugins</groupId>
+            <artifactId>maven-install-plugin</artifactId>
+            <executions>
+              <execution>
+                <phase>install</phase>
+                <goals>
+                  <goal>install-file</goal>
+                </goals>
+                <configuration>
+                  <groupId>${project.groupId}</groupId>
+                  <file>${project.build.directory}/${project.artifactId}-${project.version}.jar</file>
+                  <artifactId>micronaut-shopcart-base-layer</artifactId>
+                  <packaging>jar</packaging>
+                </configuration>
+              </execution>
+            </executions>
+          </plugin>
+        </plugins>
+      </build>
+    </profile>
+  </profiles>
 </project>
