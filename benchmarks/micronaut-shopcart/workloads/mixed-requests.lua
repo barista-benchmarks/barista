@@ -6,6 +6,7 @@ local addCoffeeRequest = "{ \"username\": \"%d\", \"name\": \"coffee\", \"amount
 local addCheeseRequest = "{ \"username\": \"%d\", \"name\": \"cheese\", \"amount\": \"5\" }"
 local addMeatRequest = "{ \"username\": \"%d\", \"name\": \"meat\", \"amount\": \"800\" }"
 local viewCartPath = "/cart/%d"
+local deleteUserPath = "/%d"
 local headers = {}
 headers["content-type"] = "application/json"
 
@@ -42,7 +43,11 @@ function request()
         method = "GET"
         path = string.format(viewCartPath, userId)
         body = ""
+    elseif state == 7 then
+        method = "DELETE"
+        path = string.format(deleteUserPath, userId)
+        body = ""
     end
-    state = (state + 1) % 7
+    state = (state + 1) % 8
     return wrk.format(method, path, headers, body)
 end

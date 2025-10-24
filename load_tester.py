@@ -10,15 +10,14 @@ from wrk1_load_generator import Wrk1LoadGenerator
 from abstract_load_generator import cmd_exists
 import subprocess
 import os
-import time
 import logging as log
 import traceback
 import uuid
 import itertools
-import process_info
 import sys
 import datetime
-from http.client import HTTPConnection, HTTPSConnection
+from app_manager import AppProcessFinishedUnexpectedly
+from startup_manager import StartupManager
 from concurrent_reader import ConcurrentReader
 from configuration import ServiceMode
 from results import results_to_csv, compile_usage_p_values, dump_result_json
@@ -32,10 +31,12 @@ class Benchmark:
         self._config = config
         #Change this for throughput measures
         self._output_folder = self._config.output_folder
+        self._startup_manager = StartupManager(self._config)
         self._warmup = Wrk1LoadGenerator(self._config._warmup, self._output_folder, self._config.endpoint)
         self._latency_benchmark = Wrk2LoadGenerator(self._config.latency, self._output_folder, self._config.endpoint)
         self._throughput_benchmark = Wrk1LoadGenerator(self._config.throughput, self._output_folder, self._config.endpoint)
         self._app_output = ""
+        self._concurrent_reader = None
         self._results = None
 
     @property
@@ -52,7 +53,7 @@ class Benchmark:
         result = None
         app_terminated_early = False
         try:
-            self._start_app()
+            log.info(self.config.describe())
 
             # Run all the benchmark phases
             startup_data = self._run_startup()
@@ -61,6 +62,7 @@ class Benchmark:
             latency_data = self._run_latency(throughput_data)
 
             result = self._compile_results(startup_data, warmup_data, throughput_data, latency_data, self._concurrent_reader)
+            self._save_results(result)
         except AppProcessFinishedUnexpectedly as e:
             app_terminated_early = True
             raise e
@@ -71,113 +73,25 @@ class Benchmark:
             log.info("Benchmark done")
             if not app_terminated_early:
                 self._cleanup()
-                self._save_results(result)
-
-    def _start_app(self):
-        """Starts the app process."""
-        log.info(self.config.describe())
-
-        command = []
-        cmd_app_prefix_length = 0
-        # Check if cmd_app_prefix is defined
-        if self.config.cmd_app_prefix is not None:
-            cmd_app_prefix_length = len(self.config.cmd_app_prefix)
-            command += self.config.cmd_app_prefix
-
-        if self.config.mode == ServiceMode.JVM:
-            # JVM Case
-            java_exe = self.config.java_home
-            if java_exe is not None:
-                java_exe = java_exe + '/bin/java'
-                command += [java_exe]
-            else:
-                # try java command if no java set
-                log.warning("JAVA_HOME not set. Trying java!")
-                if cmd_exists('java'):
-                    command +=  ['java']
-                else:
-                    raise ValueError("java command not found. Please set JAVA home or have java in your path")
-            command += self.config.vm_options
-            if len(self.config.app_executable) > 4 and self.config.app_executable[-4:] =='.jar':
-                command += ['-jar', self.config.app_executable]
-            else:
-                command += [self.config.app_executable]
-            command += self.config.app_args
-        elif self.config.mode == ServiceMode.NATIVE:
-            # Native case
-            command += [self.config.app_executable]
-            command += self.config.vm_options
-            command += self.config.app_args
-            log.info(f"Executing command:\n{' '.join(command)}")
-        else:
-            # Other case/ Check for bad cases
-            raise ValueError(f"{self.config.mode} flag not supported")
-
-        log.info(f"Starting microservice with:\n{' '.join(command)}")
-        self._app_command = command[cmd_app_prefix_length:]
-        self._root_process = subprocess.Popen(command, start_new_session=True, stdout=subprocess.PIPE, stderr=subprocess.STDOUT,shell = False)
-
-        app_pid = self._find_cmdline_proc_in_tree(self._root_process.pid, self._app_command)
-        self._app_process = process_info.get_process(app_pid)
-        log.info(f"Detected app process (pid={self._app_process.pid}) with command-line:\n{' '.join(self._app_process.cmdline())}")
-
-        self._concurrent_reader = ConcurrentReader(self._root_process, self._app_process, self.config.resource_usage_polling_interval)
-        self._concurrent_reader.start()
 
     def _run_startup(self):
-        """Runs the startup phase of the benchmark process."""
-        if self.config.startup.request_count <= 0:
-            log.info("No startup required, skipping startup...")
-            return
-
-        startup_data = []
-        log.info(f"Running startup measurements: sending {self.config.startup.request_count} GET request(s) to {self.config.endpoint_protocol}://{self.config.endpoint_domain}:{self.config.endpoint_port}{self.config.endpoint_path}")
-        for request_idx in range(self.config.startup.request_count):
-            ts_before_request = time.perf_counter()
-            self._request_until_response(self.config.startup.timeout)
-            response_time = (time.perf_counter() - ts_before_request) * 1000
-            log.info(f"Received response #{request_idx + 1} in {response_time:6.2f} ms")
-            startup_data.append({
-                "response_time": response_time,
-                "iteration": request_idx,
-            })
-        return startup_data
-
-    def _request_until_response(self, timeout):
-        """Repeatedly pings the app endpoint until there is a response.
-
-        Periodically checks whether the application process is still running, raising an exception if the process terminated
-        or if the timeout period passes before a response is received.
-
-        :param number timeout: The timeout period in seconds. A 0 value means the method should never timeout.
-        """
-        poll_interval = 1
-        ts_start = time.perf_counter()
-        ts_last_poll = ts_start
-        while (True):
-            try:
-                if self.config.endpoint_protocol == "http":
-                    conn = HTTPConnection(self.config.endpoint_domain, self.config.endpoint_port)
-                else:
-                    conn = HTTPSConnection(self.config.endpoint_domain, self.config.endpoint_port)
-                conn.request("GET", self.config.endpoint_path)
-                res = conn.getresponse()
-                if res.status < 500:
-                    log.debug(f"App responded {res.status} after startup")
-                    break
-                else :
-                    log.warning(f"App responded {res.status}. Stopping and cleaning up")
-                    self._cleanup()
-            except ConnectionRefusedError:
-                ts_current = time.perf_counter()
-                if ts_current - ts_last_poll >= poll_interval:
-                    # Time for a periodic check of the app process status
-                    return_code = self._root_process.poll()
-                    if return_code is not None:
-                        raise AppProcessFinishedUnexpectedly(f"Root process exited unexpectedly with return code {return_code}!")
-                if timeout != 0 and ts_current - ts_start >= timeout:
-                    raise TimeoutError(f"App '{self.config.bench_name}' unresponsive! Could not get a response after trying for {timeout} seconds!")
-                time.sleep(0.001)
+        try:
+            startup_data = self._startup_manager.run()
+            root_process = self._startup_manager.app_manager.root_process
+            app_process = self._startup_manager.app_manager.app_process
+            self._concurrent_reader = ConcurrentReader(root_process, app_process, self.config.resource_usage_polling_interval)
+            self._concurrent_reader.start()
+            return startup_data
+        except AppProcessFinishedUnexpectedly:
+            if self._startup_manager.app_manager.root_process.stdout is not None:
+                log.info("Logging stdout of the unexpectedly finished process:")
+                for line in str(self._startup_manager.app_manager.root_process.stdout.read()).split("\\n"):
+                    log.error(line)
+            if self._startup_manager.app_manager.root_process.stderr is not None:
+                log.info("Logging stderr of the unexpectedly finished process:")
+                for line in str(self._startup_manager.app_manager.root_process.stderr.read()).split("\\n"):
+                    log.error(line)
+            raise
 
     def _run_warmup(self):
         """Runs the warmup phase of the benchmark process."""
@@ -245,59 +159,13 @@ class Benchmark:
             datapoint['script'] = os.path.basename(script)
         return datapoint
 
-    def _find_cmdline_proc_in_tree(self, root_pid, cmdline):
-        """Finds the process ID of the process matching the command-line in the process tree of the root process.
-
-        Repeatedly scans through the process tree of the root process trying to match the command-line.
-        The lookup is repeated until a time limit is exceeded, at which point all of the processes in
-        the process tree are terminated and an exception is raised. Repeating is necessary to allow the
-        root process (see option '--cmd-app-prefix') to perform its setup before starting the app process.
-
-        :param number root_pid: Process ID of the root of the process tree which should be searched.
-        :param list cmdline: Command-line of the process to be found.
-        :return: Process ID of the searched for process.
-        :rtype: number
-        """
-        start_time = time.time()
-        # very generous maximum time for the root process to start the app process, in seconds
-        root_process_startup_time_limit = 5.0
-        # time between lookup attempts, in seconds
-        retry_grace = 0.001
-
-        tree_root = process_info.get_process(root_pid)
-        while time.time() < start_time + root_process_startup_time_limit:
-            try:
-                proc_tree = [tree_root] + tree_root.children(recursive=True)
-                # Look for exact match
-                for p in proc_tree:
-                    if p.cmdline() == cmdline:
-                        return p.pid
-                # Look for executable match
-                for p in proc_tree:
-                    process_cmdline = p.cmdline()
-                    if len(process_cmdline) > 0 and process_cmdline[0] == cmdline[0]:
-                        return p.pid
-            except (FileNotFoundError, ProcessLookupError):
-                pass
-            # Sleep before retrying
-            time.sleep(retry_grace)
-        # Terminate every process
-        log.error("Terminating all spawned processes!")
-        for p in proc_tree:
-            p.terminate()
-        raise AppProcessFinishedUnexpectedly(f"Could not find app process using expected cmdline: \"{' '.join(cmdline)}\"! Terminated all spawned processes!")
-
     def _cleanup(self):
         """Cleans up the acquired resources: terminates the app process, which should terminate all other spawned processes."""
         if self._latency_benchmark is not None:
             self._latency_benchmark.cleanup()
         if self._throughput_benchmark is not None:
             self._throughput_benchmark.cleanup()
-        if self._root_process is not None:
-            root_process_return_code = self._root_process.poll()
-            if root_process_return_code is not None:
-                raise AppProcessFinishedUnexpectedly(f"Root process terminated prematurely with return code {root_process_return_code}!")
-            self._app_process.terminate()
+        self._startup_manager.kill_app()
         if self._concurrent_reader is not None:
             self._concurrent_reader.join()
 
@@ -403,7 +271,3 @@ class Benchmark:
         dump_result_json(self._output_folder, result)
         results_to_csv(self._output_folder, result)
         self._dump_stdout()
-
-class AppProcessFinishedUnexpectedly(Exception):
-    """Used to denote an unexpected termination of the application process."""
-    pass

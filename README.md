@@ -130,6 +130,8 @@ This is the list of Barista applications:
     Minimal microservice written in Kotlin in the [Ktor](https://ktor.io/) framework
 - ### play-scala-hello-world
     Minimal microservice written in Scala in the [Play](https://www.playframework.com/) framework
+- ### dropwizard-hello-world
+    Sample application using the [Dropwizard](https://www.dropwizard.io/) framework on which only a hello endpoint is stressed
 
 You can find the implementations in the `benchmarks` subdirectory.
 
@@ -197,6 +199,8 @@ Explore the supported harness options in the following section.
 
 All of the configuration options in the command line are optional and will overwrite any configuration options coming from the configuration file. 
 If no configuration file is provided with `--config path/to/your/config.json` flag the default config is taken from `<bench-dir>/workloads/default.barista.json`.
+
+**NOTE**: A special `BENCHMARK_HOME` environment variable points to the directory of each benchmark project source and can be used by all configuration options responsible for forming the command line starting the microservice like `app_args` and `vm_options`.
 
 For more detailed configuration options, you can run:
 ```console

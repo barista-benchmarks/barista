@@ -107,7 +107,7 @@ def test_build_and_native_benchmark():
     """Tests that all apps present in the Barista benchmark suite can be built and benchmarked in native mode."""
     barista_build_script = _get_harness_script("build")
     barista_harness_script = _get_harness_script("barista")
-    apps = _get_all_apps_excluding()
+    apps = _get_all_apps_excluding(exclude_list=["dropwizard-hello-world"])
     log.info(f"Testing that all the apps {apps} can be built and benchmarked in native mode.")
     for app in apps:
         app_tester = AppTester(app, barista_build_script, barista_harness_script, True)

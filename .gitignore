@@ -8,3 +8,4 @@ venv/
 shopcart-userids.txt
 *.egg-info
 target/
+.idea/
