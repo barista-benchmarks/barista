@@ -42,3 +42,4 @@ if [ $# -gt 0 ] && [ $1 = "--skip-nib-generation" ]; then
   exit 0
 fi;
 "$DIR/mvnw" package -Dpackaging=native-image -f "$DIR/pom.xml" $maven_options
+"$DIR/mvnw" install -Dpackaging=native-image -f "$DIR/pom.xml" $maven_options

@@ -1,0 +1,23 @@
+# base layer name
+shopcart-base-layer.nil
+# ignore this classpath entry from layer compatibility checks
+digest-ignore
+# all of the java.base module
+module=java.base
+# ch packages
+package=ch.qos.logback.*
+# com.fasterxml packages
+package=com.fasterxml.jackson.*
+# com.github. packages
+package=com.github.benmanes.caffeine.cache.*
+# io. packages
+package=io.micronaut.*
+package=io.netty.*
+# jakarta packages
+package=jakarta.*
+# org. packages
+package=org.checkerframework.*
+package=org.reactivestreams.*
+package=org.slf4j.*
+# reactor packages
+package=reactor.*
