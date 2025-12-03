@@ -4,6 +4,8 @@ import subprocess
 import process_info
 import time
 import re
+import os
+import sys
 
 
 def replace_env_vars(command, env_dict):
@@ -65,6 +67,8 @@ class AppManager:
         :param boolean lazy_app_process_detection: Whether the `app_process` property should be initialized
             during this method invocation. Should be set to `True` if the property will not be accessed.
         """
+        if self.config.memory_refresh:
+            self._memory_refresh()
         command = []
         cmd_app_prefix_length = 0
         if cmd_app_prefix is not None:
@@ -125,6 +129,28 @@ class AppManager:
             self.app_process.terminate()
             # Ensure the processes have terminated
             self.root_process.wait(60)
+
+    def _memory_refresh(self):
+        """
+        Flush file system buffers, drop caches, and cycle swap.
+        Must be running on Linux.
+        Must be run as root.
+        """
+        if sys.platform != "linux":
+            raise EnvironmentError(f"Refreshing the memory is not supported on the '{sys.platform}' platform! Please omit the '--memory-refresh' option!")
+        log.info("Ensuring cold-system-state: flushing system buffers, dropping caches, cycling swap.")
+        try:
+            os.sync()
+            with open('/proc/sys/vm/drop_caches', 'w') as f:
+                f.write('3\n')
+            subprocess.run(["swapoff", "-a"], check=True)
+            subprocess.run(["swapon", "-a"], check=True)
+        except PermissionError as e:
+            raise PermissionError(f"Permission denied. Memory refresh must be executed as root (sudo): {e}")
+        except subprocess.CalledProcessError as e:
+            raise ChildProcessError(f"Swap operation failed: {e}")
+        except Exception as e:
+            raise Exception(f"An error occurred during memory refresh: {e}")
 
     def _find_app_process(self, sleep_time=0):
         """Finds the app process by checking the process subtree of the root process and sets the `app_process` property to the process found.

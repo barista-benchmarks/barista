@@ -53,7 +53,7 @@ class ConcurrentReader(Thread):
         for line in iter(out.readline, b''):
             try:
                 line = line.decode()
-                print(line)
+                print(line, end="")
                 self._output += line
                 if not self._startup_times:
                     self._startup_times = extract_default_microservice_times(line)

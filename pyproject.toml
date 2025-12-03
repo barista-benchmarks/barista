@@ -1,6 +1,6 @@
 [project]
 name = "barista"
-version = "0.5.2"
+version = "0.6.0"
 description = "A benchmark suite for JVM microservices"
 readme = "README.md"
 classifiers = [
