@@ -4,15 +4,16 @@ from abstract_wrk_load_generator import AbstractWrkLoadGenerator
 from abstract_load_generator import cmd_exists
 
 class Wrk1LoadGenerator(AbstractWrkLoadGenerator):
-    def __init__(self, config, output_dir, endpoint):
+    def __init__(self, config, output_dir, endpoint, env):
         self._endpoint = endpoint
         self._duration = config.iteration_duration
         self._output_dir = output_dir
         self._threads = config.threads
         self._connections = config.connections
+        self._env = env
 
     def measure(self, script=None):
-        if not cmd_exists("wrk"):
+        if not cmd_exists("wrk", path=self._env.get("PATH", "")):
             raise FileNotFoundError("wrk command not found in PATH.")
         
         if self.wrk_has_rate():
@@ -26,7 +27,7 @@ class Wrk1LoadGenerator(AbstractWrkLoadGenerator):
             # This enables the Lua script to e.g. split the workload into <thread_count> segments
             command += ["--", f"{self._threads}"]
         log.info(f"Measuring throughput with :\n{' '.join(command)}")
-        self._wrk_processs = subprocess.Popen(command, stdout=subprocess.PIPE, stderr=subprocess.STDOUT,shell = False)
+        self._wrk_processs = subprocess.Popen(command, stdout=subprocess.PIPE, stderr=subprocess.STDOUT, shell=False, env=self._env)
         self._wrk_processs.wait()
         output = self._wrk_processs.communicate()[0].decode("utf-8")
         exit_code = self._wrk_processs.returncode
@@ -46,7 +47,7 @@ class Wrk1LoadGenerator(AbstractWrkLoadGenerator):
         log.debug("no cleanup needed for wrk1 load generator")
 
     def wrk_has_rate(self):
-        wrk = subprocess.Popen(['wrk', '--version'], stdout=subprocess.PIPE, stderr=subprocess.STDOUT, shell = False)
+        wrk = subprocess.Popen(['wrk', '--version'], stdout=subprocess.PIPE, stderr=subprocess.STDOUT, shell=False, env=self._env)
         wrk.wait()
         output = wrk.communicate()[0].decode("utf-8")
         return '--rate' in output

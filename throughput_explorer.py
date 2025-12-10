@@ -10,12 +10,13 @@ FIXED_PERCENTAGE = 'FIXED_PERCENTAGE'
 
 class ThroughputExplorer():
 
-    def __init__(self, latency_config, output_dir, endpoint, throughput_result):
+    def __init__(self, latency_config, output_dir, endpoint, throughput_result, env):
         self._latency_config = latency_config
         self._throughput = throughput_result
         self._output_dir = output_dir
         self._endpoint = endpoint
         self._counter = 0
+        self._env = env
 
         self.find_avg_throughput()
 
@@ -51,7 +52,7 @@ class ThroughputExplorer():
         if mode_name == FIXED_PERCENTAGE:
             measure_rate = rate[0]
             name = rate[1]
-        latency_load_gen = Wrk2LoadGenerator(self._latency_config, self._output_dir, self._endpoint)
+        latency_load_gen = Wrk2LoadGenerator(self._latency_config, self._output_dir, self._endpoint, self._env)
         log.info(f"Now measuring the latency for {mode_name} mode at {measure_rate} for {self._latency_config.iteration_count} iterations")
 
         latency_results = []
@@ -219,7 +220,7 @@ class ThroughputExplorer():
         log.info(f"Performing short measurement of {measurment_duration_s}s for determining next optimal rate")
         request_rate = int(expected_rate_percentage * self._avg)
 
-        latency_benchmark = Wrk2LoadGenerator(self._latency_config, self._output_dir, self._endpoint)
+        latency_benchmark = Wrk2LoadGenerator(self._latency_config, self._output_dir, self._endpoint, self._env)
         results = latency_benchmark.measure(request_rate, measurment_duration_s)
         latency_benchmark.dump_stdout(self._output_dir, results['stdout'], f"latency-adjustment-{self._counter+1}")
         self._counter += 1

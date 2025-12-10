@@ -1,4 +1,5 @@
 from configuration import ServiceMode
+from abstract_load_generator import cmd_exists
 import logging as log
 import subprocess
 import process_info

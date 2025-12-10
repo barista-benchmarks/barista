@@ -7,8 +7,6 @@ Each one of these periods is highly configurable.
 
 from wrk2_load_generator import Wrk2LoadGenerator
 from wrk1_load_generator import Wrk1LoadGenerator
-from abstract_load_generator import cmd_exists
-import subprocess
 import os
 import logging as log
 import traceback
@@ -32,9 +30,9 @@ class Benchmark:
         #Change this for throughput measures
         self._output_folder = self._config.output_folder
         self._startup_manager = StartupManager(self._config)
-        self._warmup = Wrk1LoadGenerator(self._config._warmup, self._output_folder, self._config.endpoint)
-        self._latency_benchmark = Wrk2LoadGenerator(self._config.latency, self._output_folder, self._config.endpoint)
-        self._throughput_benchmark = Wrk1LoadGenerator(self._config.throughput, self._output_folder, self._config.endpoint)
+        self._warmup = Wrk1LoadGenerator(self._config._warmup, self._output_folder, self._config.endpoint, self._config.env)
+        self._latency_benchmark = Wrk2LoadGenerator(self._config.latency, self._output_folder, self._config.endpoint, self._config.env)
+        self._throughput_benchmark = Wrk1LoadGenerator(self._config.throughput, self._output_folder, self._config.endpoint, self._config.env)
         self._app_output = ""
         self._concurrent_reader = None
         self._results = None
@@ -115,7 +113,7 @@ class Benchmark:
 
     def _run_latency(self, throughput_data):
         """Execute the latency phase of the benchmark."""
-        latency_manager = ThroughputExplorer(self.config.latency, self._output_folder, self.config.endpoint, throughput_data)
+        latency_manager = ThroughputExplorer(self.config.latency, self._output_folder, self.config.endpoint, throughput_data, self.config.env)
         results = latency_manager.explore()
         return results
 

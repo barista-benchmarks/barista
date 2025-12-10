@@ -93,9 +93,9 @@ class StartupManager:
                 if res.status < 500:
                     log.debug(f"App responded {res.status} after startup")
                     break
-                else :
+                else:
                     log.warning(f"App responded {res.status}. Stopping and cleaning up")
-                    self._cleanup()
+                    self.kill_app()
             except ConnectionRefusedError:
                 ts_current = time.perf_counter()
                 if ts_current - ts_last_poll >= poll_interval:

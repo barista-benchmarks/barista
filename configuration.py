@@ -78,6 +78,7 @@ class Configuration:
         parser.add_argument("-s", "--lua-script", help="Lua script to be executed by wrk/wrk2 for general benchmarking purposes")
         parser.add_argument("--resource-usage-polling-interval", help="Time interval in seconds between two subsequent resource usage polls. Determines how often resource usage metrics, such as rss (Resident Set Size), vms (Virtual Memory Size), and CPU utilization, are collected. If set to 0 resource usage polling is disabled. Defaults to 0.02s (20ms)")
         parser.add_argument("--memory-refresh", action="store_true", help="Refresh the memory before running the application, ensuring cold system state. Flushes file system buffers, drops caches, and cycles swap space. Supported only on Linux. Requires sudo (root). Disabled by default.")
+        parser.add_argument("--ignore-deps-bin", action="store_true", help="By default, Barista prepends its 'deps/bin' directory to PATH when executing subprocesses to facilitate access to its dependencies. By setting this option, the behaviour will be disabled.")
         parser.add_argument("--skip-prepare", action="store_true", help="Explicitly skip the prepare step of the benchmark, even if a prepare script is present in the benchmark directory")
         parser.add_argument("--skip-cleanup", action="store_true", help="Explicitly skip the cleanup step of the benchmark, even if a cleanup script is present in the benchmark directory")
         parser.add_argument("-d", "--debug", action="store_true", help="Show debug logs")
@@ -283,6 +284,14 @@ class Configuration:
             polling_interval = 0.02 # 20 ms
             log.debug(f"No resource usage polling interval set. Defaulting to {polling_interval} seconds ({polling_interval * 1000}ms)")
         self._resource_usage_polling_interval = polling_interval
+
+        env = os.environ.copy()
+        ignore_deps_bin = self._args.ignore_deps_bin
+        if not ignore_deps_bin:
+            path = env.get("PATH", "")
+            deps_bin = os.path.join(os.path.dirname(__file__), "deps", "bin")
+            env["PATH"] = f"{deps_bin}:{path}" if path else deps_bin
+        self._env = env
 
         self._memory_refresh = self._args.memory_refresh
         self._skip_prepare = self._args.skip_prepare
@@ -691,6 +700,10 @@ class Configuration:
     @property
     def resource_usage_polling_interval(self):
         return self._resource_usage_polling_interval
+
+    @property
+    def env(self):
+        return self._env
 
     @property
     def memory_refresh(self):

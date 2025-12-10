@@ -5,16 +5,17 @@ from abstract_wrk_load_generator import AbstractWrkLoadGenerator
 from abstract_load_generator import cmd_exists
 
 class Wrk2LoadGenerator(AbstractWrkLoadGenerator):
-    def __init__(self, config, output_dir, endpoint, request_rate=100000):
+    def __init__(self, config, output_dir, endpoint, env, request_rate=100000):
         self._endpoint = endpoint
         self._config = config
         self._output_dir = output_dir
         self._request_rate = request_rate
         self._threads = config.threads
         self._connections = config.connections
+        self._env = env
 
     def measure(self, rate=None, duration=None, script=None):
-        if not cmd_exists("wrk2"):
+        if not cmd_exists("wrk2", path=self._env.get("PATH", "")):
             raise FileNotFoundError("wrk2 command not found please set it in PATH.")
 
         has_rate, version_output = self.wrk2_has_rate()
@@ -39,7 +40,7 @@ class Wrk2LoadGenerator(AbstractWrkLoadGenerator):
             # This enables the Lua script to e.g. split the workload into <thread_count> segments
             command += ["--", f"{self._threads}"]
         log.info(f"Running latency command:\n{' '.join(command)}")
-        self._wrk_process = subprocess.Popen(command, stdout=subprocess.PIPE, stderr=subprocess.STDOUT, shell = False)
+        self._wrk_process = subprocess.Popen(command, stdout=subprocess.PIPE, stderr=subprocess.STDOUT, shell=False, env=self._env)
         self._wrk_process.wait()
         log.info("Finished measuring latency")
         output = self._wrk_process.communicate()[0].decode("utf-8")
@@ -58,7 +59,7 @@ class Wrk2LoadGenerator(AbstractWrkLoadGenerator):
         log.debug("no cleanup needed for wrk2 load generator")
 
     def wrk2_has_rate(self):
-        wrk = subprocess.Popen(['wrk2', '--version'], stdout=subprocess.PIPE, stderr=subprocess.STDOUT, shell=False)
+        wrk = subprocess.Popen(['wrk2', '--version'], stdout=subprocess.PIPE, stderr=subprocess.STDOUT, shell=False, env=self._env)
         wrk.wait()
         output = wrk.communicate()[0].decode("utf-8")
         return ('--rate' in output, output)

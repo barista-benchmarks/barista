@@ -1,9 +1,9 @@
 from abc import abstractmethod
 import shutil
 
-def cmd_exists(cmd):
+def cmd_exists(cmd, path=None):
     ''' Checks if a command exists'''
-    return shutil.which(cmd) is not None
+    return shutil.which(cmd, path=path) is not None
 
 class AbstractLoadGenerator:
     @abstractmethod
