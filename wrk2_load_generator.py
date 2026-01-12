@@ -17,8 +17,12 @@ class Wrk2LoadGenerator(AbstractWrkLoadGenerator):
         if not cmd_exists("wrk2"):
             raise FileNotFoundError("wrk2 command not found please set it in PATH.")
 
-        if not self.wrk2_has_rate():
-            raise FileNotFoundError("wrk2 should have --rate flag. Please ensure you have wrk2 alias not for wrk")
+        has_rate, version_output = self.wrk2_has_rate()
+        if not has_rate:
+            raise FileNotFoundError(
+                "wrk2 should have --rate flag. Please ensure you have wrk2 alias not for wrk.\n"
+                f"Output of 'wrk2 --version':\n{version_output}"
+            )
 
         if duration is None:
             duration = self._config.iteration_duration
@@ -54,10 +58,10 @@ class Wrk2LoadGenerator(AbstractWrkLoadGenerator):
         log.debug("no cleanup needed for wrk2 load generator")
 
     def wrk2_has_rate(self):
-        wrk = subprocess.Popen(['wrk2', '--version'], stdout=subprocess.PIPE, stderr=subprocess.STDOUT, shell = False)
+        wrk = subprocess.Popen(['wrk2', '--version'], stdout=subprocess.PIPE, stderr=subprocess.STDOUT, shell=False)
         wrk.wait()
         output = wrk.communicate()[0].decode("utf-8")
-        return '--rate' in output
+        return ('--rate' in output, output)
 
     def parse_latencies(self, output):
         latency = " *(\d+\.?\d*)% +(\d+\.?\d*)(\w+)"
