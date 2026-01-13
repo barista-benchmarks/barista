@@ -132,7 +132,7 @@ class AppManager:
 
     def _memory_refresh(self):
         """
-        Flush file system buffers, drop caches, and cycle swap.
+        Flush file system buffers, drop caches, and cycle swap on all active swap devices/files.
         Must be running on Linux.
         Must be run as root.
         """
@@ -143,8 +143,18 @@ class AppManager:
             os.sync()
             with open('/proc/sys/vm/drop_caches', 'w') as f:
                 f.write('3\n')
-            subprocess.run(["swapoff", "-a"], check=True)
-            subprocess.run(["swapon", "-a"], check=True)
+            # Dynamically find all active swap devices/files
+            swap_devices = []
+            with open('/proc/swaps', 'r') as sw:
+                next(sw)
+                for line in sw:
+                    swap_device = line.split()[0]
+                    swap_devices.append(swap_device)
+            if len(swap_devices) > 0:
+                for swap in swap_devices:
+                    subprocess.run(['swapoff', swap], check=True)
+                for swap in swap_devices:
+                    subprocess.run(['swapon', swap], check=True)
         except PermissionError as e:
             raise PermissionError(f"Permission denied. Memory refresh must be executed as root (sudo): {e}")
         except subprocess.CalledProcessError as e:
