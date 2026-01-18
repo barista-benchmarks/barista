@@ -331,7 +331,7 @@ class Configuration:
             log.debug(f"No startup timeout set. Defaulting to {timeout} seconds")
 
         if self._args.startup_cmd_app_prefix is not None:
-            cmd_app_prefix = self._args.startup_cmd_app_prefix
+            cmd_app_prefix = self._args.startup_cmd_app_prefix.split()
         elif "cmd_app_prefix" in startup_config:
             cmd_app_prefix = startup_config["cmd_app_prefix"]
         else:
