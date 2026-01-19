@@ -59,13 +59,15 @@ class AppManager:
         self._app_process = None
         self._start_ts = None
 
-    def start_app(self, cmd_app_prefix=None, cmd_app_prefix_init_sleep=None, lazy_app_process_detection=False):
+    def start_app(self, cmd_app_prefix=None, cmd_app_prefix_init_sleep=None, dummy_run_after_memory_refresh=False, lazy_app_process_detection=False):
         """Starts the application process by instantiating a subprocess invoking the app JAR/executable.
 
         :param list cmd_app_prefix: Prefix to be prepended to the command starting the application process.
         :param number cmd_app_prefix_init_sleep: Sleep time, in seconds, for the prefix command to start the application process.
         :param boolean lazy_app_process_detection: Whether the `app_process` property should be initialized
             during this method invocation. Should be set to `True` if the property will not be accessed.
+        :param boolean dummy_run_after_memory_refresh: Whether to run a dummy iteration after memory refresh to prevent
+            side effects (e.g., page faults) caused by the command prefix to be measured during benchmark execution.
         """
         if self.config.memory_refresh:
             self._memory_refresh()
@@ -106,6 +108,12 @@ class AppManager:
         expanded_command = replace_env_vars(command, {
             "BENCHMARK_HOME": self._config.benchmark_directory()
         })
+
+        if dummy_run_after_memory_refresh and self.config.memory_refresh and cmd_app_prefix is not None:
+            cmd_prefix_command = cmd_app_prefix + ['ls']
+            log.info(f"Running dummy prefix command after memory refresh:\n{' '.join(cmd_prefix_command)}")
+            cmd_prefix_command_process = subprocess.Popen(cmd_prefix_command, start_new_session=True, stdout=subprocess.DEVNULL, stderr=subprocess.DEVNULL,shell = False)
+            cmd_prefix_command_process.wait()
 
         log.info(f"Starting microservice with:\n{' '.join(expanded_command)}")
         self._app_command = expanded_command[cmd_app_prefix_length:]
