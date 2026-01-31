@@ -1,9 +1,12 @@
 from configuration import ServiceMode
+from abstract_load_generator import cmd_exists
 import logging as log
 import subprocess
 import process_info
 import time
 import re
+import os
+import sys
 
 
 def replace_env_vars(command, env_dict):
@@ -57,14 +60,18 @@ class AppManager:
         self._app_process = None
         self._start_ts = None
 
-    def start_app(self, cmd_app_prefix=None, cmd_app_prefix_init_sleep=None, lazy_app_process_detection=False):
+    def start_app(self, cmd_app_prefix=None, cmd_app_prefix_init_sleep=None, dummy_run_after_memory_refresh=False, lazy_app_process_detection=False):
         """Starts the application process by instantiating a subprocess invoking the app JAR/executable.
 
         :param list cmd_app_prefix: Prefix to be prepended to the command starting the application process.
         :param number cmd_app_prefix_init_sleep: Sleep time, in seconds, for the prefix command to start the application process.
         :param boolean lazy_app_process_detection: Whether the `app_process` property should be initialized
             during this method invocation. Should be set to `True` if the property will not be accessed.
+        :param boolean dummy_run_after_memory_refresh: Whether to run a dummy iteration after memory refresh to prevent
+            side effects (e.g., page faults) caused by the command prefix to be measured during benchmark execution.
         """
+        if self.config.memory_refresh:
+            self._memory_refresh()
         command = []
         cmd_app_prefix_length = 0
         if cmd_app_prefix is not None:
@@ -103,6 +110,12 @@ class AppManager:
             "BENCHMARK_HOME": self._config.benchmark_directory()
         })
 
+        if dummy_run_after_memory_refresh and self.config.memory_refresh and cmd_app_prefix is not None:
+            cmd_prefix_command = cmd_app_prefix + ['ls']
+            log.info(f"Running dummy prefix command after memory refresh:\n{' '.join(cmd_prefix_command)}")
+            cmd_prefix_command_process = subprocess.Popen(cmd_prefix_command, start_new_session=True, stdout=subprocess.DEVNULL, stderr=subprocess.DEVNULL,shell = False)
+            cmd_prefix_command_process.wait()
+
         log.info(f"Starting microservice with:\n{' '.join(expanded_command)}")
         self._app_command = expanded_command[cmd_app_prefix_length:]
 
@@ -125,6 +138,38 @@ class AppManager:
             self.app_process.terminate()
             # Ensure the processes have terminated
             self.root_process.wait(60)
+
+    def _memory_refresh(self):
+        """
+        Flush file system buffers, drop caches, and cycle swap on all active swap devices/files.
+        Must be running on Linux.
+        Must be run as root.
+        """
+        if sys.platform != "linux":
+            raise EnvironmentError(f"Refreshing the memory is not supported on the '{sys.platform}' platform! Please omit the '--memory-refresh' option!")
+        log.info("Ensuring cold-system-state: flushing system buffers, dropping caches, cycling swap.")
+        try:
+            os.sync()
+            with open('/proc/sys/vm/drop_caches', 'w') as f:
+                f.write('3\n')
+            # Dynamically find all active swap devices/files
+            swap_devices = []
+            with open('/proc/swaps', 'r') as sw:
+                next(sw)
+                for line in sw:
+                    swap_device = line.split()[0]
+                    swap_devices.append(swap_device)
+            if len(swap_devices) > 0:
+                for swap in swap_devices:
+                    subprocess.run(['swapoff', swap], check=True)
+                for swap in swap_devices:
+                    subprocess.run(['swapon', swap], check=True)
+        except PermissionError as e:
+            raise PermissionError(f"Permission denied. Memory refresh must be executed as root (sudo): {e}")
+        except subprocess.CalledProcessError as e:
+            raise ChildProcessError(f"Swap operation failed: {e}")
+        except Exception as e:
+            raise Exception(f"An error occurred during memory refresh: {e}")
 
     def _find_app_process(self, sleep_time=0):
         """Finds the app process by checking the process subtree of the root process and sets the `app_process` property to the process found.

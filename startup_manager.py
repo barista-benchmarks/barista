@@ -38,13 +38,13 @@ class StartupManager:
         """Runs the startup phase of the benchmark process."""
         for iteration_idx in range(self.config.startup.iteration_count):
             log.info(f"Running startup phase iteration #{iteration_idx + 1}")
-            self.app_manager.start_app(self.config.startup.cmd_app_prefix, self.config.startup.cmd_app_prefix_init_sleep, True)
+            self.app_manager.start_app(self.config.startup.cmd_app_prefix, self.config.startup.cmd_app_prefix_init_sleep, self.config.startup.dummy_run_after_memory_refresh, True)
             iteration_data = self._run_single_startup_iteration()
             self.kill_app()
             self._iterations.append(iteration_data)
         self._aggregate_iteration_data()
 
-        self.app_manager.start_app(self.config.cmd_app_prefix, self.config.cmd_app_prefix_init_sleep)
+        self.app_manager.start_app(self.config.cmd_app_prefix, self.config.cmd_app_prefix_init_sleep, self.config.dummy_run_after_memory_refresh)
         app_process = self.app_manager.app_process
         log.info(f"Detected app process (pid={app_process.pid}) with command-line:\n{' '.join(app_process.cmdline())}")
         self._run_single_startup_iteration()
@@ -93,9 +93,9 @@ class StartupManager:
                 if res.status < 500:
                     log.debug(f"App responded {res.status} after startup")
                     break
-                else :
+                else:
                     log.warning(f"App responded {res.status}. Stopping and cleaning up")
-                    self._cleanup()
+                    self.kill_app()
             except ConnectionRefusedError:
                 ts_current = time.perf_counter()
                 if ts_current - ts_last_poll >= poll_interval:

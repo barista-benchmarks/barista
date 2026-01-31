@@ -77,12 +77,15 @@ class Configuration:
         parser.add_argument("-k", "--connections", help="Connections to keep open during the warmup, throughput and latency load-testing phases. This option can be overwritten for each of the mentioned phases. During each phase, the number of connections is propagated to wrk/wrk2.")
         parser.add_argument("-s", "--lua-script", help="Lua script to be executed by wrk/wrk2 for general benchmarking purposes")
         parser.add_argument("--resource-usage-polling-interval", help="Time interval in seconds between two subsequent resource usage polls. Determines how often resource usage metrics, such as rss (Resident Set Size), vms (Virtual Memory Size), and CPU utilization, are collected. If set to 0 resource usage polling is disabled. Defaults to 0.02s (20ms)")
+        parser.add_argument("--memory-refresh", action="store_true", help="Refresh the memory before running the application, ensuring cold system state. Flushes file system buffers, drops caches, and cycles swap space. Supported only on Linux. Requires sudo (root). Disabled by default.")
+        parser.add_argument("--ignore-deps-bin", action="store_true", help="By default, Barista prepends its 'deps/bin' directory to PATH when executing subprocesses to facilitate access to its dependencies. By setting this option, the behaviour will be disabled.")
         parser.add_argument("--skip-prepare", action="store_true", help="Explicitly skip the prepare step of the benchmark, even if a prepare script is present in the benchmark directory")
         parser.add_argument("--skip-cleanup", action="store_true", help="Explicitly skip the cleanup step of the benchmark, even if a cleanup script is present in the benchmark directory")
         parser.add_argument("-d", "--debug", action="store_true", help="Show debug logs")
         # Prefix/propagate options
         parser.add_argument("-p", "--cmd-app-prefix", help="Command to be prefixed to the application command")
         parser.add_argument("--cmd-app-prefix-init-sleep", help="Sleep time, in seconds, for the initialization purposes of the command that is prefixed to the application command. The harness will sleep for this time duration and only then will it start attempting to detect the application process. Defaults to 0")
+        parser.add_argument("--dummy-run-after-memory-refresh", action="store_true", help="Run a dummy prefix command after memory refresh to prevent side effects caused by the command prefix to be measured during benchmark execution. Disabled by default.")
         parser.add_argument("-v", "--vm-options", help="Options to be propagated to the virtual machine (JVM in jvm execution mode, native-image in native execution mode)")
         parser.add_argument("-a", "--app-args", help="Arguments to be propagated to the application")
         parser.add_argument("-b", "--native-image-build-options", help="Options to be propagated to the native-image build command (used only in native execution mode when no '--app-executable' option is provided)")
@@ -92,6 +95,7 @@ class Configuration:
         parser.add_argument("--startup-timeout", help="Period of time without receiving a response from the app after which it is deemed unresponsive and the benchmark is stopped. If set to 0 the app will never be deemed unresponsive. Defaults to 60")
         parser.add_argument("--startup-cmd-app-prefix", help="Command to be prefixed to the application command, specifically just for the startup phase")
         parser.add_argument("--startup-cmd-app-prefix-init-sleep", help="Sleep time, in seconds, for the initialization purposes of the command that is prefixed to the application command specifically just for the startup phase. The harness will sleep for this time duration and only then will it start attempting to detect the application process. Defaults to 0")
+        parser.add_argument("--startup-dummy-run-after-memory-refresh", action="store_true", help="Run a dummy startup prefix command after memory refresh to prevent side effects caused by the command prefix to be measured during startup benchmark execution. This option is specific to just the startup phase. Disabled by default.")
         # Warmup options
         parser.add_argument("--warmup-iteration-count", help="Number of iterations that should be performed before testing the application")
         parser.add_argument("--warmup-duration", help="Single iteration warmup time duration in seconds. How long should the application be stressed before testing")
@@ -210,6 +214,8 @@ class Configuration:
             prefix_init_sleep = 0
         self._cmd_app_prefix_init_sleep = prefix_init_sleep
 
+        self._dummy_run_after_memory_refresh = self._args.dummy_run_after_memory_refresh
+
         if self._args.native_image_build_options is not None:
             # CLI overwrites config file
             self._native_image_build_options = self.ensure_is_array(self._args.native_image_build_options.split())
@@ -279,6 +285,15 @@ class Configuration:
             log.debug(f"No resource usage polling interval set. Defaulting to {polling_interval} seconds ({polling_interval * 1000}ms)")
         self._resource_usage_polling_interval = polling_interval
 
+        env = os.environ.copy()
+        ignore_deps_bin = self._args.ignore_deps_bin
+        if not ignore_deps_bin:
+            path = env.get("PATH", "")
+            deps_bin = os.path.join(os.path.dirname(__file__), "deps", "bin")
+            env["PATH"] = f"{deps_bin}:{path}" if path else deps_bin
+        self._env = env
+
+        self._memory_refresh = self._args.memory_refresh
         self._skip_prepare = self._args.skip_prepare
         self._skip_cleanup = self._args.skip_cleanup
 
@@ -329,7 +344,7 @@ class Configuration:
             log.debug(f"No startup timeout set. Defaulting to {timeout} seconds")
 
         if self._args.startup_cmd_app_prefix is not None:
-            cmd_app_prefix = self._args.startup_cmd_app_prefix
+            cmd_app_prefix = self._args.startup_cmd_app_prefix.split()
         elif "cmd_app_prefix" in startup_config:
             cmd_app_prefix = startup_config["cmd_app_prefix"]
         else:
@@ -342,8 +357,10 @@ class Configuration:
         else:
             # Defaults to 0s
             prefix_init_sleep = 0
+        
+        dummy_run_after_memory_refresh = self._args.startup_dummy_run_after_memory_refresh
 
-        self._startup = self.StartupConfig(iteration_count, request_count, timeout, cmd_app_prefix, prefix_init_sleep)
+        self._startup = self.StartupConfig(iteration_count, request_count, timeout, cmd_app_prefix, prefix_init_sleep, dummy_run_after_memory_refresh)
 
     def check_and_set_warmup_arguments(self):
         script = None
@@ -639,6 +656,10 @@ class Configuration:
     @property
     def cmd_app_prefix_init_sleep(self):
         return self._cmd_app_prefix_init_sleep
+    
+    @property
+    def dummy_run_after_memory_refresh(self):
+        return self._dummy_run_after_memory_refresh
 
     @property
     def mode(self):
@@ -681,6 +702,14 @@ class Configuration:
         return self._resource_usage_polling_interval
 
     @property
+    def env(self):
+        return self._env
+
+    @property
+    def memory_refresh(self):
+        return self._memory_refresh
+
+    @property
     def skip_prepare(self):
         return self._skip_prepare
 
@@ -709,12 +738,13 @@ class Configuration:
         return self._execution_context_file_path
 
     class StartupConfig:
-        def __init__(self, iteration_count, request_count, timeout, cmd_app_prefix, cmd_app_prefix_init_sleep):
+        def __init__(self, iteration_count, request_count, timeout, cmd_app_prefix, cmd_app_prefix_init_sleep, dummy_run_after_memory_refresh):
             self._iteration_count = iteration_count
             self._request_count = request_count
             self._timeout = timeout
             self._cmd_app_prefix = cmd_app_prefix
             self._cmd_app_prefix_init_sleep = cmd_app_prefix_init_sleep
+            self._dummy_run_after_memory_refresh = dummy_run_after_memory_refresh
 
         def describe(self):
             return f"\t - Startup: Repeat {self.iteration_count} iterations: recording first {self.request_count} requests, timeout after {self.timeout} seconds of no response\n"
@@ -738,6 +768,10 @@ class Configuration:
         @property
         def cmd_app_prefix_init_sleep(self):
             return self._cmd_app_prefix_init_sleep
+    
+        @property
+        def dummy_run_after_memory_refresh(self):
+            return self._dummy_run_after_memory_refresh
 
     class WarmupConfig:
         def __init__(self, it_duration, it_count, script, threads, connections):
