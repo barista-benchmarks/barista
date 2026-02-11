@@ -1,0 +1,25 @@
+# Petclinic - Oracle setup (local development)
+
+-- Create a dedicated user/schema
+-- Adjust TABLESPACE and QUOTA to your local environment.
+-- For 23c/23ai Free, USERS tablespace is fine by default.
+
+-- Connect as a DBA user (e.g., SYS as SYSDBA) and run:
+CREATE USER petclinic IDENTIFIED BY petclinic;
+GRANT CREATE SESSION TO petclinic;
+GRANT CREATE TABLE, CREATE SEQUENCE, CREATE VIEW, CREATE TRIGGER TO petclinic;
+ALTER USER petclinic QUOTA UNLIMITED ON USERS;
+
+-- If your default PDB service differs, connect with the right service name:
+--   FREEPDB1 for Oracle 23c/23ai Free, XEPDB1 for XE 21c/18c
+-- Example JDBC URL: jdbc:oracle:thin:@//localhost:1521/FREEPDB1
+
+-- Application defaults (override via env if needed):
+--   ORACLE_URL=jdbc:oracle:thin:@//localhost:1521/FREEPDB1
+--   ORACLE_USER=petclinic
+--   ORACLE_PASS=petclinic
+
+-- Spring profile (recommended):
+--   SPRING_PROFILES_ACTIVE=oracle
+
+-- The application will initialize schema and data automatically from db/oracle/*.sql when the oracle profile is active.
