@@ -11,6 +11,7 @@ import jakarta.ws.rs.Produces;
 import jakarta.ws.rs.core.MediaType;
 
 import io.quarkus.tika.TikaParser;
+import io.smallrye.common.annotation.NonBlocking;
 
 @Path("/parse")
 public class TikaParserResource {
@@ -18,6 +19,7 @@ public class TikaParserResource {
     @Inject
     TikaParser parser;
 
+    // Stays on the worker pool: parsing a document is CPU heavy and would block the event loop.
     @POST
     @Path("/text")
     @Consumes({ "application/pdf", "application/vnd.oasis.opendocument.text" })
@@ -28,6 +30,7 @@ public class TikaParserResource {
 
     // We need this empty endpoint because non-wrk measurements (e.g., time to first response) aren't configured to POST a data payload.
     @GET
+    @NonBlocking
     @Path("/")
     @Produces(MediaType.TEXT_PLAIN)
     public String hello() {
